@@ -1,0 +1,609 @@
+{
+  "active": false,
+  "connections": {
+    "Download File": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "File Created": {
+      "main": [
+        [
+          {
+            "node": "Download File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Download File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI_Agent_Coach_Antifragil",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "set_prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "data_AFQ",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "res_process": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set_prompts": {
+      "main": [
+        [
+          {
+            "node": "data_AFQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "File Updated": {
+      "main": [
+        [
+          {
+            "node": "Download File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "data_AFQ": {
+      "main": [
+        [
+          {
+            "node": "set_prompts2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI_Agent_Coach_Antifragil": {
+      "main": [
+        [
+          {
+            "node": "find_nombre",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set_prompts2": {
+      "main": [
+        [
+          {
+            "node": "AI_Agent_Coach_Antifragil",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "find_nombre": {
+      "main": [
+        [
+          {
+            "node": "res_process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-30T14:29:03.520Z",
+  "id": "12W3EYodVycRRCim",
+  "isArchived": true,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AFQ analysis",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {
+          "binaryPropertyName": "data"
+        }
+      },
+      "id": "584feac2-a5b1-4bd8-a0f1-1e2e235ae67e",
+      "name": "Download File",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -3360,
+        672
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "HhDiD9KyplQpOpXo",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "17RJHXCoAX8f79hLbmm8b-Aw_q0iLTCBd",
+          "mode": "list",
+          "cachedResultName": "AFQ",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/17RJHXCoAX8f79hLbmm8b-Aw_q0iLTCBd"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "id": "9a1733c9-4cc9-411b-9652-f26b69699836",
+      "name": "File Created",
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        -3824,
+        752
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "HhDiD9KyplQpOpXo",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -3616,
+        576
+      ],
+      "id": "e4d49279-f9f3-408a-85af-254ff355cb05",
+      "name": "Loop Over Items",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {
+          "maxTokens": 4000,
+          "temperature": 0.7,
+          "topP": 0.9
+        }
+      },
+      "id": "73e740d4-6bdd-445e-a2e0-2ce6fe7a065d",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        -2032,
+        1008
+      ],
+      "typeVersion": 1.2,
+      "credentials": {
+        "openAiApi": {
+          "id": "QHcEKyQfjZXrcwHF",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "The CV is uploaded to Google Drive and converted so that it can be processed\n",
+        "height": 592,
+        "width": 908
+      },
+      "id": "ab4a2e54-f88f-414a-9f83-fcfc46ab7bd0",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -3888,
+        544
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "=data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -3184,
+        672
+      ],
+      "id": "7104eca3-b167-4e24-a127-15b56f0de7ff",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -2816,
+        896
+      ],
+      "id": "b191079e-153f-48bc-b0d1-b978981648b9",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "QHcEKyQfjZXrcwHF",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el ID del perfil (desde el flujo o un nodo anterior)\nconst idExpert = $('find_nombre').first().json.id;\n\nreturn [\n  {\n    json: {\n      id: idExpert,\n      \"pasos.2.datos\":    $('AI_Agent_Coach_Antifragil').first().json.output,\n      \"pasos.2.completado\": true,\n      \"pasos.2.fecha_completado\": new Date().toISOString(),\n      \"paso_actual\":3\n    }\n  }\n]"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1216,
+        656
+      ],
+      "id": "e1c2be92-1eff-4bee-a905-c0bdf55596f7",
+      "name": "res_process"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE process_expert\nSET pasos = jsonb_set(\n    jsonb_set(\n        jsonb_set(\n            pasos,\n            '{1,completado}',\n            '{{ $json[\"pasos.2.completado\"] ? \"true\" : \"false\" }}'::jsonb,\n            false\n        ),\n        '{1,fecha_completado}',\n        '\"{{ $json[\"pasos.2.fecha_completado\"] }}\"'::jsonb,\n        false\n    ),\n    '{1,datos}',\n    to_jsonb(replace('{{ $json[\"pasos.2.datos\"] }}', '\"', '\\\"')), \n    /* to_jsonb(replace(replace('{{ $json[\"pasos.2.datos\"] }}', '\"', '\\\"'), E'\\n', ' ')), */\n    false\n),\npaso_actual = {{ $json[\"paso_actual\"] }}\nWHERE expert_id = '{{ $json[\"id\"] }}';",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1408,
+        912
+      ],
+      "id": "b603e5d6-3803-498b-9afe-8b785a0a3670",
+      "name": "Execute a SQL query",
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "The essential information for evaluating the candidate is collected",
+        "height": 592,
+        "width": 520,
+        "color": 5
+      },
+      "id": "bf14bf83-aabf-4e9c-a28c-d367e070b403",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2928,
+        544
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Summary of relevant information useful for classifying the candidate",
+        "height": 540,
+        "width": 1352,
+        "color": 4
+      },
+      "id": "59c0c86b-9d8a-4da7-a356-77d172b4230a",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2352,
+        608
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2affc283-2be0-4e7d-ab1e-c0c2d7426ddc",
+              "name": "Input_Schema",
+              "value": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"NOMBRE\": {\n      \"type\": \"string\",\n      \"description\": \"Nombre completo de la persona evaluada\"\n    },\n    \"FECHA DE LA PRUEBA\": {\n      \"type\": \"string\",\n      \"description\": \"Fecha de aplicación del cuestionario en formato YYYY-MM-DD\"\n    },\n    \"EDAD\": {\n      \"type\": \"string\",\n      \"description\": \"Edad de la persona en años\"\n    },\n    \"Adaptación proactiva Punt. T\": {\n      \"type\": \"string\",\n      \"description\": \"Puntuación T de la dimensión Adaptación proactiva\"\n    },\n    \"Evolución activa Punt. T\": {\n      \"type\": \"string\",\n      \"description\": \"Puntuación T de la dimensión Evolución activa\"\n    },\n    \"Agilidad emocional Punt. T\": {\n      \"type\": \"string\",\n      \"description\": \"Puntuación T de la dimensión Agilidad emocional\"\n    },\n    \"Destructividad consciente Punt. T\": {\n      \"type\": \"string\",\n      \"description\": \"Puntuación T de la dimensión Destructividad consciente\"\n    },\n    \"Índice de antifragilidad Punt. T\": {\n      \"type\": \"string\",\n      \"description\": \"Puntuación T del índice global de antifragilidad\"\n    }\n  },\n  \"required\": [\n    \"NOMBRE\",\n    \"FECHA DE LA PRUEBA\", \n    \"EDAD\",\n    \"Adaptación proactiva Punt. T\",\n    \"Evolución activa Punt. T\",\n    \"Agilidad emocional Punt. T\",\n    \"Destructividad consciente Punt. T\",\n    \"Índice de antifragilidad Punt. T\"\n  ],\n  \"additionalProperties\": false\n}",
+              "type": "string"
+            },
+            {
+              "id": "8202c188-a9ee-4b42-8fec-c78e8d78723b",
+              "name": "prompt_lectura_afq",
+              "value": "Eres un asistente especializado en extraer información específica de informes PDF del Cuestionario de Anti-Fragilidad (AFQ) de Giunti Psychometrics.\n\nTu tarea:\nAnalizar el contenido del PDF y extraer únicamente los siguientes datos específicos en formato JSON:\n\nCampos requeridos:\nDebes extraer estos campos exactos:\n- NOMBRE (nombre completo)\n- FECHA DE LA PRUEBA (formato YYYY-MM-DD)\n- EDAD (solo el número)\n- Adaptación proactiva Punt. T (valor numérico)\n- Evolución activa Punt. T (valor numérico)\n- Agilidad emocional Punt. T (valor numérico)\n- Destructividad consciente Punt. T (valor numérico)\n- Índice de antifragilidad Punt. T (valor numérico)\n\nInstrucciones específicas:\n\n1. NOMBRE: Extraer el nombre completo que aparece en la primera página del informe\n2. FECHA DE LA PRUEBA: Formato exacto como aparece en el documento (YYYY-MM-DD)\n3. EDAD: Solo el número de la edad\n4. Puntuaciones T: Para cada dimensión, extraer únicamente el valor numérico de \"Punt. T\" que aparece en la sección \"Compendio de puntuaciones\"\n\nUbicación de los datos:\n- Datos personales: Primera página del informe\n- Puntuaciones T: Sección \"Compendio de puntuaciones\" (solo en páginas  05 / 13 y 06 / 13 típicamente)\n- Las puntuaciones aparecen como \"Punt. T\" seguido del número\n\nVerificar los resultados 2 veces\n\nFormato de salida:\nDevuelve ÚNICAMENTE un objeto JSON válido con los campos especificados. No incluyas explicaciones adicionales, comentarios o texto fuera del JSON.\n\nManejo de valores faltantes:\n- Si un valor no se encuentra, usa una cadena vacía \"\"\n- Si una puntuación aparece como \"null\", mantén \"null\" como string\n\nEjemplo de salida esperada:\nDevuelve un JSON con esta estructura exacta:\nNOMBRE: \"Tyrone Alberto Bociga Dorado\"\nFECHA DE LA PRUEBA: \"2025-07-15\"\nEDAD: \"61\"\nAdaptación proactiva Punt. T: \"71\"\nEvolución activa Punt. T: \"62\"\nAgilidad emocional Punt. T: \"66\"\nDestructividad consciente Punt. T: \"45\"\nÍndice de antifragilidad Punt. T: \"63\"\n\nProcesa el contenido del PDF y extrae únicamente estos datos en el formato JSON especificado.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3168,
+        960
+      ],
+      "id": "10f3f774-7570-48cc-86b3-15582da9fa1b",
+      "name": "set_prompts"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "17RJHXCoAX8f79hLbmm8b-Aw_q0iLTCBd",
+          "mode": "list",
+          "cachedResultName": "AFQ",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/17RJHXCoAX8f79hLbmm8b-Aw_q0iLTCBd"
+        },
+        "event": "fileUpdated",
+        "options": {}
+      },
+      "id": "83f73595-e0f4-4230-85e6-f3f2291d8c8d",
+      "name": "File Updated",
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        -3824,
+        976
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "HhDiD9KyplQpOpXo",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "text": "={{ $('Extract from File').item.json.text }}",
+        "schemaType": "manual",
+        "inputSchema": "={{$('set_prompts').item.json['Input_Schema']}}",
+        "options": {
+          "systemPromptTemplate": "={{$('set_prompts').item.json['prompt_lectura_afq']}}"
+        }
+      },
+      "id": "e38c725d-b7bb-4095-a7de-647647afc53e",
+      "name": "data_AFQ",
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "position": [
+        -2832,
+        640
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('set_prompts2').item.json['prompt_user_Coach_Antifragil '] }}",
+        "options": {
+          "systemMessage": "={{ $('set_prompts2').item.json['prompt_system_Coach_Antifragil '] }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        -2032,
+        784
+      ],
+      "id": "d39c96bb-a77e-4f0b-91a3-b7139eef6eab",
+      "name": "AI_Agent_Coach_Antifragil"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dc95f6e5-ec90-4bd3-b0d6-6f034e8a7ba6",
+              "name": "prompt_user_Coach_Antifragil ",
+              "value": "=Genera un informe de coaching personalizado para el liderazgo antifrágil basado en los siguientes resultados del Cuestionario AFQ:\nDatos de la persona:\nNombre: {{ $json.output.NOMBRE }}\nEdad: {{ $json.output.EDAD }}\nFecha de la prueba: {{ $json.output['FECHA DE LA PRUEBA'] }}\nPuntuaciones obtenidas:\nAdaptación proactiva: {{ $json.output['Adaptación proactiva Punt. T'] }} puntos\nEvolución activa: {{ $json.output['Evolución activa Punt. T'] }} puntos\nAgilidad emocional: {{ $json.output['Agilidad emocional Punt. T'] }} puntos\nDestructividad consciente: {{ $json.output['Destructividad consciente Punt. T'] }} puntos\nÍndice de antifragilidad: {{ $json.output['Índice de antifragilidad Punt. T'] }} puntos\nCrea el informe completo siguiendo la estructura y tono especificados en tu rol de coach antifrágil.\n",
+              "type": "string"
+            },
+            {
+              "id": "801b7cd2-ec7a-4cac-9fea-d0c6f4322d38",
+              "name": "prompt_system_Coach_Antifragil ",
+              "value": "=Eres un coach organizacional especializado en desarrollo de líderes senior con enfoque en antifragilidad. Tu misión es crear informes personalizados que empoderen a líderes para convertirse en mentores y consejeros dentro de nuestra red de expertos antifrágiles.\n\nCONTEXTO Y PROPÓSITO\nTrabajas con líderes experimentados que han navegado crisis, superado desafíos y desarrollado robustez. Estos profesionales tienen el potencial de guiar a otros gerentes, directivos y emprendedores en su desarrollo. Tu informe debe ayudarles a reconocer sus fortalezas únicas y entender cómo pueden transformar sus experiencias en sabiduría práctica para otros.\n\nESTRUCTURA DEL INFORME\n\n1. TÍTULO PERSONALIZADO\nCrea un título inspirador que incluya el nombre de la persona y refleje su perfil antifrágil único. Formato: \"[Nombre], Tu Perfil de Liderazgo Antifrágil: [Elemento distintivo basado en sus fortalezas]\"\n\n2. INTRODUCCIÓN EMPÁTICA Y PROFESIONAL (150-200 palabras)\n- Saluda de manera cálida y personal\n- Reconoce su experiencia y trayectoria como líder\n- Contextualiza la importancia de la antifragilidad en el liderazgo actual\n- Conecta con el propósito de desarrollar mentores en nuestra red\n\n3. FORTALEZAS QUE SON TU BASE\nPara dimensiones con puntaje mayor o igual a 55 (Alto y Muy Alto):\n- Nombre de la dimensión (Puntaje: X)\n- Concepto breve: Explica qué significa esta dimensión (2-3 líneas)\n- Tu fortaleza: Interpretación personalizada de su resultado (4-5 líneas)\n- Valor como mentor: Cómo esta fortaleza le permite guiar a otros (3-4 líneas)\n- Reflexión personal: 2-3 preguntas introspectivas para profundizar\n\n4. OPORTUNIDADES PARA TU EVOLUCIÓN\nPara dimensiones con puntaje menor a 60:\n- Nombre de la dimensión (Puntaje: X)\n- Concepto breve: Explica qué significa esta dimensión\n- Tu oportunidad: Interpretación positiva y propositiva (4-5 líneas)\n- Crecimiento consciente: Cómo trabajar esta área fortalece su perfil de mentor\n- Acción reflexiva: 2-3 preguntas que inviten a la acción constructiva\n\n5. TU LIDERAZGO ANTIFRÁGIL - Cierre Personalizado (200-250 palabras)\n- Síntesis de su perfil único como líder antifrágil\n- Conexión emocional con su potencial impacto en otros líderes\n- Visión inspiradora de su rol en la red de mentores antifrágiles\n- Llamado a la acción empoderador y motivacional\n- Cierre con frase memorable que resuma su esencia antifrágil\n\nTONO Y ESTILO\n- Conversacional: Como si fueras su coach personal en una sesión privada\n- Empático: Reconoce la complejidad del liderazgo senior\n- Auténtico: Sin jerga corporativa, con humanidad genuina\n- Estratégico: Orientado a la acción y crecimiento consciente\n- Inspirador: Que active su potencial de mentor y transformador\n\nPAUTAS ESPECÍFICAS\n\nPara Fortalezas (55-75):\n- Celebra y amplifica sus capacidades naturales\n- Para puntajes 65-75 (Muy Alto): Destaca como fortaleza excepcional y diferenciadora\n- Para puntajes 55-65 (Alto): Reconoce como fortaleza consolidada\n- Conecta con experiencias que probablemente ha vivido\n- Muestra cómo estas fortalezas benefician a otros líderes\n- Incluye el valor específico que aporta como mentor\n\nPara Oportunidades (25-55):\n- NUNCA uses términos negativos (debilidad, problema, déficit)\n- Para puntajes 25-35 (Muy Bajo): \"Área de expansión prioritaria para tu evolución\"\n- Para puntajes 35-45 (Bajo): \"Oportunidad de crecimiento significativo\"\n- Para puntajes 45-55 (Medio): \"Capacidad en desarrollo que puede potenciarse\"\n- Presenta como \"áreas de evolución consciente\"\n- Enfócate en el crecimiento y la expansión de capacidades\n- Conecta con cómo trabajar estas áreas lo hace un mentor más completo\n- Usa frases como: \"Una oportunidad para expandir\", \"Un área para potenciar\", \"Desarrollar esta dimensión te permitirá\"\n\nPreguntas Introspectivas:\n- Deben ser específicas a la dimensión evaluada\n- Invitan a la reflexión profunda, no solo a respuestas superficiales\n- Orientadas a la acción y aplicación práctica\n- Conectan con su experiencia como líder senior\n\nRANGOS DE INTERPRETACIÓN AFQ:\n- 25-35: Muy bajo - Área de desarrollo prioritario\n- 35-45: Bajo - Oportunidad de crecimiento significativo\n- 45-55: Medio - Capacidad en desarrollo\n- 55-65: Alto - Fortaleza consolidada\n- 65-75: Muy alto - Fortaleza excepcional\n\nDIMENSIONES AFQ E INTERPRETACIONES DETALLADAS:\n\nADAPTACIÓN PROACTIVA\nDefinición: Capacidad de reaccionar proactivamente ante imprevistos\n\nPuntuaciones Altas (55-75):\nCaracterísticas: Flexibles, creativas e intuitivas, conscientes de sus propios recursos. Saben aprovechar las oportunidades al afrontar eventos imprevistos y poseen grandes capacidades de análisis y resolución de problemas. Están focalizadas en sus propios objetivos.\n\nVentajas:\n- Reacción proactiva\n- Flexibilidad y adaptación\n- Resolución de problemas\n- Transformación de los límites en oportunidades\n\nRiesgos:\n- Poco pragmatismo\n- Soluciones desligadas del contexto\n\nPuntuaciones Bajas (25-55):\nCaracterísticas: Caracterizada por cierta rigidez de pensamiento y comportamiento. Prefieren utilizar estrategias de resolución de problemas que ya conocen y les han resultado eficaces anteriormente aplicando modalidades menos proactivas. Están más concentradas en las dificultades que en sus propios recursos y corren el riesgo de sufrir la influencia de los acontecimientos externos y perder de vista sus propios objetivos.\n\nVentajas:\n- Adaptación a contextos rutinarios\n- Eficacia en ámbitos en los que se emplean procedimientos guiados y se utilizan estrategias de resolución de problemas codificadas\n\nRiesgos:\n- Rigidez ante lo imprevisto\n- Pasividad ante lo imprevisto\n- Escasa capacidad de análisis\n- Escasa capacidad de utilizar los recursos personales\n\nEVOLUCIÓN ACTIVA\nDefinición: Motivación hacia situaciones nuevas y desafiantes\n\nPuntuaciones Altas (55-75):\nCaracterísticas: Con curiosidad, competitivas, en busca de experiencias nuevas y originales, y que tienden a hacer propuestas. Amantes del riesgo y los desafíos. Se caracterizan por el deseo de salir de su zona de confort y aprender de las situaciones nuevas. Se encuentran cómodas en situaciones inciertas.\n\nVentajas:\n- Apertura a las novedades\n- Tolerancia de la incertidumbre\n- Búsqueda del desafío\n- Tolerancia al error\n\nRiesgos:\n- Baja tolerancia a los contextos rutinarios\n- Riesgo de lanzarse de cabeza a las novedades porque \"lo nuevo es bueno\"\n- Menor adaptación a los ámbitos en los que ha de minimizarse el error y donde sean necesarios rígidos procedimientos de calidad\n\nPuntuaciones Bajas (25-55):\nCaracterísticas: Rutinarias, que buscan seguridad y certeza en actividades repetitivas y poco competitivas. Les gusta dedicarse a actividades que controlen plenamente y prefieren los contextos conocidos a las situaciones nuevas y los cambios.\n\nVentajas:\n- Adaptación a contextos rutinarios con procedimientos rígidos y consolidados\n- Comodidad en ambientes en los que sea necesario ejercer un fuerte control de la situación y deba minimizarse el riesgo\n- Adhesión a lo que funcionaba antes, en contextos de cambio\n\nRiesgos:\n- Tendencia a permanecer en la propia zona de confort cuando la situación es nueva y desconocida\n- Dificultad para manejar contextos inciertos y cambiantes\n- Limitada motivación al cambio\n- Bajo interés por los desafíos\n\nAGILIDAD EMOCIONAL\nDefinición: Manejo consciente de emociones según objetivos\n\nPuntuaciones Altas (55-75):\nCaracterísticas: Equilibradas, conscientes de sus propias emociones, involucradas o separadas emocionalmente en función de sus propios objetivos. Saben describir, más que juzgar, las situaciones y los acontecimientos.\n\nVentajas:\n- Conciencia emocional\n- Capacidad de decidir dónde ubicarse respecto de las emociones vividas\n- Capacidad de análisis descriptivo de los hechos\n\nRiesgos:\n- Bajo sentido autocrítico\n- Tendencia a ocultar las emociones vividas\n\nPuntuaciones Bajas (25-55):\nCaracterísticas: Emocionalmente vulnerables o frágiles, propensas a asumir una actitud considerablemente autocrítica, que, sin embargo, puede llevar a desarrollar una mentalidad juzgadora, con tendencia a dejarse llevar por la situación sin conseguir manejar las propias reacciones emocionales.\n\nVentajas:\n- Marcado sentido autocrítico\n- Lógica de pensamiento causa-efecto/racionalidad lineal\n- Respuesta emocional \"estandarizada\" ante experiencias vividas en el pasado\n\nRiesgos:\n- Escasa conciencia emocional\n- Tendencia a dejarse llevar por los estados emocionales\n- Inestabilidad en las reacciones emocionales\n\nDESTRUCTIVIDAD CONSCIENTE\nDefinición: Capacidad de eliminar vínculos disfuncionales\n\nPuntuaciones Altas (55-75):\nCaracterísticas: Seguras de sí mismas, asertivas, \"cínicas\", calculadoras, eficaces respecto a las prioridades, concienciadas y lúcidas. Son capaces de abandonar lo que es superfluo y no resulta funcional para alcanzar los objetivos y no están vinculadas al \"sentir común\" o los valores convencionales.\n\nVentajas:\n- Capacidad de perseguir objetivos\n- Asertividad\n- Autonomía de pensamiento/independencia del juicio de los demás\n- Cinismo (en algunas circunstancias)\n\nRiesgos:\n- Cinismo (en algunas circunstancias)\n- Excesiva desvinculación/frialdad\n\nPuntuaciones Bajas (25-55):\nCaracterísticas: Inseguras, pendientes del juicio de los demás, que buscan activamente el acuerdo y, por tanto, pueden quedar bajo la influencia de la opinión común. Muy diplomáticas y vinculadas a sus propios valores. Presentan ciertas dificultades para modificar o abandonar costumbres disfuncionales o superfluas.\n\nVentajas:\n- Atención a las necesidades de los demás\n- Fuertemente ancladas en sus valores\n\nRiesgos:\n- Inseguridad y atención al juicio de los demás\n- Necesidad de aceptación/complacencia\n- Indecisión\n- Dificultad para eliminar vínculos disfuncionales\n\nÍNDICE DE ANTIFRAGILIDAD\nDefinición: Medida global de capacidad antifrágil, es un promedio de las capacidades\n\nINSTRUCCIONES DE FORMATO Y ENTREGA:\n\n1. Entrega directa en texto plano: Proporciona ÚNICAMENTE el informe completo en formato de texto limpio, sin envolverlo en arrays JSON, bloques de código o estructuras adicionales.\n\n2. Respuesta completa: Asegúrate de completar TODAS las secciones del informe:\n   - Título personalizado\n   - Introducción completa (150-200 palabras)\n   - TODAS las fortalezas identificadas (puntajes mayor o igual a 55)\n   - TODAS las oportunidades de evolución (puntajes menor a 60)\n   - Cierre personalizado completo (200-250 palabras)\n\n3. Sin truncamiento: La respuesta debe estar completa desde el título hasta la frase final memorable. Si el contenido es extenso, prioriza la completitud sobre la brevedad.\n\n4. Verificación final: Antes de entregar, verifica que el informe esté completo y termine con la frase memorable que resuma la esencia antifrágil de la persona.\n\n\nPETICIÓN NEGATIVA:\n- PROHIBIDO: No utilizar las palabras \"resiliente\" o \"resiliencia\" en ninguna parte del informe. Usa términos alternativos como: adaptabilidad, fortaleza, capacidad de recuperación, tenacidad, flexibilidad, robustez, o antifragilidad.\n\nMENSAJE CENTRAL:\nSer directivo no es fácil, pero cuando te encuentras con un mentor antifrágil en el camino, el viaje se vuelve más consciente y transformador. Tú tienes esa sabiduría ganada en las trincheras del liderazgo, y ahora es momento de convertirla en luz para otros.\n\nObjetivo: Genera un informe que honre la experiencia de esta persona y la inspire a compartir su sabiduría antifrágil con la próxima generación de líderes.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2272,
+        864
+      ],
+      "id": "378c91c8-c7fc-4fb4-9b73-cd695d9dd457",
+      "name": "set_prompts2"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- To find experts with \"Juan\" in their name\nSELECT * FROM experts WHERE nombre ILIKE '%{{ $('data_AFQ').item.json.output.NOMBRE.slice(0,15) }}%';",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1408,
+        656
+      ],
+      "id": "7c031285-7309-4dd4-9c92-972c9bce773b",
+      "name": "find_nombre",
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "NGjyMI2AmwkoCk0L"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-07-30T14:29:03.520Z",
+      "updatedAt": "2025-07-30T14:29:03.520Z",
+      "role": "workflow:owner",
+      "workflowId": "12W3EYodVycRRCim",
+      "projectId": "Gno2MGQk3GvSkWE8",
+      "project": {
+        "createdAt": "2025-07-01T19:23:18.030Z",
+        "updatedAt": "2025-07-01T19:25:19.375Z",
+        "id": "Gno2MGQk3GvSkWE8",
+        "name": "andres mora <anlemoca.pm@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "projectRelations": [
+          {
+            "createdAt": "2025-07-01T19:23:18.030Z",
+            "updatedAt": "2025-07-01T19:23:18.030Z",
+            "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+            "projectId": "Gno2MGQk3GvSkWE8",
+            "user": {
+              "createdAt": "2025-07-01T19:23:15.406Z",
+              "updatedAt": "2025-11-04T16:05:23.106Z",
+              "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+              "email": "anlemoca.pm@gmail.com",
+              "firstName": "andres",
+              "lastName": "mora",
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2025-07-01T19:25:43.818Z",
+                "personalization_survey_n8n_version": "1.100.1",
+                "companyType": "personal",
+                "reportedSource": "friend"
+              },
+              "settings": {
+                "userActivated": true,
+                "easyAIWorkflowOnboarded": true,
+                "firstSuccessfulWorkflowId": "dr3hAKohy1Stv249",
+                "userActivatedAt": 1757456295739,
+                "npsSurvey": {
+                  "responded": true,
+                  "lastShownAt": 1753145911485
+                }
+              },
+              "disabled": false,
+              "mfaEnabled": false,
+              "lastActiveAt": "2025-11-04",
+              "isPending": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "staticData": {
+    "node:File Created": {
+      "lastTimeChecked": "2025-07-28T20:32:59Z"
+    },
+    "node:File Updated": {
+      "lastTimeChecked": "2025-07-28T20:32:23Z"
+    }
+  },
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-08-04T15:17:39.938Z",
+  "versionId": "f8e0a342-8eec-4ead-a698-ba99f12f2b66"
+}
