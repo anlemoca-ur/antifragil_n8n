@@ -1,0 +1,398 @@
+{
+  "active": true,
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "CodeId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "find_ID_process": {
+      "main": [
+        [
+          {
+            "node": "set_prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "find_ID_profile": {
+      "main": [
+        [
+          {
+            "node": "find_ID_process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent GEN",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code_GEN": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent GEN": {
+      "main": [
+        [
+          {
+            "node": "Code_GEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set_prompts": {
+      "main": [
+        [
+          {
+            "node": "AI Agent GEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute a SQL query": {
+      "main": [
+        []
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "CodeId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CodeId": {
+      "main": [
+        [
+          {
+            "node": "find_ID_profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-24T16:21:45.913Z",
+  "id": "dr3hAKohy1Stv249",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "GEN_antifragil",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Generate Perfil Ejecutivo",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "expert_id",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c8142580-5380-4917-a469-b8b527ef6889",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "position": [
+        -2336,
+        320
+      ],
+      "webhookId": "9874850c-ba09-4a52-a783-129e28fcc0c3",
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "content": "Create a expert specific version of the letter and create a doc version of it. Store this on the Google Drive",
+        "height": 496,
+        "width": 1408
+      },
+      "id": "8b71caad-3593-4202-b6c4-6e3bfd17f0be",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2368,
+        64
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Join experts and process_expert tables\nSELECT \n    e.id as expert_id,\n    e.nombre,\n    pe.pasos->0->>'datos' as experiencia,\n    pe.pasos->1->>'datos' as AFQ,\n    pe.pasos->2->>'datos' as presenciaEJ, \n    pe.pasos->3->>'datos' as pulso\n    \n   \nFROM \n    experts e\nJOIN \n    process_expert pe ON pe.expert_id = e.id\nWHERE \n    e.id = '{{ $('CodeId').item.json.expertid }}'::uuid;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1680,
+        112
+      ],
+      "id": "9497237b-58d3-468d-9d13-a44276cc34a3",
+      "name": "find_ID_process",
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Join experts and profiles tables\nSELECT \n-- All columns from experts table  \n    e.nombre,  \n-- All columns from profiles table\n    p.resumen_antifragil,\n    p.sectores,\n    p.trayectoria,\n    p.\"IndicadoresAF\",\n    p.valor_estrategico,\n    p.habilidades_identificadas\nFROM \n    experts e\nJOIN \n    profiles p ON p.expert_id = e.id\nWHERE \n    e.id = '{{ $json.expertid }}'::uuid;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1920,
+        112
+      ],
+      "id": "29f2771e-a7ef-405a-bbdc-7b95ab46eed8",
+      "name": "find_ID_profile",
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {
+          "temperature": 0.7,
+          "topP": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -1216,
+        336
+      ],
+      "id": "28b62f5b-1084-437d-a4e2-888ddbb3eab6",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "QHcEKyQfjZXrcwHF",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el output del agente AI (texto plano)\nconst agentOutput = $input.first().json.output;\n\n\n// Función para parsear el texto plano con el formato clave: valor\nfunction parseAgentOutput(texto) {\n  const lineas = texto.split('\\n').filter(linea => linea.trim());\n  const datos = {};\n  let claveActual = null;\n  let valorActual = '';\n  \n  for (const linea of lineas) {\n    // Verificar si es una línea de clave (contiene : y no empieza con espacio)\n    if (linea.includes(':') && !linea.startsWith(' ') && !linea.startsWith('\\t')) {\n      // Guardar el valor anterior si existe\n      if (claveActual && valorActual.trim()) {\n        datos[claveActual] = valorActual.trim();\n      }\n      \n      // Extraer nueva clave y valor\n      const colonIndex = linea.indexOf(':');\n      claveActual = linea.substring(0, colonIndex).trim().toLowerCase();\n      valorActual = linea.substring(colonIndex + 1).trim();\n    } else if (claveActual) {\n      // Continuar acumulando valor en la misma línea\n      valorActual += ' ' + linea.trim();\n    }\n  }\n  \n  // Guardar el último valor\n  if (claveActual && valorActual.trim()) {\n    datos[claveActual] = valorActual.trim();\n  }\n  \n  return datos;\n}\n\n// Función para procesar arrays desde texto\nfunction procesarArray(texto) {\n  if (!texto) return [];\n  \n  // Si el texto contiene puntos de lista (•, -, *) o números\n  if (texto.includes('•') || texto.includes('**')) {\n    return texto.split(/[•\\-\\*]/).map(item => item.trim()).filter(item => item.length > 0);\n  }\n  \n  // Si es una lista separada por líneas que empiezan con **\n  const lineas = texto.split('\\n').filter(linea => linea.trim());\n  if (lineas.some(linea => linea.includes('**'))) {\n    return lineas.filter(linea => linea.trim().length > 0);\n  }\n  \n  return [texto];\n}\n\n// Función para extraer el JSON al final del output si existe\nfunction extraerJSON(texto) {\n  try {\n    // Buscar el patrón de JSON al final del texto\n    const jsonMatch = texto.match(/\\{[\\s\\S]*\\}$/);\n    if (jsonMatch) {\n      return JSON.parse(jsonMatch[0]);\n    }\n  } catch (error) {\n    // Si no se puede parsear el JSON, continuar con el parseo de texto\n  }\n  return null;\n}\n\n// Parsear los datos del output\nconst datosParseados = parseAgentOutput(agentOutput);\nconst jsonExtraido = extraerJSON(agentOutput);\n\n// Usar datos del JSON si están disponibles, sino usar los parseados del texto\nconst datos = jsonExtraido || datosParseados;\n\n// Función para formatear arrays para la plantilla\nfunction formatearTrayectoria(trayectoriaData) {\n  if (Array.isArray(trayectoriaData)) {\n    return trayectoriaData.join('\\n-   ');\n  }\n  \n  if (typeof trayectoriaData === 'string') {\n    const items = procesarArray(trayectoriaData);\n    return items.join('\\n-   ');\n  }\n  \n  return trayectoriaData || '';\n}\n\nfunction formatearCapacidades(capacidadesData) {\n  if (Array.isArray(capacidadesData)) {\n    return capacidadesData.join('\\n-   ');\n  }\n  \n  if (typeof capacidadesData === 'string') {\n    const items = procesarArray(capacidadesData);\n    return items.join('\\n-   ');\n  }\n  \n  return capacidadesData || '';\n}\n\n// Función para extraer interpretación del pulso\nfunction extraerInterpretacionPulso(fraseCompleta) {\n  if (!fraseCompleta) return '';\n  \n  // Buscar después de la frase hasta el final o hasta encontrar otro patrón\n  const partes = fraseCompleta.split(/[•\\-]/);\n  if (partes.length > 1) {\n    // Tomar todas las partes después de la primera línea\n    return partes.slice(1).map(p => p.trim()).join(' ');\n  }\n  \n  return fraseCompleta;\n}\n\n// Preparar las variables para la plantilla\nconst variablesPlantilla = {\n  // Información básica\n  nombre: datos.nombre || '',\n  titulo: datos.titulo || '',\n  \n  // Contenido principal\n  perfil_antifragil: datos.perfil_antifragil || '',\n  trayectoria: formatearTrayectoria(datos.trayectoria),\n  capacidades_antifragiles: formatearCapacidades(datos.capacidades_antifragiles),\n  \n  // Índice de Antifragilidad\n  resumen_antifra: datos.resumen_antifra || '',\n  puntaje_general: datos.puntaje_general || 0,\n  nivel_general: datos.nivel_general || '',\n  evolucion_activa_puntaje: datos.evolucion_activa_puntaje || 0,\n  adaptacion_proactiva_puntaje: datos.adaptacion_proactiva_puntaj || datos.adaptacion_proactiva_puntaje || 0,\n  agilidad_emocional_puntaje: datos.agilidad_emocional_puntaje || 0,\n  destructividad_consciente_puntaje: datos.destructividad_consciente_puntaje || 0,\n  \n  // Presencia Ejecutiva\n  puntaje_total: datos.puntaje_total || 0,\n  nivel_presencia_ejecutiva: datos.nivel_presencia_ejecutiva || '',\n  observaciones_complementarias: datos.observaciones_complementarias || '',\n  \n  // Pulso Antifrágil\n  patron: datos.patron || '',\n  frase: datos.frase || '',\n  interpretacion: extraerInterpretacionPulso( datos.interpretacion),\n  //interpretacion: extraerInterpretacionPulso(datos.frase) || datos.interpretacion || '',\n  \n  // Metadatos\n  fecha_procesamiento: new Date().toISOString(),\n  raw_output: agentOutput\n};\n\n// Crear objeto de salida sin conflictos\nconst outputData = Object.assign({}, variablesPlantilla);\n\n// Retornar las variables estructuradas\n/* return {\n  json: outputData\n};*/\n return [\n  {\n    json: {\n    'completado':'true',\n    'update_data':outputData\n    }\n  }   \n];\n\n// ========== ALTERNATIVA: Variables separadas para diferentes usos ==========\n/*\n// Si necesitas las variables en formato específico para diferentes nodos:\nreturn [\n  {\n    json: {\n      tipo: 'plantilla_variables',\n      variables: variablesPlantilla\n    }\n  },\n  {\n    json: {\n      tipo: 'documento_update',\n      replacements: {\n        '[nombre]': variablesPlantilla.nombre,\n        '[titulo]': variablesPlantilla.titulo,\n        '[perfil_antifragil]': variablesPlantilla.perfil_antifragil,\n        '[trayectoria]': variablesPlantilla.trayectoria,\n        '[capacidades_antifragiles]': variablesPlantilla.capacidades_antifragiles,\n        '[puntaje_general]': variablesPlantilla.puntaje_general,\n        '[nivel_general]': variablesPlantilla.nivel_general,\n        '[evolucion_activa_puntaje]': variablesPlantilla.evolucion_activa_puntaje,\n        '[adaptacion_proactiva_puntaje]': variablesPlantilla.adaptacion_proactiva_puntaje,\n        '[agilidad_emocional_puntaje]': variablesPlantilla.agilidad_emocional_puntaje,\n        '[destructividad_consciente_puntaje]': variablesPlantilla.destructividad_consciente_puntaje,\n        '[puntaje_total]': variablesPlantilla.puntaje_total,\n        '[nivel_presencia_ejecutiva]': variablesPlantilla.nivel_presencia_ejecutiva,\n        '[observaciones_complementarias]': variablesPlantilla.observaciones_complementarias,\n        '[patron]': variablesPlantilla.patron,\n        '[frase]': variablesPlantilla.frase,\n        '[interpretacion]': variablesPlantilla.interpretacion\n      }\n    }\n  }\n];\n*/"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1920,
+        384
+      ],
+      "id": "dfc2701c-cdc2-473f-bbe5-5c3a22ec42f5",
+      "name": "Code_GEN"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt_user_GEN }}",
+        "options": {
+          "systemMessage": "={{ $json.prompt_system_GEN }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -1264,
+        112
+      ],
+      "id": "988a88f0-cfe0-4994-8993-dd684d9e8045",
+      "name": "AI Agent GEN"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dc95f6e5-ec90-4bd3-b0d6-6f034e8a7ba6",
+              "name": "prompt_user_GEN",
+              "value": "=Genera el informe GEN ANTIFRÁGIL completo para el siguiente experto, extrayendo y creando todas las variables necesarias para la plantilla:\n\n**DATOS DEL EXPERTO:**\n\n**Información Personal:**\n- Nombre:  {{ $('find_ID_profile').item.json.nombre }}\n- Resumen Antifrágil: {{ $('find_ID_profile').item.json.resumen_antifragil }}\n- Sectores: {{ $('find_ID_profile').item.json.sectores }}\n- Trayectoria: {{ $('find_ID_profile').item.json.trayectoria }}\n- Indicadores Antifrágiles: {{ $('find_ID_profile').item.json.IndicadoresAF }}\n- Valor Estratégico: {{ $('find_ID_profile').item.json.valor_estrategico }}\n- Habilidades Identificadas: {{ $('find_ID_profile').item.json.habilidades_identificadas }}\n- experiencia:{{ $('find_ID_process').item.json.experiencia }}\n\n**Índice de Antifragilidad (AFQ):**\n- Indice Antifragil : {{ $('find_ID_process').item.json.afq.parseJson().indice_antifragil }}\n- Puntaje General: {{ $('find_ID_process').item.json.afq.parseJson().puntaje_general }} ({{$('find_ID_process').item.json.afq.parseJson().nivel_general}})\n- Evolución Activa: {{$('find_ID_process').item.json.afq.parseJson().evolucion_activa.puntaje}} ({{$('find_ID_process').item.json.afq.parseJson().evolucion_activa.nivel}})\n- Adaptación Proactiva: {{$('find_ID_process').item.json.afq.parseJson().adaptacion_proactiva.puntaje}} ({{$('find_ID_process').item.json.afq.parseJson().adaptacion_proactiva.nivel}})\n- Agilidad Emocional: {{$('find_ID_process').item.json.afq.parseJson().agilidad_emocional.puntaje}} ({{$('find_ID_process').item.json.afq.parseJson().agilidad_emocional.nivel}})\n- Destructividad Consciente: {{$('find_ID_process').item.json.afq.parseJson().destructividad_consciente.puntaje}} ({{$('find_ID_process').item.json.afq.parseJson().destructividad_consciente.nivel}})\n\n**Presencia Ejecutiva:**\n- Puntaje Total: {{$('find_ID_process').item.json.presenciaej.parseJson().evaluacion_presencia.puntaje_total}}\n- Interpretación: {{$('find_ID_process').item.json.presenciaej.parseJson().informe_completo}}\n- Observaciones: {{$('find_ID_process').item.json.presenciaej.parseJson().observaciones_complementarias}}\n\n**Pulso Antifrágil:**\n- Patrón: {{$('find_ID_process').item.json.pulso.parseJson().patron}}\n- Frase: {{$('find_ID_process').item.json.pulso.parseJson().frase}}\n- Interpretación: {{$('find_ID_process').item.json.pulso.parseJson().interpretacion}}\n\n**TAREA:**\nRedacta el informe completo siguiendo exactamente la estructura del prompt system y proporciona al final todas las variables extraídas en formato JSON para usar en la plantilla.",
+              "type": "string"
+            },
+            {
+              "id": "801b7cd2-ec7a-4cac-9fea-d0c6f4322d38",
+              "name": "prompt_system_GEN",
+              "value": "=Eres un consultor experto en talento senior con enfoque en antifragilidad y posicionamiento estratégico. Tu función es redactar el informe final del GEN ANTIFRÁGIL, que es la síntesis narrativa y visual de todo el potencial del experto como parte de la red antifrágil.\n\n## DIRECTRICES DE ESTILO:\n- **Tono**: Narrativo, claro, profesional y motivador\n- **Enfoque**: Proyectar al experto como mentor, guía o consejero (nunca como alguien en búsqueda de empleo)\n- **Lenguaje**: Inspirador pero no exagerado, humano, directo y estratégico\n- **Perspectiva**: Enfatizar capacidad de aportar perspectiva, aprendizaje y dirección\n\n## INSTRUCCIONES DE FORMATO Y ENTREGA\n**CRÍTICO**: Entrega ÚNICAMENTE el texto en formato de variables, sin arrays JSON, bloques de código, markdown o estructuras adicionales.\n\nUsa EXACTAMENTE este formato:\n```\nfecha: [fecha actual en formato dd/mm/yyyy]\nnombre: [nombre_completo]\ntitulo: [Tres etiquetas clave del perfil separadas por \"|\"]\n\nperfil_antifragil: [Párrafo narrativo que integre:\n- Hallazgos del perfil ejecutivo, índice de antifragilidad y presencia ejecutiva\n- Trayectoria, experiencia directiva y señales de antifragilidad\n- Capacidad para guiar a otros\n- NO mencionar empresas específicas ni usar promesas exageradas]\n\ntrayectoria: [Máximo 4 aspectos clave, hacer el analisis desde trayectoria, sectores y experiencia \n- Formato: **[Área/habilidad]**: ( información asociándolo a sector o experiencia donde se ve reflejado, Ejemplo específico o contexto donde fue ejercida)\n- Evitar títulos genéricos sin explicación]\n\ncapacidades_antifragiles: [Máximo 4 capacidades basadas en experiencia real\n- Asociar cada una a un ejemplo o contexto laboral vivido\n- Formato: **• (Concepto):** (Aplicación práctica en su contexto)\n- Solo usar términos técnicos de Taleb si están justificados]\n\nresumen_antifra: [ resumen del Indice Antifragil (100-150 palabras)]\npuntaje_general: [puntaje_general] \nnivel_general: [nivel_general]\nevolucion_activa_puntaje: [evolucion activa puntaje]\nadaptacion_proactiva_puntaj:[adaptacion proactiva puntaje]\nagilidad_emocional_puntaje: [agilidad emocional puntaje]\ndestructividad_consciente_puntaje:[destructividad consciente puntaje]\nreflexion: [Reflexión integradora sobre su perfil antifrágil]\n\npuntaje_total:[puntaje_total]\nnivel_presencia_ejecutiva: [Análisis de fortalezas y oportunidades, ( 100-150 palabras)]\nobservaciones_complementarias: [Recomendaciones para potenciar visibilidad (50-70 palabras)]\n\npatron:[patron]\nfrase: [Frase potente del formulario]\ninterpretacion: [Interpretación conectada con enfoque antifrágil, Mostrar cómo lo define como guía/mentor]\n```\n\n## DIRECTRICES:\n- Usa un lenguaje inspirador y profesional\n- Conecta siempre con el contexto profesional del experto\n- Resalta las cualidades de liderazgo antifrágil\n- Enfócate en cómo estas capacidades benefician a otros\n\n## REGLAS CRÍTICAS\n1. NO mencionar el nombre del experto en análisis o interpretaciones\n2. Lenguaje profesional, claro y motivador\n3. Enfocar como posible referente, mentor o catalizador\n4. Si hay resistencias, sugerir alternativas progresivas\n5. Cada variable debe ser texto continuo sin saltos de línea internos\n6. Separar cada variable con línea en blanco\n7. NO usar comillas en los valores\n8. NO usar caracteres especiales de escape\n\n## PETICIoN NEGATIVA:\n- PROHIBIDO: No utilizar las palabras \"resiliente\" o \"resiliencia\" en ninguna parte del informe. Usa terminos alternativos como: adaptabilidad, fortaleza, capacidad de recuperacion, tenacidad, flexibilidad, robustez, o antifragilidad, no utilizar resiliencia transformativa, no utilizar la frase \"la cultura del error\", usa el termino aprender del error.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1472,
+        112
+      ],
+      "id": "7d20ee98-4612-4b9e-983d-ab3e69e7d8b4",
+      "name": "set_prompts"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE process_expert\nSET pasos = jsonb_set(\n    jsonb_set(\n        jsonb_set(\n            pasos,\n            '{4,completado}',\n            '{{ $json.completado ? \"true\" : \"false\" }}'::jsonb,\n            false\n        ),\n        '{4,fecha_completado}',\n        '\"{{ $json.update_data.fecha_procesamiento }}\"'::jsonb,\n        false\n    ),\n    '{4,datos}', \n     -- $J$ {{ $json.update_data }} $J$::jsonb,   \n   $J$ {{ JSON.stringify($json.update_data) }} $J$::jsonb,  -- JSON como texto + ::jsonb\n    false\n),\npaso_actual = 6\nWHERE expert_id =  '{{ $('Webhook').first().json.body.expert_id }}';",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1680,
+        384
+      ],
+      "id": "6b16ded2-388a-4f10-beee-2a1968699461",
+      "name": "Execute a SQL query",
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "/RecibirGEN",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -2320,
+        112
+      ],
+      "id": "83b92da1-efce-4efe-92e4-5058ac0adb56",
+      "name": "Webhook",
+      "webhookId": "f82e36fb-13e9-4e38-9c84-056b6c43689a"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Detectar origen y expertId\nconst expertId = items[0]?.json?.expert_id || items[0]?.json?.body?.expert_id || null;\n\nreturn {\n  json: {\n    expertid: expertId\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2096,
+        112
+      ],
+      "id": "a05c919a-cb25-450a-a3d5-5ca68e69e750",
+      "name": "CodeId"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-24T16:21:45.913Z",
+      "updatedAt": "2025-08-24T16:21:45.913Z",
+      "role": "workflow:owner",
+      "workflowId": "dr3hAKohy1Stv249",
+      "projectId": "Gno2MGQk3GvSkWE8",
+      "project": {
+        "createdAt": "2025-07-01T19:23:18.030Z",
+        "updatedAt": "2025-07-01T19:25:19.375Z",
+        "id": "Gno2MGQk3GvSkWE8",
+        "name": "andres mora <anlemoca.pm@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "projectRelations": [
+          {
+            "createdAt": "2025-07-01T19:23:18.030Z",
+            "updatedAt": "2025-07-01T19:23:18.030Z",
+            "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+            "projectId": "Gno2MGQk3GvSkWE8",
+            "user": {
+              "createdAt": "2025-07-01T19:23:15.406Z",
+              "updatedAt": "2025-11-04T16:05:23.106Z",
+              "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+              "email": "anlemoca.pm@gmail.com",
+              "firstName": "andres",
+              "lastName": "mora",
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2025-07-01T19:25:43.818Z",
+                "personalization_survey_n8n_version": "1.100.1",
+                "companyType": "personal",
+                "reportedSource": "friend"
+              },
+              "settings": {
+                "userActivated": true,
+                "easyAIWorkflowOnboarded": true,
+                "firstSuccessfulWorkflowId": "dr3hAKohy1Stv249",
+                "userActivatedAt": 1757456295739,
+                "npsSurvey": {
+                  "responded": true,
+                  "lastShownAt": 1753145911485
+                }
+              },
+              "disabled": false,
+              "mfaEnabled": false,
+              "lastActiveAt": "2025-11-04",
+              "isPending": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-10-01T19:54:31.136Z",
+  "versionId": "f7f14185-7527-400b-9cc9-b69151bcaa6c"
+}
