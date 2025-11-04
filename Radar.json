@@ -1,0 +1,1422 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Validar Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Validar Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar Payload": {
+      "main": [
+        [
+          {
+            "node": "¿Validación OK?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Validación OK?": {
+      "main": [
+        [
+          {
+            "node": "Preparar Siguiente Fase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar Siguiente Fase": {
+      "main": [
+        [
+          {
+            "node": "Extraer Plantilla OA",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Extraer Transcripcion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Descargar CIIU": {
+      "main": [
+        [
+          {
+            "node": "Extraer CIIU",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraer CIIU": {
+      "main": [
+        []
+      ]
+    },
+    "¿Datos Completos?": {
+      "main": [
+        [
+          {
+            "node": "Preparar para Paso 3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Preparar Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraer Plantilla OA": {
+      "main": [
+        []
+      ]
+    },
+    "Extraer Transcripcion": {
+      "main": [
+        [
+          {
+            "node": "Extraer Feedback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraer Feedback": {
+      "main": [
+        [
+          {
+            "node": "Configurar Prompts1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar Contexto Global": {
+      "main": [
+        [
+          {
+            "node": "Prep Bloque 2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Prep Bloque 3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Prep Bloque 4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Prep Bloque 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar Respuestas": {
+      "main": [
+        [
+          {
+            "node": "Consolidar Bloques",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consolidar Bloques": {
+      "main": [
+        [
+          {
+            "node": "Preparar Update DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Configurar Prompts": {
+      "main": [
+        [
+          {
+            "node": "Preparar Contexto Global",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar para Paso 3": {
+      "main": [
+        [
+          {
+            "node": "Configurar Prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prep Bloque ": {
+      "main": [
+        []
+      ]
+    },
+    "Prep Bloque 2": {
+      "main": [
+        [
+          {
+            "node": "OpenAI Bloque 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Bloque 2": {
+      "main": [
+        [
+          {
+            "node": "Procesar Respuestas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prep Bloque 3": {
+      "main": [
+        [
+          {
+            "node": "OpenAI Bloque 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Bloque 3": {
+      "main": [
+        [
+          {
+            "node": "Procesar Respuestas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prep Bloque 4": {
+      "main": [
+        [
+          {
+            "node": "OpenAI Bloque 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prep Bloque 5": {
+      "main": [
+        [
+          {
+            "node": "OpenAI Bloque 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Bloque 5": {
+      "main": [
+        [
+          {
+            "node": "Procesar Respuestas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Bloque 4": {
+      "main": [
+        [
+          {
+            "node": "Procesar Respuestas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar Contexto Global1": {
+      "main": [
+        [
+          {
+            "node": "Prep Bloque ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Configurar Prompts1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consolidar Contexto old": {
+      "main": [
+        [
+          {
+            "node": "¿Datos Completos?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "find_ID_process": {
+      "main": [
+        [
+          {
+            "node": "set_prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "find_ID_profile": {
+      "main": [
+        [
+          {
+            "node": "find_ID_process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consolidar transcipcion": {
+      "main": [
+        []
+      ]
+    },
+    "DB Schema": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run SQL Query": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Get table definition": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CIIU sheet": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-07T22:58:33.871Z",
+  "id": "PzNImobsrnv0iAW6",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Radar",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "radar/process",
+        "options": {
+          "binaryPropertyName": "data",
+          "rawBody": false
+        }
+      },
+      "id": "989059e6-028e-4dcd-be43-6553e087cc35",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -3536,
+        -256
+      ],
+      "webhookId": "radar-process-webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ========================================\n// VALIDACIÓN DE PAYLOAD Y ARCHIVOS\n// Soporta Form (n8n) y Webhook\n// VERSIÓN CORREGIDA - Preserva todos los binarios\n// ========================================\n\nconst items = $input.all();\nconst payload = items[0].json.body || items[0].json;\nconst binaryFiles = items[0].binary || {};\n\n// Detectar origen: Form o Webhook\nconst isFromForm = payload.formMode === 'test' || payload.submittedAt;\n\n// DEBUG: Ver qué keys tiene binaryFiles\nconsole.log('Binary keys disponibles:', Object.keys(binaryFiles));\nconsole.log('Payload keys:', Object.keys(payload));\n\n// 1. Validar expert_id\nif (!payload.expert_id) {\n  return [\n    {\n      json: {\n        success: false,\n        error: 'Missing required field: expert_id',\n        statusCode: 400\n      }\n    }\n  ];\n}\n\n// 2. Validar formato UUID\nconst uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;\nif (!uuidRegex.test(payload.expert_id)) {\n  return [\n    {\n      json: {\n        success: false,\n        error: 'Invalid expert_id format (expected UUID)',\n        statusCode: 400,\n        received: payload.expert_id\n      }\n    }\n  ];\n}\n\n// 3. Definir mapeo de archivos\nconst fileMapping = [\n /** { \n    jsonKey: 'Formulario RADAR',\n    binaryKey: 'radar_form',\n    name: 'Formulario RADAR',\n    expectedType: 'application/pdf'\n  }, **/\n  { \n    jsonKey: 'Transcripcion RADAR',\n    binaryKey: 'transcription',\n    name: 'Transcripción RADAR',\n    expectedType: 'application/pdf'\n  },\n  { \n    jsonKey: 'Feedback RADAR',\n    binaryKey: 'feedback',\n    name: 'Feedback RADAR',\n    expectedType: 'application/pdf'\n  },\n  /** { \n    jsonKey: 'Linea_de_Tiempo',\n    binaryKey: 'timeline',\n    name: 'Línea de Tiempo',\n    expectedType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'\n  } **/\n];\n\nconst missingFiles = [];\nconst invalidTypes = [];\nconst fileMetadata = {};\nconst processedBinary = {};\n\nfor (const fileSpec of fileMapping) {\n  let fileData = null;\n  \n  if (isFromForm) {\n    // Archivos vienen en JSON desde Form\n    fileData = payload[fileSpec.jsonKey];\n    \n    if (!fileData) {\n      missingFiles.push(fileSpec.name);\n      continue;\n    }\n    \n    // Validar tipo MIME\n    const actualMimeType = fileData.mimetype || fileData.mimeType || '';\n    if (actualMimeType !== fileSpec.expectedType) {\n      invalidTypes.push({\n        file: fileSpec.name,\n        expected: fileSpec.expectedType,\n        received: actualMimeType\n      });\n    }\n    \n    // Guardar metadata normalizada\n    fileMetadata[fileSpec.binaryKey] = {\n      fileName: fileData.filename || fileData.fileName || 'unknown',\n      mimeType: actualMimeType,\n      fileSize: fileData.size || fileData.fileSize || 0,\n      fileSizeKB: Math.round((fileData.size || fileData.fileSize || 0) / 1024)\n    };\n    \n    // ✅ CORRECCIÓN: Buscar el binario con varios intentos\n    let binaryFound = false;\n    \n    // Intento 1: Buscar por jsonKey exacto\n    if (binaryFiles[fileSpec.jsonKey]) {\n      processedBinary[fileSpec.binaryKey] = binaryFiles[fileSpec.jsonKey];\n      binaryFound = true;\n      console.log(`✅ Binario encontrado: ${fileSpec.jsonKey} → ${fileSpec.binaryKey}`);\n    }\n    \n    // Intento 2: Buscar por binaryKey (ya normalizado)\n    if (!binaryFound && binaryFiles[fileSpec.binaryKey]) {\n      processedBinary[fileSpec.binaryKey] = binaryFiles[fileSpec.binaryKey];\n      binaryFound = true;\n      console.log(`✅ Binario encontrado (normalizado): ${fileSpec.binaryKey}`);\n    }\n    \n    // Intento 3: Buscar por filename en los metadatos de todos los binarios\n    if (!binaryFound) {\n      const targetFilename = fileData.filename || fileData.fileName;\n      for (const [binaryKey, binaryData] of Object.entries(binaryFiles)) {\n        if (binaryData && binaryData[0] && binaryData[0].fileName === targetFilename) {\n          processedBinary[fileSpec.binaryKey] = binaryData;\n          binaryFound = true;\n          console.log(`✅ Binario encontrado por filename: ${targetFilename} → ${fileSpec.binaryKey}`);\n          break;\n        }\n      }\n    }\n    \n    // Intento 4: Buscar por similitud de nombre (sin espacios, lowercase)\n    if (!binaryFound) {\n      const normalizedTarget = fileSpec.jsonKey.replace(/\\s/g, '_').toLowerCase();\n      for (const [binaryKey, binaryData] of Object.entries(binaryFiles)) {\n        const normalizedKey = binaryKey.replace(/\\s/g, '_').toLowerCase();\n        if (normalizedKey.includes(normalizedTarget.split('_')[0])) {\n          processedBinary[fileSpec.binaryKey] = binaryData;\n          binaryFound = true;\n          console.log(`✅ Binario encontrado por similitud: ${binaryKey} → ${fileSpec.binaryKey}`);\n          break;\n        }\n      }\n    }\n    \n    if (!binaryFound) {\n      console.warn(`⚠️ Binario NO encontrado para: ${fileSpec.jsonKey}`);\n    }\n    \n  } else {\n    // Archivos vienen en binary desde Webhook\n    if (!binaryFiles[fileSpec.binaryKey] || !binaryFiles[fileSpec.binaryKey][0]) {\n      missingFiles.push(fileSpec.name);\n      continue;\n    }\n    \n    const file = binaryFiles[fileSpec.binaryKey][0];\n    const actualMimeType = file.mimeType || '';\n    \n    // Validar tipo MIME\n    if (actualMimeType !== fileSpec.expectedType) {\n      invalidTypes.push({\n        file: fileSpec.name,\n        expected: fileSpec.expectedType,\n        received: actualMimeType\n      });\n    }\n    \n    // Guardar metadata\n    fileMetadata[fileSpec.binaryKey] = {\n      fileName: file.fileName || 'unknown',\n      mimeType: actualMimeType,\n      fileSize: file.fileSize || 0,\n      fileSizeKB: Math.round((file.fileSize || 0) / 1024)\n    };\n    \n    processedBinary[fileSpec.binaryKey] = binaryFiles[fileSpec.binaryKey];\n  }\n}\n\n// DEBUG: Mostrar qué binarios se procesaron\nconsole.log('Binarios procesados:', Object.keys(processedBinary));\n\n// 4. Retornar errores si hay\nif (missingFiles.length > 0) {\n  return [\n    {\n      json: {\n        success: false,\n        error: 'Missing required files',\n        statusCode: 400,\n        missingFiles: missingFiles,\n        debug: {\n          isFromForm: isFromForm,\n          payloadKeys: Object.keys(payload),\n          binaryKeys: Object.keys(binaryFiles),\n          processedBinaryKeys: Object.keys(processedBinary)\n        }\n      }\n    }\n  ];\n}\n\nif (invalidTypes.length > 0) {\n  return [\n    {\n      json: {\n        success: false,\n        error: 'Invalid file types',\n        statusCode: 400,\n        invalidFiles: invalidTypes\n      }\n    }\n  ];\n}\n\n// 5. Validación exitosa - pasar datos al siguiente nodo\nreturn [\n  {\n    json: {\n      success: true,\n      expert_id: payload.expert_id,\n      files_validated: true,\n      file_metadata: fileMetadata,\n      validation_timestamp: new Date().toISOString(),\n      source: isFromForm ? 'form' : 'webhook',\n      debug: {\n        binary_keys_received: Object.keys(binaryFiles),\n        binary_keys_processed: Object.keys(processedBinary)\n      }\n    },\n    binary: processedBinary\n  }\n];"
+      },
+      "id": "b905c4f7-6aa9-4638-b914-3a280d2978a4",
+      "name": "Validar Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3280,
+        -256
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.success }}",
+              "value2": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9ec070fd-49ef-405d-a09b-824962f7c84d",
+      "name": "¿Validación OK?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -3072,
+        -256
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ========================================\n// PREPARAR DATOS Y PRESERVAR BINARIOS\n// ========================================\n\nconst items = $input.all();\nconst validatedData = items[0].json;\nconst files = items[0].binary;\n\n// CRÍTICO: Retornar JSON + BINARY juntos\nreturn [\n  {\n    json: {\n      expert_id: validatedData.expert_id,\n      process_phase: 'extraction',\n      file_metadata: validatedData.file_metadata,\n      timestamp: new Date().toISOString(),\n      source: validatedData.source\n    },\n    binary: files  // ✅ PRESERVAR BINARIOS\n  }\n];"
+      },
+      "id": "66d21ff3-13de-4eca-8203-c80372a85dfb",
+      "name": "Preparar Siguiente Fase",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2800,
+        -272
+      ]
+    },
+    {
+      "parameters": {
+        "formTitle": "Radar",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "expert_id",
+              "placeholder": "9a70fdf2-a7bd-40c8-8ca1-daa1d3d24ee3",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Transcripcion RADAR",
+              "fieldType": "file",
+              "multipleFiles": false,
+              "acceptFileTypes": ".pdf",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Feedback RADAR",
+              "fieldType": "file",
+              "multipleFiles": false,
+              "acceptFileTypes": ".pdf",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        -3536,
+        -16
+      ],
+      "id": "46227cb2-d1ee-472c-8813-f6c27f02e94e",
+      "name": "On form submission",
+      "webhookId": "3ff7ab8b-2da4-4583-ad43-6ab0e744484a"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "1p-mqt-f30OYl4Iir-TqLXfQvKG9QCwhK",
+          "mode": "id"
+        },
+        "options": {
+          "fileName": "SECTORES_CIIU.xlsx"
+        }
+      },
+      "id": "1d7f90f1-a495-4c58-8aab-96561e99fbb9",
+      "name": "Descargar CIIU",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -2464,
+        -352
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "HhDiD9KyplQpOpXo",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "xlsx",
+        "options": {}
+      },
+      "id": "161cf0ef-f786-461c-a7e4-6de0e6a4f911",
+      "name": "Extraer CIIU",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -2240,
+        -352
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.metadata.datos_completos }}",
+              "value2": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "95eea4bd-9908-4666-ad8d-24ba1fbf6878",
+      "name": "¿Datos Completos?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -624,
+        -32
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "contexto_completo",
+              "name": "contexto_completo",
+              "value": "={{ JSON.stringify($json) }}",
+              "type": "string"
+            },
+            {
+              "id": "expert_id",
+              "name": "expert_id",
+              "value": "={{ $json.expert_id }}",
+              "type": "string"
+            },
+            {
+              "id": "ready_for_prompts",
+              "name": "ready_for_prompts",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f370a944-af35-4aa9-84c7-0bd06d00e0bd",
+      "name": "Preparar para Paso 3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -400,
+        -128
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const context = $json;\n\nreturn [\n  {\n    json: {\n      expert_id: context.expert_id,\n      state: 'failed',\n      last_error: JSON.stringify({\n        errores: context.metadata.errores,\n        faltantes: context.metadata.datos_faltantes\n      }),\n      updated_at: new Date().toISOString()\n    }\n  }\n];"
+      },
+      "id": "e767d55a-e015-4ef2-93b9-a856fb1f6bf5",
+      "name": "Preparar Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -400,
+        64
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "process_expert",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "state",
+              "fieldValue": "={{ $json.state }}"
+            },
+            {
+              "fieldId": "last_error",
+              "fieldValue": "={{ $json.last_error }}"
+            }
+          ]
+        }
+      },
+      "id": "13f0206f-4e2f-4ff7-8a88-5d2ee9cc9fb7",
+      "name": "Actualizar Error en DB",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        64
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "teNmZvpZr1p4pABN",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "1ID88cZYaFTDukWS0_mHPvLQ-NkCjcBX62yl5abTlNyY"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        -2464,
+        -128
+      ],
+      "id": "8b4304d1-c033-497a-a355-d9966b91267b",
+      "name": "Extraer Plantilla OA",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "paaBCUaj0T4M0l5P",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "transcription",
+        "options": {}
+      },
+      "id": "ba9ebc98-8f64-4efd-90bd-8979b4e4b090",
+      "name": "Extraer Transcripcion",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -2496,
+        -736
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "=feedback",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -2240,
+        -736
+      ],
+      "id": "2029d699-095d-4218-920d-45e51b732e42",
+      "name": "Extraer Feedback"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ========================================\n// PREPARAR CONTEXTO PARA TODOS LOS BLOQUES\n// ========================================\n\nconst contextoRaw = $('Preparar para Paso 3').first().json.contexto_completo;\nconst contexto = JSON.parse(contextoRaw);\nconst prompts = $('Configurar Prompts').first().json;\n\n// Funciones auxiliares\nfunction safeStringify(obj, maxLength = null) {\n  if (!obj) return 'No disponible';\n  const str = typeof obj === 'string' ? obj : JSON.stringify(obj, null, 2);\n  if (maxLength && str.length > maxLength) {\n    return str.substring(0, maxLength) + '\\n... (contenido truncado)';\n  }\n  return str;\n}\n\nfunction replaceData(template, data) {\n  return template\n    .replace('__PROCESS_EXPERT__', safeStringify(data.process_expert))\n    .replace('__PROFILES__', safeStringify(data.profiles))\n    .replace('__TRANSCRIPCION__', safeStringify(data.transcripcion))\n    .replace('__FEEDBACK__', safeStringify(data.feedback))\n    .replace('__LINEA_TIEMPO__', safeStringify(data.linea_tiempo))\n    .replace('__CIIU__', safeStringify(data.ciiu, 50000));\n}\n\n// Preparar datos comunes\nconst commonData = {\n  process_expert: contexto.datos_db?.process_expert,\n  profiles: contexto.datos_db?.profiles,\n  transcripcion: contexto.archivos_experto?.transcripcion_radar?.texto_completo,\n  feedback: contexto.archivos_experto?.feedback_radar?.texto_completo,\n  linea_tiempo: contexto.archivos_experto?.linea_tiempo?.registros,\n  ciiu: contexto.archivos_internos?.ciiu?.registros\n};\n\n// Preparar prompt Bloque 1\nconst promptBloque1 = replaceData(prompts.prompt_bloque_1, commonData);\n\nreturn [{\n  json: {\n    expert_id: contexto.expert_id,\n    contexto_completo: contextoRaw,\n    common_data: commonData,\n    system_prompt: prompts.system_prompt,\n    prompts: {\n      bloque_1: promptBloque1,\n      bloque_2: prompts.prompt_bloque_2,\n      bloque_3: prompts.prompt_bloque_3,\n      bloque_4: prompts.prompt_bloque_4,\n      bloque_5: prompts.prompt_bloque_5\n    },\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "acd68181-cca1-44f7-a12e-58130d412c0f",
+      "name": "Preparar Contexto Global",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        368,
+        -128
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Preparar request OpenAI Bloque 2\nconst data = $('Preparar Contexto Global').first().json;\n\nlet promptBloque2 = data.prompts.bloque_2\n  .replace('__CIIU__', JSON.stringify(data.common_data.ciiu, null, 2))\n  .replace('__TRANSCRIPCION__', data.common_data.transcripcion || 'No disponible')\n  .replace('__LINEA_TIEMPO__', JSON.stringify(data.common_data.linea_tiempo, null, 2));\n\nreturn [{\n  json: {\n    bloque: 2,\n    expert_id: data.expert_id,\n    model: 'gpt-4o-mini',\n    temperature: 0.7,\n    response_format: { type: 'json_object' },\n    messages: [\n      { role: 'system', content: data.system_prompt },\n      { role: 'user', content: promptBloque2 }\n    ]\n  }\n}];"
+      },
+      "id": "6ea0744e-e424-4aae-8968-d88e563adc2c",
+      "name": "Prep Bloque 2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        -272
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Preparar request OpenAI Bloque 3\nconst data = $('Preparar Contexto Global').first().json;\n\nlet promptBloque3 = data.prompts.bloque_3\n  .replace('__TRANSCRIPCION__', data.common_data.transcripcion || 'No disponible')\n  .replace('__FEEDBACK__', data.common_data.feedback || 'No disponible');\n\nreturn [{\n  json: {\n    bloque: 3,\n    expert_id: data.expert_id,\n    model: 'gpt-4o-mini',\n    temperature: 0.7,\n    response_format: { type: 'json_object' },\n    messages: [\n      { role: 'system', content: data.system_prompt },\n      { role: 'user', content: promptBloque3 }\n    ]\n  }\n}];"
+      },
+      "id": "f6458b34-ffae-4023-a95b-271b783a672c",
+      "name": "Prep Bloque 3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        -112
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Preparar request OpenAI Bloque 4\nconst data = $('Preparar Contexto Global').first().json;\n\nreturn [{\n  json: {\n    bloque: 4,\n    expert_id: data.expert_id,\n    model: 'gpt-4o-mini',\n    temperature: 0.7,\n    response_format: { type: 'json_object' },\n    messages: [\n      { role: 'system', content: data.system_prompt },\n      { role: 'user', content: data.prompts.bloque_4 }\n    ]\n  }\n}];"
+      },
+      "id": "ca159e0b-c1f0-4e1f-b69c-82931d9b03da",
+      "name": "Prep Bloque 4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Preparar request OpenAI Bloque 5\nconst data = $('Preparar Contexto Global').first().json;\n\nlet promptBloque5 = data.prompts.bloque_5\n  .replace('__LINEA_TIEMPO__', JSON.stringify(data.common_data.linea_tiempo, null, 2));\n\nreturn [{\n  json: {\n    bloque: 5,\n    expert_id: data.expert_id,\n    model: 'gpt-4o-mini',\n    temperature: 0.7,\n    response_format: { type: 'json_object' },\n    messages: [\n      { role: 'system', content: data.system_prompt },\n      { role: 'user', content: promptBloque5 }\n    ]\n  }\n}];"
+      },
+      "id": "3ca6ac21-075c-4c99-99b7-13c5e2b8040b",
+      "name": "Prep Bloque 5",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        288
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ========================================\n// PROCESAR RESPUESTAS OPENAI CON MANEJO DE ERRORES\n// ========================================\n\nconst items = $input.all();\nconst results = [];\n\nfor (const item of items) {\n  const bloqueNum = item.json.bloque || 'unknown';\n  \n  try {\n    // Verificar si el nodo falló\n    if (item.json.error) {\n      results.push({\n        bloque: bloqueNum,\n        success: false,\n        error: item.json.error,\n        message: item.json.message || 'Error en llamada OpenAI'\n      });\n      continue;\n    }\n    \n    // Extraer contenido de la respuesta\n    const message = item.json.message;\n    let content = null;\n    \n    if (message && message.content) {\n      content = message.content;\n    } else if (item.json.text) {\n      content = item.json.text;\n    } else if (item.json.choices && item.json.choices[0]) {\n      content = item.json.choices[0].message.content;\n    }\n    \n    if (!content) {\n      results.push({\n        bloque: bloqueNum,\n        success: false,\n        error: 'No se pudo extraer contenido de la respuesta',\n        raw_response: item.json\n      });\n      continue;\n    }\n    \n    // Parsear JSON\n    let parsedContent;\n    try {\n      parsedContent = typeof content === 'string' ? JSON.parse(content) : content;\n    } catch (e) {\n      results.push({\n        bloque: bloqueNum,\n        success: false,\n        error: 'Error parseando JSON de OpenAI',\n        parse_error: e.message,\n        content_preview: content.substring(0, 500)\n      });\n      continue;\n    }\n    \n    // Éxito\n    results.push({\n      bloque: bloqueNum,\n      success: true,\n      data: parsedContent,\n      tokens_used: item.json.usage || null\n    });\n    \n  } catch (error) {\n    results.push({\n      bloque: bloqueNum,\n      success: false,\n      error: 'Error procesando respuesta',\n      message: error.message,\n      stack: error.stack\n    });\n  }\n}\n\nreturn results.map(r => ({ json: r }));"
+      },
+      "id": "f9315643-e55d-4597-b518-70873322441d",
+      "name": "Procesar Respuestas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1168,
+        -96
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ========================================\n// CONSOLIDAR TODOS LOS BLOQUES EN UN SOLO JSON\n// ========================================\n\nconst items = $input.all();\nconst expertId = $('Preparar Contexto Global').first().json.expert_id;\n\n// Inicializar resultado consolidado\nconst radarCompleto = {\n  expert_id: expertId,\n  generado_en: new Date().toISOString(),\n  modelo_usado: 'gpt-4o-mini',\n  bloques_exitosos: [],\n  bloques_fallidos: [],\n  datos: {},\n  metadata: {\n    total_tokens: 0,\n    bloques_procesados: items.length\n  }\n};\n\n// Procesar cada bloque\nfor (const item of items) {\n  const bloque = item.json;\n  \n  if (bloque.success) {\n    radarCompleto.bloques_exitosos.push(bloque.bloque);\n    \n    // Agregar datos del bloque\n    radarCompleto.datos[`bloque_${bloque.bloque}`] = bloque.data;\n    \n    // Sumar tokens\n    if (bloque.tokens_used) {\n      radarCompleto.metadata.total_tokens += bloque.tokens_used.total_tokens || 0;\n    }\n  } else {\n    radarCompleto.bloques_fallidos.push({\n      bloque: bloque.bloque,\n      error: bloque.error,\n      mensaje: bloque.message || bloque.parse_error\n    });\n  }\n}\n\n// Determinar estado general\nconst totalBloques = 5;\nconst exitosos = radarCompleto.bloques_exitosos.length;\nconst fallidos = radarCompleto.bloques_fallidos.length;\n\nlet estado = 'completo';\nif (fallidos > 0 && exitosos > 0) {\n  estado = 'incompleto';\n} else if (fallidos === totalBloques) {\n  estado = 'fallido';\n}\n\nradarCompleto.metadata.estado = estado;\nradarCompleto.metadata.bloques_exitosos = exitosos;\nradarCompleto.metadata.bloques_fallidos = fallidos;\nradarCompleto.metadata.porcentaje_completado = Math.round((exitosos / totalBloques) * 100);\n\nreturn [{ json: radarCompleto }];"
+      },
+      "id": "06a90d5a-59a4-4df4-a5c9-f4b9b659024e",
+      "name": "Consolidar Bloques",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1344,
+        -96
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ========================================\n// PREPARAR PARA GUARDAR EN SUPABASE\n// ========================================\n\nconst radar = $input.first().json;\n\n// Construir el objeto para pasos[5]\nconst radarParaDB = {\n  datos: JSON.stringify(radar.datos),\n  metadata: JSON.stringify({\n    estado: radar.metadata.estado,\n    bloques_exitosos: radar.metadata.bloques_exitosos,\n    bloques_fallidos: radar.metadata.bloques_fallidos,\n    porcentaje_completado: radar.metadata.porcentaje_completado,\n    total_tokens: radar.metadata.total_tokens,\n    generado_en: radar.generado_en,\n    modelo: radar.modelo_usado,\n    errores: radar.bloques_fallidos\n  })\n};\n\nreturn [{\n  json: {\n    expert_id: radar.expert_id,\n    paso_5_radar: radarParaDB,\n    estado: radar.metadata.estado,\n    porcentaje_completado: radar.metadata.porcentaje_completado,\n    updated_at: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "eca18d3d-bf97-452f-a5af-44e308e67475",
+      "name": "Preparar Update DB",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1536,
+        -96
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "process_expert",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "pasos",
+              "fieldValue": "={{ \n  const currentPasos = $('Preparar Contexto Global').first().json.common_data.process_expert?.pasos || [];\n  const newPasos = [...currentPasos];\n  newPasos[5] = $json.paso_5_radar;\n  return JSON.stringify(newPasos);\n}}"
+            },
+            {
+              "fieldId": "state",
+              "fieldValue": "={{ $json.estado === 'completo' ? 'done' : 'processing' }}"
+            },
+            {
+              "fieldId": "profiles_count",
+              "fieldValue": "={{ $json.porcentaje_completado }}"
+            },
+            {
+              "fieldId": "processed_at",
+              "fieldValue": "={{ $json.updated_at }}"
+            }
+          ]
+        }
+      },
+      "id": "faa04bd0-63d5-4aab-97ee-c13825e98f89",
+      "name": "Guardar en Supabase",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1552,
+        -96
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "teNmZvpZr1p4pABN",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Preparar request OpenAI Bloque 1\nconst data = $input.first().json;\n\nreturn [{\n  json: {\n    bloque: 1,\n    expert_id: data.expert_id,\n    model: 'gpt-4o-mini',\n    temperature: 0.7,\n    response_format: { type: 'json_object' },\n    messages: [\n      { role: 'system', content: data.system_prompt },\n      { role: 'user', content: data.prompts.bloque_1 }\n    ]\n  }\n}];"
+      },
+      "id": "92885ad8-1b83-40f4-a424-0d72a295f347",
+      "name": "Prep Bloque ",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -656,
+        -1184
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "system_prompt",
+              "name": "system_prompt",
+              "value": "Eres un experto consultor senior especializado en análisis de perfiles ejecutivos y generación de informes estratégicos para MiPyMEs.\n\nTu rol es analizar la trayectoria, experiencia y capacidades antifrágiles de expertos senior para identificar oportunidades de valor en sectores y empresas específicas.\n\nDebes:\n- Ser preciso y basarte ÚNICAMENTE en la información proporcionada\n- Usar un tono profesional, directo y orientado a la acción\n- Estructurar respuestas en formato JSON válido\n- Priorizar claridad y utilidad para dueños de MiPyMEs\n- Identificar quick wins (30-60-90 días) concretos\n- Conectar experiencia del experto con problemas reales del mercado\n- Si no hay información suficiente para una sección, usar \"No disponible\" o \"No se dispone de información\"",
+              "type": "string"
+            },
+            {
+              "id": "prompt_bloque_1",
+              "name": "prompt_bloque_1",
+              "value": "# TAREA: Generar Secciones 0, 1 y 2 del RADAR\n\nAnaliza la información y genera JSON estructurado.\n\n## DATOS:\n\n### Process Expert:\n__PROCESS_EXPERT__\n\n### Profiles:\n__PROFILES__\n\n### Transcripción RADAR:\n__TRANSCRIPCION__\n\n### Feedback:\n__FEEDBACK__\n\n### Línea de Tiempo:\n__LINEA_TIEMPO__\n\n## OUTPUT JSON:\n\n```json\n{\n  \"seccion_0_portada\": {\n    \"experto_nombre\": \"string\",\n    \"fecha_entrevista\": \"string\",\n    \"entrevistador\": \"string\",\n    \"fuentes\": [\"string\"],\n    \"objetivo_radar\": \"Identificar y priorizar sectores/tipos de empresa donde el experto aporta mayor valor\",\n    \"contacto\": \"string\",\n    \"conflictos_interes\": \"string\"\n  },\n  \"seccion_1_resumen_ejecutivo\": {\n    \"parrafo_intro\": \"string (250-300 palabras)\",\n    \"top3_sectores\": [\n      {\n        \"sector_ciiu\": \"string\",\n        \"tipo_empresa\": \"string\",\n        \"quick_wins\": [\"string\"]\n      }\n    ],\n    \"propuesta_valor\": \"string\",\n    \"formatos_sugeridos\": [\"string\"]\n  },\n  \"seccion_2_perfil\": {\n    \"fortalezas_clave\": \"string\",\n    \"motores_antifragiles_demostrados\": [\"string\"],\n    \"logros_evidencias\": \"string\",\n    \"sectores_traccion\": [\"string\"],\n    \"notas_relevantes\": \"string\"\n  }\n}\n```\n\nREGLAS:\n1. Quick wins deben ser específicos y en 30-60 días\n2. Motores antifrágiles SOLO si hay evidencia\n3. Propuesta de valor en lenguaje del cliente\n4. NO inventes información",
+              "type": "string"
+            },
+            {
+              "id": "prompt_bloque_2",
+              "name": "prompt_bloque_2",
+              "value": "# TAREA: Generar Secciones 3 y 4 del RADAR\n\n## CONTEXTO BLOQUE 1:\n__BLOQUE_1__\n\n## DATOS ADICIONALES:\n\n### Sectores CIIU:\n__CIIU__\n\n### Transcripción:\n__TRANSCRIPCION__\n\n### Línea de Tiempo:\n__LINEA_TIEMPO__\n\n## OUTPUT JSON:\n\n```json\n{\n  \"seccion_3_mapa_sectores\": [\n    {\n      \"macrosector\": \"string\",\n      \"division_ciiu\": \"string\",\n      \"tipo_empresa\": \"string\",\n      \"experiencia\": \"Alta|Media|Baja\",\n      \"naturaleza\": \"Core|Adyacente|Exploración\",\n      \"evidencia_logros\": \"string\",\n      \"notas\": \"string\"\n    }\n  ],\n  \"seccion_4_pestal\": [\n    {\n      \"sector_ciiu\": \"string o General\",\n      \"factores\": {\n        \"politico_regulatorio\": {\"hallazgos\": \"string\", \"riesgos_señales\": \"string\", \"oportunidades\": \"string\"},\n        \"economico\": {\"hallazgos\": \"string\", \"riesgos_señales\": \"string\", \"oportunidades\": \"string\"},\n        \"social\": {\"hallazgos\": \"string\", \"riesgos_señales\": \"string\", \"oportunidades\": \"string\"},\n        \"tecnologico\": {\"hallazgos\": \"string\", \"riesgos_señales\": \"string\", \"oportunidades\": \"string\"},\n        \"ambiental\": {\"hallazgos\": \"string\", \"riesgos_señales\": \"string\", \"oportunidades\": \"string\"},\n        \"legal\": {\"hallazgos\": \"string\", \"riesgos_señales\": \"string\", \"oportunidades\": \"string\"},\n        \"liderazgo_equipo\": {\"hallazgos\": \"string\", \"riesgos_señales\": \"string\", \"oportunidades\": \"string\"}\n      }\n    }\n  ]\n}\n```\n\nREGLAS:\n1. Solo sectores con experiencia comprobada\n2. Si no se mencionó un factor PESTAL: \"No se dispone de información\"\n3. Códigos CIIU correctos",
+              "type": "string"
+            },
+            {
+              "id": "prompt_bloque_3",
+              "name": "prompt_bloque_3",
+              "value": "# TAREA: Generar Secciones 5, 6 y 7 del RADAR\n\n## CONTEXTO PREVIO:\n__BLOQUE_1__\n__BLOQUE_2__\n\n## DATOS:\n\n### Transcripción:\n__TRANSCRIPCION__\n\n### Feedback:\n__FEEDBACK__\n\n## OUTPUT JSON:\n\n```json\n{\n  \"seccion_5_ofertas\": [\n    {\n      \"nombre_oferta\": \"string\",\n      \"formato\": \"string\",\n      \"duracion\": \"string\",\n      \"problema_resuelve\": \"string\",\n      \"sectores_aplicables\": [\"string\"],\n      \"entregables\": \"string\",\n      \"metricas_30_60_90\": \"string\",\n      \"motor_antifragil\": \"string\"\n    }\n  ],\n  \"seccion_6_casos\": [\n    {\n      \"situacion\": \"string\",\n      \"accion_experto\": \"string\",\n      \"resultado\": \"string\",\n      \"aprendizaje_af\": \"string\",\n      \"cita_timestamp\": \"string\"\n    }\n  ],\n  \"seccion_7_match\": [\n    {\n      \"sector_ciiu\": \"string\",\n      \"problema_recurrente\": \"string\",\n      \"oferta_intervencion\": \"string\",\n      \"resultado_esperado\": \"string\",\n      \"indicadores_sugeridos\": \"string\",\n      \"ejemplos_mipyme\": \"string\",\n      \"prioridad\": \"A|M|B\"\n    }\n  ],\n  \"seccion_7_1_dolores\": [\n    {\n      \"dolor_titulo\": \"string\",\n      \"sector_ciiu\": \"string\",\n      \"preguntas_poderosas\": [\"string\"],\n      \"oferta_asociada\": \"string\",\n      \"kpi\": \"string\"\n    }\n  ]\n}\n```\n\nREGLAS:\n1. Diseñar 3-5 ofertas concretas\n2. Casos con situación-acción-resultado\n3. Incluir dolor fijo: \"Innovaciones sin validar\"\n4. Match con problemas reales de MiPyMEs",
+              "type": "string"
+            },
+            {
+              "id": "prompt_bloque_4",
+              "name": "prompt_bloque_4",
+              "value": "# TAREA: Generar Secciones 8 y 9 del RADAR\n\n## CONTEXTO COMPLETO:\n__BLOQUE_1__\n__BLOQUE_2__\n__BLOQUE_3__\n\n## OUTPUT JSON:\n\n```json\n{\n  \"seccion_8_priorizacion\": {\n    \"oportunidades_priorizadas\": [\n      {\n        \"oportunidad\": \"string\",\n        \"impacto_1_5\": 4,\n        \"factibilidad_1_5\": 4,\n        \"puntaje_ixf\": 16,\n        \"riesgos_condiciones\": \"string\",\n        \"proximo_paso_2sem\": \"string\"\n      }\n    ]\n  },\n  \"seccion_9_onepager\": {\n    \"nombre_rol\": \"string\",\n    \"contacto\": \"string\",\n    \"propuesta_valor\": \"string\",\n    \"motores_af\": [\"string\"],\n    \"donde_aporta_mas\": [\"string\"],\n    \"problemas_resuelve\": [\"string\"],\n    \"paquetes\": [\"string\"],\n    \"evidencia_impacto\": [\"string\"],\n    \"modalidad_disponibilidad\": \"string\",\n    \"cta_siguiente_paso\": \"string\"\n  }\n}\n```\n\nREGLAS:\n1. Priorizar 4-6 oportunidades del match\n2. Puntajes realistas (Impacto y Factibilidad 1-5)\n3. Regla: ≥16 ejecutar; 10-15 preparar; ≤9 incubar\n4. One-pager en lenguaje vendible\n5. CTA específico y accionable",
+              "type": "string"
+            },
+            {
+              "id": "prompt_bloque_5",
+              "name": "prompt_bloque_5",
+              "value": "# TAREA: Generar Secciones 10 y 11 del RADAR\n\n## CONTEXTO COMPLETO:\n__BLOQUE_1__\n__BLOQUE_2__\n__BLOQUE_3__\n__BLOQUE_4__\n\n### Línea de Tiempo:\n__LINEA_TIEMPO__\n\n## OUTPUT JSON:\n\n```json\n{\n  \"seccion_10_roadmap\": {\n    \"fases\": [\n      {\"fase\": \"Sem 1-2: Descubrimiento\", \"objetivo\": \"string\", \"hitos_entregables\": \"string\", \"responsables_notas\": \"string\"},\n      {\"fase\": \"Sem 3-4: Diseño\", \"objetivo\": \"string\", \"hitos_entregables\": \"string\", \"responsables_notas\": \"string\"},\n      {\"fase\": \"Sem 5-8: Pilotos\", \"objetivo\": \"string\", \"hitos_entregables\": \"string\", \"responsables_notas\": \"string\"},\n      {\"fase\": \"Sem 9-12: Escalar\", \"objetivo\": \"string\", \"hitos_entregables\": \"string\", \"responsables_notas\": \"string\"}\n    ],\n    \"proyeccion_90_180_dias\": \"string\"\n  },\n  \"seccion_11_linea_tiempo\": [\n    {\n      \"periodo\": \"string\",\n      \"rol_cargo\": \"string\",\n      \"empresa\": \"string\",\n      \"macrosector\": \"string\",\n      \"sector_ciiu_codigo\": \"string\",\n      \"sector_ciiu_descripcion\": \"string\",\n      \"paises\": \"string\",\n      \"perfil_icono\": \"👔|🚀\",\n      \"motores_mla\": [\"string\"],\n      \"logros_evidencias\": \"string\"\n    }\n  ]\n}\n```\n\nREGLAS:\n1. Roadmap genérico pero adaptable\n2. Línea tiempo con motores AF por periodo\n3. Emojis: 🎯 Skin in the game, 🧪 Tinkering, ➖ Vía negativa, 🔀 Opcionalidad, ⚖️ Barbell, 🕸️ Descentralización, 💫 Amor fati, 🧠 Aprendizaje, 🧰 Hormesis\n4. Perfil: 👔 Ejecutivo, 🚀 Emprendedor",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8fa2a835-e2b1-49e1-9809-f4f81e19831f",
+      "name": "Configurar Prompts",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        96,
+        -128
+      ],
+      "notes": "Edita aquí los prompts de cada bloque"
+    },
+    {
+      "parameters": {
+        "resource": "chat"
+      },
+      "id": "853ed0ca-6f60-4f76-ae80-c71ba4e3896f",
+      "name": "OpenAI Bloque 2",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        880,
+        -272
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "QHcEKyQfjZXrcwHF",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "chat"
+      },
+      "id": "35fae1cc-8ea0-4559-9a7c-5d2826dae333",
+      "name": "OpenAI Bloque 3",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        880,
+        -112
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "QHcEKyQfjZXrcwHF",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "chat"
+      },
+      "id": "50e81cb6-3197-42bd-862b-808b2a576a6a",
+      "name": "OpenAI Bloque 5",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        880,
+        288
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "QHcEKyQfjZXrcwHF",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "chat"
+      },
+      "id": "c938a8a3-8751-4d37-8d72-9662de8501e7",
+      "name": "OpenAI Bloque 4",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        880,
+        80
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "QHcEKyQfjZXrcwHF",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "prompt_bloque_1",
+              "name": "prompt_bloque_1",
+              "value": "=# TAREA: Generar Secciones 0, 1 y 2 del RADAR\n\nAnaliza la información y genera JSON estructurado.\n\n## DATOS:\ntool DB experts table\n\n### Profiles:\ntool DB profiles table\n\n### Process Expert:\ntool DB  process_expert table\n    process_expert.pasos->0->>'datos' as experiencia\n    process_expert.pasos->1->>'datos' as AFQ\n    process_expert.pasos->2->>'datos' as presenciaEJ \n    process_expert.pasos->3->>'datos' as pulso\n    process_expert.pasos->3->>'datos' as GEN\n\n### Transcripción RADAR:\n{{ $('Extraer Transcripcion').first().json.text }}\n\n### Feedback:\n{{ $('Extraer Feedback').first().json.text }}\n\n### Línea de Tiempo:\ntool DB  process_expert table\n    process_expert.pasos->0->>'datos' as experiencia\n\n### CIIU\ntool CIIU sheet\n\n## OUTPUT JSON:\n\n```json\n{\n  \"seccion_0_portada\": {\n    \"experto_nombre\": \"string\",\n    \"fecha_entrevista\": \"string\",\n    \"entrevistador\": \"string\",\n    \"fuentes\": [\"string\"],\n    \"objetivo_radar\": \"Identificar y priorizar sectores/tipos de empresa donde el experto aporta mayor valor\",\n    \"contacto\": \"string\",\n    \"conflictos_interes\": \"string\"\n  },\n  \"seccion_1_resumen_ejecutivo\": {\n    \"parrafo_intro\": \"string (250-300 palabras)\",\n    \"top3_sectores\": [\n      {\n        \"sector_ciiu\": \"string\",\n        \"tipo_empresa\": \"string\",\n        \"quick_wins\": [\"string\"]\n      }\n    ],\n    \"propuesta_valor\": \"string\",\n    \"formatos_sugeridos\": [\"string\"]\n  },\n  \"seccion_2_perfil\": {\n    \"fortalezas_clave\": \"string\",\n    \"motores_antifragiles_demostrados\": [\"string\"],\n    \"logros_evidencias\": \"string\",\n    \"sectores_traccion\": [\"string\"],\n    \"notas_relevantes\": \"string\"\n  }\n}\n```\n\nREGLAS:\n1. Quick wins deben ser específicos y en 30-60 días\n2. Motores antifrágiles SOLO si hay evidencia\n3. Propuesta de valor en lenguaje del cliente\n4. NO inventes información",
+              "type": "string"
+            },
+            {
+              "id": "system_prompt",
+              "name": "system_prompt",
+              "value": "=Eres un experto consultor senior especializado en análisis de perfiles ejecutivos y generación de informes estratégicos para MiPyMEs.\n\nYou are DB assistant. You need to run queries in DB aligned with user requests.\n\nRun custom SQL query to aggregate data and response to user.\nFetch all data to analyse it for response if needed.\n\nTu rol es analizar la trayectoria, experiencia y capacidades antifrágiles de expertos senior para identificar oportunidades de valor en sectores y empresas específicas. Usa exclusivamente los archivos provistos (Perfil Ejecutivo/CV, Presencia Ejecutiva, GEN Antifrágil, Transcripción, Línea de Tiempo y notas de feedback). Si un dato no está, no lo inventes: marca el campo como null o deja el bloque ausente. Redacta en español claro, tono consejero/mentor, orientado a acciones, pilotos (30/60/90 días) y métricas. Asegura trazabilidad: cuando indiques un hecho. Estructura salidas en JSON con los esquemas solicitados por cada agente.\n\nDebes:\n- Ser preciso y basarte ÚNICAMENTE en la información proporcionada\n- Usar un tono profesional, directo y orientado a la acción\n- Estructurar respuestas en formato JSON válido\n- Priorizar claridad y utilidad para dueños de MiPyMEs\n- Identificar quick wins (30-60-90 días) concretos\n- Conectar experiencia del experto con problemas reales del mercado\n- Si no hay información suficiente para una sección, usar \"No disponible\" o \"No se dispone de información\"\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f5726459-b8a6-467b-ba78-ba9ec1e3fa01",
+      "name": "Configurar Prompts1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -1760,
+        -736
+      ],
+      "notes": "Edita aquí los prompts de cada bloque"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ========================================\n// PREPARAR CONTEXTO PARA TODOS LOS BLOQUES\n// ========================================\n\nconst contextoRaw = $('Preparar para Paso 3').first().json.contexto_completo;\nconst contexto = JSON.parse(contextoRaw);\nconst prompts = $('Configurar Prompts').first().json;\n\n// Funciones auxiliares\nfunction safeStringify(obj, maxLength = null) {\n  if (!obj) return 'No disponible';\n  const str = typeof obj === 'string' ? obj : JSON.stringify(obj, null, 2);\n  if (maxLength && str.length > maxLength) {\n    return str.substring(0, maxLength) + '\\n... (contenido truncado)';\n  }\n  return str;\n}\n\nfunction replaceData(template, data) {\n  return template\n    .replace('__PROCESS_EXPERT__', safeStringify(data.process_expert))\n    .replace('__PROFILES__', safeStringify(data.profiles))\n    .replace('__TRANSCRIPCION__', safeStringify(data.transcripcion))\n    .replace('__FEEDBACK__', safeStringify(data.feedback))\n    .replace('__LINEA_TIEMPO__', safeStringify(data.linea_tiempo))\n    .replace('__CIIU__', safeStringify(data.ciiu, 50000));\n}\n\n// Preparar datos comunes\nconst commonData = {\n  process_expert: contexto.datos_db?.process_expert,\n  profiles: contexto.datos_db?.profiles,\n  transcripcion: contexto.archivos_experto?.transcripcion_radar?.texto_completo,\n  feedback: contexto.archivos_experto?.feedback_radar?.texto_completo,\n  linea_tiempo: contexto.archivos_experto?.linea_tiempo?.registros,\n  ciiu: contexto.archivos_internos?.ciiu?.registros\n};\n\n// Preparar prompt Bloque 1\nconst promptBloque1 = replaceData(prompts.prompt_bloque_1, commonData);\n\nreturn [{\n  json: {\n    expert_id: contexto.expert_id,\n    contexto_completo: contextoRaw,\n    common_data: commonData,\n    system_prompt: prompts.system_prompt,\n    prompts: {\n      bloque_1: promptBloque1,\n      bloque_2: prompts.prompt_bloque_2,\n      bloque_3: prompts.prompt_bloque_3,\n      bloque_4: prompts.prompt_bloque_4,\n      bloque_5: prompts.prompt_bloque_5\n    },\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "00ebf6aa-2a15-40bd-80c0-15acad91f8e3",
+      "name": "Preparar Contexto Global1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -944,
+        -1184
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ========================================\n// CONSOLIDAR TODO EL CONTEXTO\n// ========================================\n\nconst allItems = $input.all();\n\n// Inicializar contexto\nconst context = {\n  expert_id: null,\n  timestamp: new Date().toISOString(),\n  archivos_internos: {\n    ciiu: null,\n    plantilla_oa: null\n  },\n  archivos_experto: {\n    formulario_radar: null,\n    transcripcion_radar: null,\n    feedback_radar: null,\n    linea_tiempo: null\n  },\n  datos_db: {\n    profiles: null,\n    process_expert: null\n  },\n  metadata: {\n    items_recibidos: allItems.length,\n    archivos_procesados: 0,\n    errores: []\n  }\n};\n\n// Obtener expert_id del nodo \"Preparar Siguiente Fase\"\ntry {\n  context.expert_id = $('Preparar Siguiente Fase').item.json.expert_id;\n} catch (e) {\n  context.metadata.errores.push('No se pudo obtener expert_id');\n}\n\n// Procesar cada item\nfor (const item of allItems) {\n  const json = item.json;\n  \n  try {\n    // CIIU (buscar por columna MACROSECTOR)\n    if (json.MACROSECTOR) {\n      if (!context.archivos_internos.ciiu) {\n        context.archivos_internos.ciiu = {\n          registros: [],\n          total: 0\n        };\n      }\n      context.archivos_internos.ciiu.registros.push(json);\n      context.archivos_internos.ciiu.total++;\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Plantilla OA (buscar por texto característico)\n    if (json.text && (json.text.includes('INFORME DEL RADAR') || json.text.includes('ORIGEN ANTIFRÁGIL'))) {\n      context.archivos_internos.plantilla_oa = {\n        texto_completo: json.text,\n        longitud: json.text.length\n      };\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Formulario RADAR\n    if (json.text && json.text.length > 100 && !context.archivos_experto.formulario_radar) {\n      // Heurística: primer texto largo que no sea plantilla\n      if (!json.text.includes('INFORME DEL RADAR')) {\n        context.archivos_experto.formulario_radar = {\n          texto_completo: json.text,\n          longitud: json.text.length\n        };\n        context.metadata.archivos_procesados++;\n      }\n    }\n    \n    // Transcripción (buscar por palabras clave)\n    if (json.text && (json.text.includes('Transcripción') || json.text.includes('00:00'))) {\n      context.archivos_experto.transcripcion_radar = {\n        texto_completo: json.text,\n        longitud: json.text.length\n      };\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Feedback\n    if (json.text && json.text.includes('Feedback')) {\n      context.archivos_experto.feedback_radar = {\n        texto_completo: json.text,\n        longitud: json.text.length\n      };\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Línea de Tiempo (detectar por columnas típicas)\n    if (json.Periodo || json.periodo || json.Rol || json.rol) {\n      if (!context.archivos_experto.linea_tiempo) {\n        context.archivos_experto.linea_tiempo = {\n          registros: [],\n          total: 0\n        };\n      }\n      context.archivos_experto.linea_tiempo.registros.push(json);\n      context.archivos_experto.linea_tiempo.total++;\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Profiles (detectar por estructura)\n    if (json.expert_id && json.id && !context.datos_db.profiles) {\n      context.datos_db.profiles = json;\n    }\n    \n    // Process Expert (detectar por campo pasos)\n    if (json.pasos && !context.datos_db.process_expert) {\n      try {\n        context.datos_db.process_expert = {\n          cv: json.pasos[0]?.datos || null,\n          afq: json.pasos[1]?.datos || null,\n          presencia_ejecutiva: json.pasos[2]?.datos || null,\n          pulso: json.pasos[3]?.datos || null,\n          gen_antifragil: json.pasos[4]?.datos || null,\n          radar: json.pasos[5]?.datos || null,\n          portafolio_valor: json.pasos[6]?.datos || null\n        };\n      } catch (e) {\n        context.metadata.errores.push('Error procesando pasos: ' + e.message);\n      }\n    }\n    \n  } catch (error) {\n    context.metadata.errores.push({\n      mensaje: error.message,\n      item_index: allItems.indexOf(item)\n    });\n  }\n}\n\n// Validar completitud\ncontext.metadata.datos_completos = \n  context.archivos_internos.ciiu !== null &&\n  context.archivos_internos.plantilla_oa !== null &&\n  context.archivos_experto.transcripcion_radar !== null &&\n  context.datos_db.process_expert !== null;\n\nif (!context.metadata.datos_completos) {\n  const faltantes = [];\n  if (!context.archivos_internos.ciiu) faltantes.push('CIIU');\n  if (!context.archivos_internos.plantilla_oa) faltantes.push('Plantilla OA');\n  if (!context.archivos_experto.transcripcion_radar) faltantes.push('Transcripción');\n  if (!context.datos_db.process_expert) faltantes.push('Process Expert');\n  \n  context.metadata.datos_faltantes = faltantes;\n}\n\nreturn [{ json: context }];"
+      },
+      "id": "b9e612b2-8f5a-434e-8c55-4a5d262f5cce",
+      "name": "Consolidar Contexto old",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1040,
+        -32
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ========================================\n// CONSOLIDAR TODO EL CONTEXTO\n// ========================================\n\nconst allItems = $input.all();\n\n// Inicializar contexto\nconst context = {\n  expert_id: null,\n  timestamp: new Date().toISOString(),\n  archivos_internos: {\n    ciiu: null,\n    plantilla_oa: null\n  },\n  archivos_experto: {\n    formulario_radar: null,\n    transcripcion_radar: null,\n    feedback_radar: null,\n    linea_tiempo: null\n  },\n  datos_db: {\n    profiles: null,\n    process_expert: null\n  },\n  metadata: {\n    items_recibidos: allItems.length,\n    archivos_procesados: 0,\n    errores: []\n  }\n};\n\n// Obtener expert_id del nodo \"Preparar Siguiente Fase\"\ntry {\n  context.expert_id = $('Preparar Siguiente Fase').item.json.expert_id;\n} catch (e) {\n  context.metadata.errores.push('No se pudo obtener expert_id');\n}\n\n// Procesar cada item\nfor (const item of allItems) {\n  const json = item.json;\n  \n  try {\n    // CIIU (buscar por columna MACROSECTOR)\n    if (json.MACROSECTOR) {\n      if (!context.archivos_internos.ciiu) {\n        context.archivos_internos.ciiu = {\n          registros: [],\n          total: 0\n        };\n      }\n      context.archivos_internos.ciiu.registros.push(json);\n      context.archivos_internos.ciiu.total++;\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Plantilla OA (buscar por texto característico)\n    if (json.text && (json.text.includes('INFORME DEL RADAR') || json.text.includes('ORIGEN ANTIFRÁGIL'))) {\n      context.archivos_internos.plantilla_oa = {\n        texto_completo: json.text,\n        longitud: json.text.length\n      };\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Formulario RADAR   // json.text.length > 100 && !\n    if (json.text && (json.Title.includes('Formulario RADAR') || context.archivos_experto.formulario_radar) {\n      // Heurística: primer texto largo que no sea plantilla\n      if (!json.text.includes('INFORME DEL RADAR')) {\n        context.archivos_experto.formulario_radar = {\n          texto_completo: json.text,\n          longitud: json.text.length\n        };\n        context.metadata.archivos_procesados++;\n      }\n    }\n    \n    // Transcripción (buscar por palabras clave)\n    if (json.text && (json.Title.includes('Transcripci') || json.text.includes('00:00'))) {\n      context.archivos_experto.transcripcion_radar = {\n        texto_completo: json.text,\n        longitud: json.text.length\n      };\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Feedback\n    if (json.text && json.Title.includes('Feedback')) {\n      context.archivos_experto.feedback_radar = {\n        texto_completo: json.text,\n        longitud: json.text.length\n      };\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Línea de Tiempo (detectar por columnas típicas)\n    if (json.Periodo || json.periodo || json.Rol || json.rol) {\n      if (!context.archivos_experto.linea_tiempo) {\n        context.archivos_experto.linea_tiempo = {\n          registros: [],\n          total: 0\n        };\n      }\n      context.archivos_experto.linea_tiempo.registros.push(json);\n      context.archivos_experto.linea_tiempo.total++;\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Profiles (detectar por estructura)\n    if (json.expert_id && json.id && !context.datos_db.profiles) {\n      context.datos_db.profiles = json;\n    }\n    \n    // Process Expert (detectar por campo pasos)\n    if (json.pasos && !context.datos_db.process_expert) {\n      try {\n        context.datos_db.process_expert = {\n          cv: json.pasos[0]?.datos || null,\n          afq: json.pasos[1]?.datos || null,\n          presencia_ejecutiva: json.pasos[2]?.datos || null,\n          pulso: json.pasos[3]?.datos || null,\n          gen_antifragil: json.pasos[4]?.datos || null,\n          radar: json.pasos[5]?.datos || null,\n          portafolio_valor: json.pasos[6]?.datos || null\n        };\n      } catch (e) {\n        context.metadata.errores.push('Error procesando pasos: ' + e.message);\n      }\n    }\n    \n  } catch (error) {\n    context.metadata.errores.push({\n      mensaje: error.message,\n      item_index: allItems.indexOf(item)\n    });\n  }\n}\n\n// Validar completitud\ncontext.metadata.datos_completos = \n  context.archivos_internos.ciiu !== null &&\n  context.archivos_internos.plantilla_oa !== null &&\n  context.archivos_experto.transcripcion_radar !== null &&\n  context.datos_db.process_expert !== null;\n\nif (!context.metadata.datos_completos) {\n  const faltantes = [];\n  if (!context.archivos_internos.ciiu) faltantes.push('CIIU');\n  if (!context.archivos_internos.plantilla_oa) faltantes.push('Plantilla OA');\n  if (!context.archivos_experto.transcripcion_radar) faltantes.push('Transcripción');\n  if (!context.datos_db.process_expert) faltantes.push('Process Expert');\n  \n  context.metadata.datos_faltantes = faltantes;\n}\n\nreturn [{ json: context }];"
+      },
+      "id": "ccb8d8ce-e755-496d-ad59-a60688cdc9b9",
+      "name": "Consolidar Contexto",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1264,
+        -1328
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Join experts and process_expert tables\nSELECT \n    e.id as expert_id,\n    e.nombre,\n    pe.pasos->0->>'datos' as experiencia,\n    pe.pasos->1->>'datos' as AFQ,\n    pe.pasos->2->>'datos' as presenciaEJ, \n    pe.pasos->3->>'datos' as pulso\n     \nFROM \n    experts e\nJOIN \n    process_expert pe ON pe.expert_id = e.id\nWHERE \n    e.id = '{{ $('CodeId').item.json.expertid }}'::uuid;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -880,
+        -1552
+      ],
+      "id": "a394b856-166e-437a-8af6-60f4ab0bcebe",
+      "name": "find_ID_process",
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Join experts and profiles tables\nSELECT \n-- All columns from experts table  \n    e.nombre,  \n-- All columns from profiles table\n    p.resumen_antifragil,\n    p.sectores,\n    p.trayectoria,\n    p.\"IndicadoresAF\",\n    p.valor_estrategico,\n    p.habilidades_identificadas\nFROM \n    experts e\nJOIN \n    profiles p ON p.expert_id = e.id\nWHERE \n    e.id = '{{ $json.expertid }}'::uuid;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1120,
+        -1552
+      ],
+      "id": "72d945ae-00bf-48c6-aa6f-af4d5c3047b3",
+      "name": "find_ID_profile",
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dc95f6e5-ec90-4bd3-b0d6-6f034e8a7ba6",
+              "name": "prompt_user_GEN",
+              "value": "=Genera el informe GEN ANTIFRÁGIL completo para el siguiente experto, extrayendo y creando todas las variables necesarias para la plantilla:\n\n**DATOS DEL EXPERTO:**\n\n**Información Personal:**\n- Nombre:  {{ $('find_ID_profile').item.json.nombre }}\n- Resumen Antifrágil: {{ $('find_ID_profile').item.json.resumen_antifragil }}\n- Sectores: {{ $('find_ID_profile').item.json.sectores }}\n- Trayectoria: {{ $('find_ID_profile').item.json.trayectoria }}\n- Indicadores Antifrágiles: {{ $('find_ID_profile').item.json.IndicadoresAF }}\n- Valor Estratégico: {{ $('find_ID_profile').item.json.valor_estrategico }}\n- Habilidades Identificadas: {{ $('find_ID_profile').item.json.habilidades_identificadas }}\n- experiencia:{{ $('find_ID_process').item.json.experiencia }}\n\n**Índice de Antifragilidad (AFQ):**\n- Indice Antifragil : {{ $('find_ID_process').item.json.afq.parseJson().indice_antifragil }}\n- Puntaje General: {{ $('find_ID_process').item.json.afq.parseJson().puntaje_general }} ({{$('find_ID_process').item.json.afq.parseJson().nivel_general}})\n- Evolución Activa: {{$('find_ID_process').item.json.afq.parseJson().evolucion_activa.puntaje}} ({{$('find_ID_process').item.json.afq.parseJson().evolucion_activa.nivel}})\n- Adaptación Proactiva: {{$('find_ID_process').item.json.afq.parseJson().adaptacion_proactiva.puntaje}} ({{$('find_ID_process').item.json.afq.parseJson().adaptacion_proactiva.nivel}})\n- Agilidad Emocional: {{$('find_ID_process').item.json.afq.parseJson().agilidad_emocional.puntaje}} ({{$('find_ID_process').item.json.afq.parseJson().agilidad_emocional.nivel}})\n- Destructividad Consciente: {{$('find_ID_process').item.json.afq.parseJson().destructividad_consciente.puntaje}} ({{$('find_ID_process').item.json.afq.parseJson().destructividad_consciente.nivel}})\n\n**Presencia Ejecutiva:**\n- Puntaje Total: {{$('find_ID_process').item.json.presenciaej.parseJson().evaluacion_presencia.puntaje_total}}\n- Interpretación: {{$('find_ID_process').item.json.presenciaej.parseJson().informe_completo}}\n- Observaciones: {{$('find_ID_process').item.json.presenciaej.parseJson().observaciones_complementarias}}\n\n**Pulso Antifrágil:**\n- Patrón: {{$('find_ID_process').item.json.pulso.parseJson().patron}}\n- Frase: {{$('find_ID_process').item.json.pulso.parseJson().frase}}\n- Interpretación: {{$('find_ID_process').item.json.pulso.parseJson().interpretacion}}\n\n**TAREA:**\nRedacta el informe completo siguiendo exactamente la estructura del prompt system y proporciona al final todas las variables extraídas en formato JSON para usar en la plantilla.",
+              "type": "string"
+            },
+            {
+              "id": "801b7cd2-ec7a-4cac-9fea-d0c6f4322d38",
+              "name": "prompt_system_GEN",
+              "value": "=Eres un consultor experto en talento senior con enfoque en antifragilidad y posicionamiento estratégico. Tu función es redactar el informe final del GEN ANTIFRÁGIL, que es la síntesis narrativa y visual de todo el potencial del experto como parte de la red antifrágil.\n\n## DIRECTRICES DE ESTILO:\n- **Tono**: Narrativo, claro, profesional y motivador\n- **Enfoque**: Proyectar al experto como mentor, guía o consejero (nunca como alguien en búsqueda de empleo)\n- **Lenguaje**: Inspirador pero no exagerado, humano, directo y estratégico\n- **Perspectiva**: Enfatizar capacidad de aportar perspectiva, aprendizaje y dirección\n\n## INSTRUCCIONES DE FORMATO Y ENTREGA\n**CRÍTICO**: Entrega ÚNICAMENTE el texto en formato de variables, sin arrays JSON, bloques de código, markdown o estructuras adicionales.\n\nUsa EXACTAMENTE este formato:\n```\nfecha: [fecha actual en formato dd/mm/yyyy]\nnombre: [nombre_completo]\ntitulo: [Tres etiquetas clave del perfil separadas por \"|\"]\n\nperfil_antifragil: [Párrafo narrativo que integre:\n- Hallazgos del perfil ejecutivo, índice de antifragilidad y presencia ejecutiva\n- Trayectoria, experiencia directiva y señales de antifragilidad\n- Capacidad para guiar a otros\n- NO mencionar empresas específicas ni usar promesas exageradas]\n\ntrayectoria: [Máximo 4 aspectos clave, hacer el analisis desde trayectoria, sectores y experiencia \n- Formato: **[Área/habilidad]**: ( información asociándolo a sector o experiencia donde se ve reflejado, Ejemplo específico o contexto donde fue ejercida)\n- Evitar títulos genéricos sin explicación]\n\ncapacidades_antifragiles: [Máximo 4 capacidades basadas en experiencia real\n- Asociar cada una a un ejemplo o contexto laboral vivido\n- Formato: **• (Concepto):** (Aplicación práctica en su contexto)\n- Solo usar términos técnicos de Taleb si están justificados]\n\nresumen_antifra: [ resumen del Indice Antifragil (100-150 palabras)]\npuntaje_general: [puntaje_general] \nnivel_general: [nivel_general]\nevolucion_activa_puntaje: [evolucion activa puntaje]\nadaptacion_proactiva_puntaj:[adaptacion proactiva puntaje]\nagilidad_emocional_puntaje: [agilidad emocional puntaje]\ndestructividad_consciente_puntaje:[destructividad consciente puntaje]\nreflexion: [Reflexión integradora sobre su perfil antifrágil]\n\npuntaje_total:[puntaje_total]\nnivel_presencia_ejecutiva: [Análisis de fortalezas y oportunidades, ( 100-150 palabras)]\nobservaciones_complementarias: [Recomendaciones para potenciar visibilidad (50-70 palabras)]\n\npatron:[patron]\nfrase: [Frase potente del formulario]\ninterpretacion: [Interpretación conectada con enfoque antifrágil, Mostrar cómo lo define como guía/mentor]\n```\n\n## DIRECTRICES:\n- Usa un lenguaje inspirador y profesional\n- Conecta siempre con el contexto profesional del experto\n- Resalta las cualidades de liderazgo antifrágil\n- Enfócate en cómo estas capacidades benefician a otros\n\n## REGLAS CRÍTICAS\n1. NO mencionar el nombre del experto en análisis o interpretaciones\n2. Lenguaje profesional, claro y motivador\n3. Enfocar como posible referente, mentor o catalizador\n4. Si hay resistencias, sugerir alternativas progresivas\n5. Cada variable debe ser texto continuo sin saltos de línea internos\n6. Separar cada variable con línea en blanco\n7. NO usar comillas en los valores\n8. NO usar caracteres especiales de escape\n\n## PETICIoN NEGATIVA:\n- PROHIBIDO: No utilizar las palabras \"resiliente\" o \"resiliencia\" en ninguna parte del informe. Usa terminos alternativos como: adaptabilidad, fortaleza, capacidad de recuperacion, tenacidad, flexibilidad, robustez, o antifragilidad, no utilizar resiliencia transformativa, no utilizar la frase \"la cultura del error\", usa el termino aprender del error.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -672,
+        -1552
+      ],
+      "id": "b508344b-7151-4778-823c-dfa9d820e15e",
+      "name": "set_prompts"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ========================================\n// CONSOLIDAR TODO EL CONTEXTO\n// ========================================\n\nconst allItems = $input.all();\n\n// Inicializar contexto\nconst context = {\n  expert_id: null,\n  timestamp: new Date().toISOString(),\n  archivos_internos: {\n    ciiu: null,\n    plantilla_oa: null\n  },\n  archivos_experto: {\n    formulario_radar: null,\n    transcripcion_radar: null,\n    feedback_radar: null,\n    linea_tiempo: null\n  },\n  datos_db: {\n    profiles: null,\n    process_expert: null\n  },\n  metadata: {\n    items_recibidos: allItems.length,\n    archivos_procesados: 0,\n    errores: []\n  }\n};\n\n// Obtener expert_id del nodo \"Preparar Siguiente Fase\"\ntry {\n  context.expert_id = $('Preparar Siguiente Fase').item.json.expert_id;\n} catch (e) {\n  context.metadata.errores.push('No se pudo obtener expert_id');\n}\n\n// Procesar cada item\nfor (const item of allItems) {\n  const json = item.json;\n  \n  try {\n    // CIIU (buscar por columna MACROSECTOR)\n    if (json.MACROSECTOR) {\n      if (!context.archivos_internos.ciiu) {\n        context.archivos_internos.ciiu = {\n          registros: [],\n          total: 0\n        };\n      }\n      context.archivos_internos.ciiu.registros.push(json);\n      context.archivos_internos.ciiu.total++;\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Plantilla OA (buscar por texto característico)\n    if (json.text && (json.text.includes('INFORME DEL RADAR') || json.text.includes('ORIGEN ANTIFRÁGIL'))) {\n      context.archivos_internos.plantilla_oa = {\n        texto_completo: json.text,\n        longitud: json.text.length\n      };\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Formulario RADAR   // json.text.length > 100 && !\n    if (json.text && (json.text.includes('Formulario RADAR') || context.archivos_experto.formulario_radar)) {\n      // Heurística: primer texto largo que no sea plantilla\n      if (!json.text.includes('INFORME DEL RADAR')) {\n        context.archivos_experto.formulario_radar = {\n          texto_completo: json.text,\n          longitud: json.text.length\n        };\n        context.metadata.archivos_procesados++;\n      }\n    }\n    \n    // Transcripción (buscar por palabras clave)\n    if (json.text && (json.text.includes('Transcripción') || json.text.includes('00:00'))) {\n      context.archivos_experto.transcripcion_radar = {\n        texto_completo: json.text,\n        longitud: json.text.length\n      };\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Feedback\n    if (json.text && json.text.includes('Resumen ejecutivo')) {\n      context.archivos_experto.feedback_radar = {\n        texto_completo: json.text,\n        longitud: json.text.length\n      };\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Línea de Tiempo (detectar por columnas típicas)\n    if (json.Periodo || json.periodo || json.Rol || json.rol) {\n      if (!context.archivos_experto.linea_tiempo) {\n        context.archivos_experto.linea_tiempo = {\n          registros: [],\n          total: 0\n        };\n      }\n      context.archivos_experto.linea_tiempo.registros.push(json);\n      context.archivos_experto.linea_tiempo.total++;\n      context.metadata.archivos_procesados++;\n    }\n    \n    // Profiles (detectar por estructura)\n    if (json.expert_id && json.id && !context.datos_db.profiles) {\n      context.datos_db.profiles = json;\n    }\n    \n    // Process Expert (detectar por campo pasos)\n    if (json.pasos && !context.datos_db.process_expert) {\n      try {\n        context.datos_db.process_expert = {\n          cv: json.pasos[0]?.datos || null,\n          afq: json.pasos[1]?.datos || null,\n          presencia_ejecutiva: json.pasos[2]?.datos || null,\n          pulso: json.pasos[3]?.datos || null,\n          gen_antifragil: json.pasos[4]?.datos || null,\n          radar: json.pasos[5]?.datos || null,\n          portafolio_valor: json.pasos[6]?.datos || null\n        };\n      } catch (e) {\n        context.metadata.errores.push('Error procesando pasos: ' + e.message);\n      }\n    }\n    \n  } catch (error) {\n    context.metadata.errores.push({\n      mensaje: error.message,\n      item_index: allItems.indexOf(item)\n    });\n  }\n}\n\n// Validar completitud\ncontext.metadata.datos_completos = \n  context.archivos_internos.ciiu !== null &&\n  context.archivos_internos.plantilla_oa !== null &&\n  context.archivos_experto.transcripcion_radar !== null &&\n  context.datos_db.process_expert !== null;\n\nif (!context.metadata.datos_completos) {\n  const faltantes = [];\n  if (!context.archivos_internos.ciiu) faltantes.push('CIIU');\n  if (!context.archivos_internos.plantilla_oa) faltantes.push('Plantilla OA');\n  if (!context.archivos_experto.transcripcion_radar) faltantes.push('Transcripción');\n  if (!context.datos_db.process_expert) faltantes.push('Process Expert');\n  \n  context.metadata.datos_faltantes = faltantes;\n}\n\nreturn [{ json: context }];"
+      },
+      "id": "d21d0173-e11b-4a07-85d8-139a5de19173",
+      "name": "Consolidar transcipcion",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1552,
+        -1248
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "### ... or watch set up video [20 min]\n[![Youtube Thumbnail](https://res.cloudinary.com/de9jgixzm/image/upload/v1739773279/Youtube%20Thumbs/Chat%20With%20DB.png)](https://www.youtube.com/watch?v=-GgKzhCNxjk)\n",
+        "height": 239.5888196628349,
+        "width": 330.5152611046425,
+        "color": 7
+      },
+      "id": "eb609917-40a7-406e-b9d7-71aca9513293",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -480,
+        -1232
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "68d09f43-0844-488c-9a6e-b1b21be222a9",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        -1616,
+        -496
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "QHcEKyQfjZXrcwHF",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Get list of all tables in database",
+        "operation": "executeQuery",
+        "query": "SELECT table_schema, table_name\nFROM information_schema.tables\nWHERE table_type = 'BASE TABLE' AND table_schema = 'public';",
+        "options": {}
+      },
+      "id": "ef784817-9142-4dac-babe-392eb94437d6",
+      "name": "DB Schema",
+      "type": "n8n-nodes-base.postgresTool",
+      "position": [
+        -1104,
+        -496
+      ],
+      "typeVersion": 2.5,
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Get table definition to find all columns and types.",
+        "operation": "executeQuery",
+        "query": "SELECT \n    c.column_name,\n    c.data_type,\n    c.is_nullable,\n    c.column_default,\n    tc.constraint_type,\n    ccu.table_name AS referenced_table,\n    ccu.column_name AS referenced_column\nFROM \n    information_schema.columns c\nLEFT JOIN \n    information_schema.key_column_usage kcu \n    ON c.table_name = kcu.table_name \n    AND c.column_name = kcu.column_name\nLEFT JOIN \n    information_schema.table_constraints tc \n    ON kcu.constraint_name = tc.constraint_name\n    AND tc.constraint_type = 'FOREIGN KEY'\nLEFT JOIN\n    information_schema.constraint_column_usage ccu\n    ON tc.constraint_name = ccu.constraint_name\nWHERE \n    c.table_name = '{{ $fromAI(\"table_name\") }}' -- Your table name\n    AND c.table_schema = 'public' -- Ensure it's in the right schema\nORDER BY \n    c.ordinal_position;\n",
+        "options": {}
+      },
+      "id": "8d540364-2dde-408c-9561-20864ac0e793",
+      "name": "Get table definition",
+      "type": "n8n-nodes-base.postgresTool",
+      "position": [
+        -944,
+        -496
+      ],
+      "typeVersion": 2.5,
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Configurar Prompts1').item.json.prompt_bloque_1 }}",
+        "options": {
+          "systemMessage": "={{ $('Configurar Prompts1').item.json.system_prompt }}"
+        }
+      },
+      "id": "808d3f98-fa82-4aed-98c3-ee0d364bd674",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -1344,
+        -736
+      ],
+      "typeVersion": 1.6
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Run custom SQL queries using knowledge about Output structure to provide needed response for user request.\nUse ->> operator to extract JSON data.",
+        "operation": "executeQuery",
+        "query": "{{ $fromAI(\"query\",\"SQL query for PostgreSQL DB in Supabase\") }}",
+        "options": {}
+      },
+      "id": "65e17010-a355-4fb4-8023-0453ea193c26",
+      "name": "Run SQL Query",
+      "type": "n8n-nodes-base.postgresTool",
+      "position": [
+        -1248,
+        -496
+      ],
+      "typeVersion": 2.5,
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "system_prompt",
+              "name": "system_prompt",
+              "value": "=Eres un experto consultor senior especializado en análisis de perfiles ejecutivos y generación de informes estratégicos para MiPyMEs.\n\nTu rol es analizar la trayectoria, experiencia y capacidades antifrágiles de expertos senior para identificar oportunidades de valor en sectores y empresas específicas. Usa exclusivamente los archivos provistos (Perfil Ejecutivo/CV, Presencia Ejecutiva, GEN Antifrágil, Transcripción, Línea de Tiempo y notas de feedback). Si un dato no está, no lo inventes: marca el campo como null o deja el bloque ausente. Redacta en español claro, tono consejero/mentor, orientado a acciones, pilotos (30/60/90 días) y métricas. Asegura trazabilidad: cuando indiques un hecho. Estructura salidas en JSON con los esquemas solicitados por cada agente.\n\nDebes:\n- Ser preciso y basarte ÚNICAMENTE en la información proporcionada\n- Usar un tono profesional, directo y orientado a la acción\n- Estructurar respuestas en formato JSON válido\n- Priorizar claridad y utilidad para dueños de MiPyMEs\n- Identificar quick wins (30-60-90 días) concretos\n- Conectar experiencia del experto con problemas reales del mercado\n- Si no hay información suficiente para una sección, usar \"No disponible\" o \"No se dispone de información\"\n\nYou are DB assistant. You need to run queries in DB aligned with user requests.\n\nRun custom SQL query to aggregate data and response to user.\nFetch all data to analyse it for response if needed.\n",
+              "type": "string"
+            },
+            {
+              "id": "prompt_bloque_1",
+              "name": "prompt_bloque_1",
+              "value": "=# TAREA: Generar Secciones 0, 1 y 2 del RADAR\n\nAnaliza la información y genera JSON estructurado.\n\n## DATOS:\nnombre: DB experts table\n\n    pe.pasos->0->>'datos' as experiencia,\n    pe.pasos->1->>'datos' as AFQ,\n    pe.pasos->2->>'datos' as presenciaEJ, \n    pe.pasos->3->>'datos' as pulso\n\n\n### Profiles:\nemail:DB profile table\nprofesion: {{ $('expert-profile query').first().json.profesion }}\n- Nombre:  {{ $('expert-profile query').first().json.nombre }}\n- Resumen Antifrágil: {{ $('expert-profile query').first().json.resumen_antifragil }}\n- Sectores: {{ $('expert-profile query').first().json.sectores }}\n- Trayectoria: {{ $('expert-profile query').first().json.trayectoria }}\n- Indicadores Antifrágiles: {{ $('expert-profile query').first().json.IndicadoresAF }}\n- Valor Estratégico: {{ $('expert-profile query').first().json.valor_estrategico }}\n- Habilidades Identificadas: {{ $('expert-profile query').first().json.habilidades_identificadas }}\n\n### Process Expert: [.parseJson()]\nexperiencia:{{ $('expert-process query').first().json.timeline }}\n**Índice de Antifragilidad (AFQ):**\n- Indice Antifragil : {{ $('expert-process query').first().json.afq.parseJson().indice_antifragil }}\n- Puntaje General: {{ $('expert-process query').first().json.afq.parseJson().puntaje_general }} ({{$('expert-process query').first().json.afq.parseJson().nivel_general}})\n- Evolución Activa: {{$('expert-process query').first().json.afq.parseJson().evolucion_activa.puntaje}} ({{$('expert-process query').first().json.afq.parseJson().evolucion_activa.nivel}})\n- Adaptación Proactiva: {{$('expert-process query').first().json.afq.parseJson().adaptacion_proactiva.puntaje}} ({{$('expert-process query').first().json.afq.parseJson().adaptacion_proactiva.nivel}})\n- Agilidad Emocional: {{$('expert-process query').first().json.afq.parseJson().agilidad_emocional.puntaje}} ({{$('expert-process query').first().json.afq.parseJson().agilidad_emocional.nivel}})\n- Destructividad Consciente: {{$('expert-process query').first().json.afq.parseJson().destructividad_consciente.puntaje}} ({{$('expert-process query').first().json.afq.parseJson().destructividad_consciente.nivel}})\n\n**Presencia Ejecutiva:**\n- Puntaje Total: {{$('expert-process query').first().json.presenciaej.parseJson().evaluacion_presencia.puntaje_total}}\n- Interpretación: {{$('expert-process query').first().json.presenciaej.parseJson().informe_completo}}\n- Observaciones: {{$('expert-process query').first().json.presenciaej.parseJson().observaciones_complementarias}}\n\n**Pulso Antifrágil:**\n- Patrón: {{$('expert-process query').first().json.pulso.parseJson().patron}}\n- Frase: {{$('expert-process query').first().json.pulso.parseJson().frase}}\n- Interpretación: {{$('expert-process query').first().json.pulso.parseJson().interpretacion}}\n\n### Transcripción RADAR:\n{{ $('Extraer Transcripcion').first().json.text }}\n\n### Feedback:\n{{ $('Extraer Feedback').first().json.text }}\n\n### Línea de Tiempo:\n{{ $('expert-process query').first().json.timeline }}\n\n## OUTPUT JSON:\n\n```json\n{\n  \"seccion_0_portada\": {\n    \"experto_nombre\": \"string\",\n    \"fecha_entrevista\": \"string\",\n    \"entrevistador\": \"string\",\n    \"fuentes\": [\"string\"],\n    \"objetivo_radar\": \"Identificar y priorizar sectores/tipos de empresa donde el experto aporta mayor valor\",\n    \"contacto\": \"string\",\n    \"conflictos_interes\": \"string\"\n  },\n  \"seccion_1_resumen_ejecutivo\": {\n    \"parrafo_intro\": \"string (250-300 palabras)\",\n    \"top3_sectores\": [\n      {\n        \"sector_ciiu\": \"string\",\n        \"tipo_empresa\": \"string\",\n        \"quick_wins\": [\"string\"]\n      }\n    ],\n    \"propuesta_valor\": \"string\",\n    \"formatos_sugeridos\": [\"string\"]\n  },\n  \"seccion_2_perfil\": {\n    \"fortalezas_clave\": \"string\",\n    \"motores_antifragiles_demostrados\": [\"string\"],\n    \"logros_evidencias\": \"string\",\n    \"sectores_traccion\": [\"string\"],\n    \"notas_relevantes\": \"string\"\n  }\n}\n```\n\nREGLAS:\n1. Quick wins deben ser específicos y en 30-60 días\n2. Motores antifrágiles SOLO si hay evidencia\n3. Propuesta de valor en lenguaje del cliente\n4. NO inventes información",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cca970d5-1045-4af8-8e43-cd4a2e59032b",
+      "name": "Configurar Prompts OLD",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -1888,
+        -1472
+      ],
+      "disabled": true,
+      "notes": "Edita aquí los prompts de cada bloque"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1p-mqt-f30OYl4Iir-TqLXfQvKG9QCwhK",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "={{ $fromAI('Sheet', ``, 'string') }}"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -752,
+        -496
+      ],
+      "id": "0a8eccd6-81d1-4d72-974d-aa119d0e1856",
+      "name": "CIIU sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tIhTWM2233XhsHb4",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -1424,
+        -464
+      ],
+      "id": "97acf1d7-ca9a-4764-aaea-e16dea353d4c",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "t5aMcxnE3fI0aJBL",
+          "name": "OpenRouter account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "NGjyMI2AmwkoCk0L"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-10-07T22:58:33.871Z",
+      "updatedAt": "2025-10-07T22:58:33.871Z",
+      "role": "workflow:owner",
+      "workflowId": "PzNImobsrnv0iAW6",
+      "projectId": "Gno2MGQk3GvSkWE8",
+      "project": {
+        "createdAt": "2025-07-01T19:23:18.030Z",
+        "updatedAt": "2025-07-01T19:25:19.375Z",
+        "id": "Gno2MGQk3GvSkWE8",
+        "name": "andres mora <anlemoca.pm@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "projectRelations": [
+          {
+            "createdAt": "2025-07-01T19:23:18.030Z",
+            "updatedAt": "2025-07-01T19:23:18.030Z",
+            "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+            "projectId": "Gno2MGQk3GvSkWE8",
+            "user": {
+              "createdAt": "2025-07-01T19:23:15.406Z",
+              "updatedAt": "2025-11-04T16:05:23.106Z",
+              "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+              "email": "anlemoca.pm@gmail.com",
+              "firstName": "andres",
+              "lastName": "mora",
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2025-07-01T19:25:43.818Z",
+                "personalization_survey_n8n_version": "1.100.1",
+                "companyType": "personal",
+                "reportedSource": "friend"
+              },
+              "settings": {
+                "userActivated": true,
+                "easyAIWorkflowOnboarded": true,
+                "firstSuccessfulWorkflowId": "dr3hAKohy1Stv249",
+                "userActivatedAt": 1757456295739,
+                "npsSurvey": {
+                  "responded": true,
+                  "lastShownAt": 1753145911485
+                }
+              },
+              "disabled": false,
+              "mfaEnabled": false,
+              "lastActiveAt": "2025-11-04",
+              "isPending": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-10-31T17:27:43.186Z",
+  "versionId": "64560a50-c96e-43e3-91fb-bc60914dac97"
+}
