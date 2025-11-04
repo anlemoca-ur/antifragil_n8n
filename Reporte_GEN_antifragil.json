@@ -1,0 +1,364 @@
+{
+  "active": true,
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "CodeId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "find_ID_process": {
+      "main": [
+        [
+          {
+            "node": "copia informe GEN antifragil",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "copia informe GEN antifragil": {
+      "main": [
+        [
+          {
+            "node": "Update_GEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "CodeId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CodeId": {
+      "main": [
+        [
+          {
+            "node": "find_ID_process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-20T18:33:53.420Z",
+  "id": "nRMxVqkMdzmWkg7k",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Reporte_GEN_antifragil",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Generate Perfil Ejecutivo",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "expert_id",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ef92abd8-faf6-49af-b315-e1ac2a5b208a",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "position": [
+        -2368,
+        448
+      ],
+      "webhookId": "916bcc20-f3cd-481e-9f25-1cd937c968f4",
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "content": "Create a expert specific version of the letter and create a doc version of it. Store this on the Google Drive",
+        "height": 496,
+        "width": 1312
+      },
+      "id": "6c9ee49a-7d29-42d1-ba44-245a931615a8",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2512,
+        144
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Join experts and process_expert tables\nSELECT \n    e.id as expert_id,\n    e.nombre,\n    pe.pasos->4->>'datos' as gen\nFROM \n    experts e\nJOIN \n    process_expert pe ON pe.expert_id = e.id\nWHERE \n    e.id = '{{$json.expertid }}'::uuid;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1904,
+        224
+      ],
+      "id": "b19f7583-b17c-4bff-8ff8-afd370eeee3a",
+      "name": "find_ID_process",
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "value": "1VbonxmP9O7ZS5ote_mdUAWAPVmc9tiyb-2iEWfXNXaU",
+          "mode": "id"
+        },
+        "name": "=GEN antifragil - {{ $json.nombre }}",
+        "options": {
+          "copyRequiresWriterPermission": false,
+          "description": ""
+        }
+      },
+      "id": "d0c70153-58d5-4596-aa4f-8246745f51df",
+      "name": "copia informe GEN antifragil",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        -1696,
+        224
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "HhDiD9KyplQpOpXo",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $('copia informe GEN antifragil').item.json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "replaceAll",
+              "text": "[nombre]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().nombre }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[titulo]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().titulo }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[perfil_antifragil]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().perfil_antifragil }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[trayectoria]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().trayectoria }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[capacidades_antifragiles]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().capacidades_antifragiles }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[puntaje_general]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().puntaje_general.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[nivel_general]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().nivel_general }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[evolucion_activa_puntaje]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().evolucion_activa_puntaje.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[adaptacion_proactiva_puntaje]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().adaptacion_proactiva_puntaje.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[agilidad_emocional_puntaje]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().agilidad_emocional_puntaje.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[destructividad_consciente_puntaje]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().destructividad_consciente_puntaje.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[puntaje_total]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().puntaje_total.toString() }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[nivel_presencia_ejecutiva]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().nivel_presencia_ejecutiva }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[observaciones_complementarias]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().observaciones_complementarias }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[patron]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().patron }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[frase]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().frase }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[interpretacion]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().interpretacion }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[resumen_antifra]",
+              "replaceText": "={{ $('find_ID_process').item.json.gen.parseJson().resumen_antifra }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        -1456,
+        224
+      ],
+      "id": "ca7bdaf0-6cef-4cbf-8341-ad4f4c0164a2",
+      "name": "Update_GEN",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "paaBCUaj0T4M0l5P",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "/ReporteGEN",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -2368,
+        224
+      ],
+      "id": "416232f1-20ec-4413-b923-b3603cd05f38",
+      "name": "Webhook",
+      "webhookId": "f82e36fb-13e9-4e38-9c84-056b6c43689a"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Detectar origen y expertId\nconst expertId = items[0]?.json?.expert_id || items[0]?.json?.body?.expert_id || null;\n\nreturn {\n  json: {\n    expertid: expertId\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2112,
+        224
+      ],
+      "id": "31936c4e-efda-4679-a6db-1e27d6279946",
+      "name": "CodeId"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-20T18:33:53.420Z",
+      "updatedAt": "2025-08-20T18:33:53.420Z",
+      "role": "workflow:owner",
+      "workflowId": "nRMxVqkMdzmWkg7k",
+      "projectId": "Gno2MGQk3GvSkWE8",
+      "project": {
+        "createdAt": "2025-07-01T19:23:18.030Z",
+        "updatedAt": "2025-07-01T19:25:19.375Z",
+        "id": "Gno2MGQk3GvSkWE8",
+        "name": "andres mora <anlemoca.pm@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "projectRelations": [
+          {
+            "createdAt": "2025-07-01T19:23:18.030Z",
+            "updatedAt": "2025-07-01T19:23:18.030Z",
+            "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+            "projectId": "Gno2MGQk3GvSkWE8",
+            "user": {
+              "createdAt": "2025-07-01T19:23:15.406Z",
+              "updatedAt": "2025-11-04T16:05:23.106Z",
+              "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+              "email": "anlemoca.pm@gmail.com",
+              "firstName": "andres",
+              "lastName": "mora",
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2025-07-01T19:25:43.818Z",
+                "personalization_survey_n8n_version": "1.100.1",
+                "companyType": "personal",
+                "reportedSource": "friend"
+              },
+              "settings": {
+                "userActivated": true,
+                "easyAIWorkflowOnboarded": true,
+                "firstSuccessfulWorkflowId": "dr3hAKohy1Stv249",
+                "userActivatedAt": 1757456295739,
+                "npsSurvey": {
+                  "responded": true,
+                  "lastShownAt": 1753145911485
+                }
+              },
+              "disabled": false,
+              "mfaEnabled": false,
+              "lastActiveAt": "2025-11-04",
+              "isPending": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-09-16T20:14:55.342Z",
+  "versionId": "cca78d0a-5753-40ba-b4b3-59a693ee655d"
+}
