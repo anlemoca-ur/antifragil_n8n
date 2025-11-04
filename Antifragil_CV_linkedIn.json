@@ -1,0 +1,862 @@
+{
+  "active": true,
+  "connections": {
+    "OpenAI": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Prep_PDFs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "res_antifragil",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "User&Profile": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Expert",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Profile": {
+      "main": [
+        [
+          {
+            "node": "Insert_profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "res_antifragil": {
+      "main": [
+        [
+          {
+            "node": "upd_profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "User&Profile",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert_expert": {
+      "main": [
+        []
+      ]
+    },
+    "Insert_profile": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "upd_profile": {
+      "main": [
+        [
+          {
+            "node": "res_process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "res_process": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update_process": {
+      "main": [
+        []
+      ]
+    },
+    "Expert": {
+      "main": [
+        [
+          {
+            "node": "Update_expert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Cv_LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor CV": {
+      "main": [
+        [
+          {
+            "node": "MergeExp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MergeExp": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Prep_PDFs": {
+      "main": [
+        [
+          {
+            "node": "User&Profile",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Information Extractor CV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "update_process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update_expert": {
+      "main": [
+        [
+          {
+            "node": "Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor CV",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-01T19:26:38.028Z",
+  "id": "lvPeEEghXdCcziYT",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Antifragil_CV_linkedIn",
+  "nodes": [
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "id": "30ebe1ac-972c-4aa2-ba25-b542d14801d0",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        96,
+        512
+      ],
+      "typeVersion": 1.2,
+      "credentials": {
+        "openAiApi": {
+          "id": "QHcEKyQfjZXrcwHF",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "The essential information for evaluating the candidate is collected",
+        "height": 992,
+        "width": 520
+      },
+      "id": "630ea5b3-baab-4fb3-a50e-88e4f315a80b",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -624,
+        -448
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "The CV is uploaded to Google Drive and converted so that it can be processed\n",
+        "height": 592,
+        "width": 844
+      },
+      "id": "4d3e7909-dbfb-49f0-a0dd-57c1614890f7",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1648,
+        -448
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": "// Detectar origen y expertId\nconst expertId = items[0]?.json?.UID || items[0]?.json?.body?.expert_id || null;\n\nlet results = [];\nfor (let item of items) {\n    if (item.binary) {\n        for (let key in item.binary) {\n            let binaryKey = key.replace(/\\s/g, '_');\n            results.push({\n                json: {\n                    fileName: binaryKey,\n                    expertId: expertId\n                },\n                binary: {\n                    [binaryKey]: item.binary[key]\n                }\n            });\n        }\n    }\n}\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1280,
+        -112
+      ],
+      "id": "64fcd869-7609-4787-ba4d-215eb50455af",
+      "name": "Code",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "={{ $json.fileName }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -976,
+        -352
+      ],
+      "id": "e9f07431-88d5-4a92-bc77-5da50eaca380",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analiza el siguiente perfil profesional y la tabla de habilidades blandas antifrágiles. Genera un resumen profesional que demuestre cómo este experto encarna un liderazgo antifrágil:\n\n**PERFIL DEL EXPERTO:**\n{{ $('Extract from File').first().json.text }}\n{{ $('Extract from File').last().json.text }}\n\n**TABLA DE HABILIDADES ANTIFRÁGILES:**\n```json\n[\n  {\n    \\\"habilidad\\\": \\\"Comunicación efectiva\\\",\n    \\\"aplicacion\\\": \\\"Guiar equipos o clientes en momentos críticos con mensajes claros y empáticos\\\",\n    \\\"herramienta_taleb\\\": \\\"Cultura de Error y Transparencia\\\",\n    \\\"dimension_antifragilidad\\\": \\\"Agilidad emocional\\\",\n    \\\"criterio_filtro\\\": \\\"Red de Relaciones y Colaboración\\\"\n  },\n  {\n    \\\"habilidad\\\": \\\"Adaptabilidad proactiva\\\",\n    \\\"aplicacion\\\": \\\"Reformular su propuesta de valor cuando el mercado cambia, sin perder coherencia\\\",\n    \\\"herramienta_taleb\\\": \\\"Redundancia Inteligente\\\",\n    \\\"dimension_antifragilidad\\\": \\\"Adaptación proactiva\\\",\n    \\\"criterio_filtro\\\": \\\"Mentalidad y Adaptabilidad\\\"\n  },\n  {\n    \\\"habilidad\\\": \\\"Pensamiento crítico\\\",\n    \\\"aplicacion\\\": \\\"Evaluar nuevas industrias para diversificación aplicando experiencia acumulada\\\",\n    \\\"herramienta_taleb\\\": \\\"Vía Negativa\\\",\n    \\\"dimension_antifragilidad\\\": \\\"Destructividad consciente\\\",\n    \\\"criterio_filtro\\\": \\\"Pensamiento Estratégico y Sistémico\\\"\n  },\n  {\n    \\\"habilidad\\\": \\\"Tolerancia a la ambigüedad\\\",\n    \\\"aplicacion\\\": \\\"Liderar conversaciones estratégicas con clientes sin necesidad de certeza absoluta\\\",\n    \\\"herramienta_taleb\\\": \\\"Estrategia Barbell\\\",\n    \\\"dimension_antifragilidad\\\": \\\"Adaptación proactiva\\\",\n    \\\"criterio_filtro\\\": \\\"Mentalidad y Adaptabilidad\\\"\n  },\n  {\n    \\\"habilidad\\\": \\\"Curiosidad estratégica\\\",\n    \\\"aplicacion\\\": \\\"Identificar tendencias en su sector para anticipar nuevas oportunidades\\\",\n    \\\"herramienta_taleb\\\": \\\"Opcionalidad\\\",\n    \\\"dimension_antifragilidad\\\": \\\"Evolución activa\\\",\n    \\\"criterio_filtro\\\": \\\"Mentalidad y Adaptabilidad\\\"\n  },\n  {\n    \\\"habilidad\\\": \\\"Resiliencia transformativa\\\",\n    \\\"aplicacion\\\": \\\"Rediseñar su portafolio luego de una pérdida de cliente o crisis profesional\\\",\n    \\\"herramienta_taleb\\\": \\\"Hormesis\\\",\n    \\\"dimension_antifragilidad\\\": \\\"Evolución activa\\\",\n    \\\"criterio_filtro\\\": \\\"Resiliencia y Capacidad de Aprendizaje\\\"\n  },\n  {\n    \\\"habilidad\\\": \\\"Colaboración flexible\\\",\n    \\\"aplicacion\\\": \\\"Unirse a otros consultores o aliados en modelos colaborativos sin rigidez\\\",\n    \\\"herramienta_taleb\\\": \\\"Descentralización / Estructura Celular\\\",\n    \\\"dimension_antifragilidad\\\": \\\"Adaptación proactiva\\\",\n    \\\"criterio_filtro\\\": \\\"Red de Relaciones y Colaboración\\\"\n  },\n  {\n    \\\"habilidad\\\": \\\"Creatividad pragmática\\\",\n    \\\"aplicacion\\\": \\\"Contribuir a identificar marcos o metodologías propias que resuelvan problemas complejos\\\",\n    \\\"herramienta_taleb\\\": \\\"Convexidad de Payoff\\\",\n    \\\"dimension_antifragilidad\\\": \\\"Destructividad consciente\\\",\n    \\\"criterio_filtro\\\": \\\"Orientación a Resultados y Valor Compartido\\\"\n  },\n  {\n    \\\"habilidad\\\": \\\"Proactividad\\\",\n    \\\"aplicacion\\\": \\\"Diseñar una oferta consultiva antes de tener clientes confirmados\\\",\n    \\\"herramienta_taleb\\\": \\\"Tinkering & Pequeños Ensayos\\\",\n    \\\"dimension_antifragilidad\\\": \\\"Evolución activa\\\",\n    \\\"criterio_filtro\\\": \\\"Orientación a Resultados y Valor Compartido\\\"\n  },\n  {\n    \\\"habilidad\\\": \\\"Liderazgo consciente\\\",\n    \\\"aplicacion\\\": \\\"Revisar patrones propios de pensamiento o sesgos que limitan su crecimiento\\\",\n    \\\"herramienta_taleb\\\": \\\"Skin in the game\\\",\n    \\\"dimension_antifragilidad\\\": \\\"Destructividad consciente\\\",\n    \\\"criterio_filtro\\\": \\\"Propuesta de Valor Única\\\"\n  }\n]\n```\n**OBJETIVO:** Crear un resumen profesional que demuestre cómo este experto aplica principios antifrágiles en su liderazgo, mencionando 3-4 habilidades clave y cómo estas le permiten prosperar en entornos volátiles e inciertos, que cada indicio venga acompañado de la observación concreta.",
+        "options": {
+          "systemMessage": "=Actua como experto en talento humano especializado en perfiles ejecutivos y senior, con enfoque en antifragilidad. A partir del analisis del CV o perfil validado del experto (nunca inventes ni agregues datos no comprobados), redacta un Perfil Ejecutivo estructurado con las siguientes secciones y estilo:\n\n1. Resumen general del perfil\nRedacta una sintesis profesional, estrategica y clara de su trayectoria, sin mencionar nombre propio ni nombres de empresas. Destaca su experiencia total, los tipos de cargos de liderazgo ocupados, su evolucion profesional, y cualquier senal de antifragilidad visible.\nEnfatiza su capacidad de adaptacion, toma de decisiones, vision de largo plazo o habilidades para liderar en contextos complejos. Usa un tono empatico y profesional.\nEl resumen debe reflejar como este perfil se proyecta como un posible mentor o consejero antifragil.\n\n2. Trayectoria y Expertise Clave\nEnumera con vinetas los elementos mas importantes de su trayectoria profesional. Incluye roles de liderazgo, areas de especialidad, tipos de proyectos que ha liderado, sectores donde tiene experiencia, y su valor como estratega o integrador de equipos, asociar la experiencia clave a temas de antifragilidad, como aporta como experto senior al ecosistema de mi pymes y que lo hace relevante.\n\n3. Indicadores de Antifragilidad\nInterpreta su experiencia desde el marco antifragil de Nassim Taleb. Identifica y argumenta senales concretas de al menos 4 a 6 de las siguientes herramientas:\nRedundancia Inteligente\nTinkering & Pequenos Ensayos\nVia Negativa\nEstrategia Barbell\nHormesis\nCultura de Error y Transparencia\nDescentralizacion / Estructura Celular\nOpcionalidad\nSkin in the game\nConvexidad de Payoff\nUsa ejemplos basados en sus funciones, logros, tipo de decisiones tomadas o entornos donde ha trabajado. No inventes. No exageres.\n\n4. Valor estrategico para la Red de Expertos Antifragiles\nDescribe claramente como este perfil puede aportar a MiPymes u organizaciones en transformacion: mentoria, rediseno operativo, acompanamiento de lideres, desarrollo organizacional, etc.\nHaz enfasis en su rol como consejero, no como ejecutor. Refuerza su capacidad de guiar a otros desde su experiencia y madurez profesional.\n\n5. Recomendacion\nSugiere acciones para potenciar su perfil: como fortalecer su narrativa, posibles lineas de mentoria o visibilidad, posicionamiento en nichos estrategicos, preparacion para proximos pasos.\n\n6. Resumen del perfil antifragil\nAdemas genera respuesta a estas 13 variables clave:\nOcupacion actual\nProfesion\nNivel educativo\nAnos de experiencia profesional\nSectores / Industrias\nAnos en cargos ejecutivos\nAnos en cargos Gerente General / Socio\nAnos como docente\nAnos como emprendedor\nPaises de experiencia\nHabilidades blandas\nSenales de Antifragilidad\nPerfil Senior & calificacion (1–10)\n\n**IMPORTANTE: Responde UNICAMENTE con un objeto JSON valido, no como string, con la siguiente estructura exacta:\n\n{\n  \"resumen_antifragil\":\"[Tu resumen profesional aqui]\",\n  \"trayectoria\":\"[la Trayectoria y Expertise Clave]\",\n  \"IndicadoresAF\":\"[los Indicadores de Antifragilidad]\",\n  \"valor_estrategico\":\"[el Valor estrategico para la Red de Expertos Antifragiles]\",\n  \"recomendacion\":\"[la recomendacion]\",\n  \"habilidades_identificadas\": [\"habilidad1\", \"habilidad2\", \"habilidad3\", \"habilidad4\"],\n  \"dimension_principal\": \"Nombre de la dimension antifragil principal asociada al perfil\"\n}\nNo envies texto adicional ni explicaciones fuera del JSON.\n\n\nPETICIoN NEGATIVA:\n- PROHIBIDO: No utilizar las palabras \"resiliente\" o \"resiliencia\" en ninguna parte del informe. Usa terminos alternativos como: adaptabilidad, fortaleza, capacidad de recuperacion, tenacidad, flexibilidad, robustez, o antifragilidad, no utilizar resiliencia transformativa.\n\nNo devuelvas el JSON dentro de comillas. Devuelve el objeto como JSON plano, no como string. NO uses barras invertidas ni \\n.\n\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        96,
+        288
+      ],
+      "id": "7a5cc52b-b16c-419d-b7a9-1524c27727ca",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.cleanText }}",
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"nombre_completo\": \"string\",\n  \"tipo_identificacion\": \"string\",\n  \"numero_identificacion\": \"string\",\n  \"fecha_nacimiento\": \"string\",\n  \"genero\": \"string\",\n  \"pais_residencia\": \"string\",\n  \"telefono\": \"string\",\n  \"correo_electronico\": \"string\",\n  \"profesion\": \"string\",\n  \"nivel_educativo\": \"string\",\n  \"ocupacion_actual\": \"string\",\n  \"años_experiencia\": \"number\",\n  \"años_gerencia\": \"number\",\n  \"años_docencia\": \"number\",\n  \"años_emprendedor\": \"number\",\n  \"años_cargo_ejecutivo\": \"number\",\n  \"sectores\": [\"string\"],\n  \"paises_experiencia\": [\"string\"],\n  \"habilidades_blandas\": [\"string\"],\n  \"senales_antifragilidad\": [\"string\"],\n  \"perfil_senior\": \"string\",\n  \"calificacion_senior\": \"number\"\n}",
+        "options": {
+          "systemPromptTemplate": "=Eres un experto en reclutamiento y selección con sistema de gestión de procesos (ATS). Extrae la información personal y profesional más precisa del documento.\n\ndevuélvela en formato JSON estructurado usando exactamente estos campos (en español):\n\n    nombre_completo (string)\n\n    tipo_documento (string, si está disponible)\n\n    numero_documento (string, si está disponible)\n\n    fecha_nacimiento (string, formato ISO o similar)\n\n    genero (string)\n\n    pais_residencia (string)\n\n    telefono (string)\n\n    correo_electronico (string)\n\n    profesion (string)\n\n    nivel_educativo (string)\n\n    ocupacion_actual (string)\n\n    años_experiencia_profesional (número)\n\n    años_en_direccion_general (número)\n\n    años_como_emprendedor (número)\n\n    años_como_docente (número)\n\n    años_cargo_ejecutivo (numero)\n\n    sectores_o_industrias (lista de strings)\n\n    paises_de_experiencia (lista de strings)\n\n    habilidades_blandas (lista de strings)\n\n    senales_antifragilidad (lista de strings)\n\n    senior (booleano o string \"Sí\"/\"No\")\n\n    calificacion (número del 1 al 10)\n\n## RESTRICCIONES\nAsiá no es un pais, no utilizarlo, matriz de riesgos financieros no es una señal de Antifragilidad, no utilizarla\n\nPrioriza la información del CV completo y complementa con LinkedIn si es útil.\n\nDevuelve solo el JSON con esos campos y no agregues ningún otro dato ni texto adicional."
+        }
+      },
+      "id": "d77020b0-e4c1-4967-8d3d-6b97e62ad3e3",
+      "name": "User&Profile",
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "position": [
+        -512,
+        -384
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Summary of relevant information useful for classifying the candidate",
+        "height": 780,
+        "width": 936
+      },
+      "id": "c41d16aa-eb12-4f08-9471-c48512e20395",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -16,
+        192
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": "const cvRaw = items[0].json.output;\nconst linkedinRaw = items[1].json.output;\n\n// Mapeo de campos esperados en el esquema a los posibles nombres variables que llegan\nconst fieldMap = {\n  nombre_completo: [\"nombre_completo\", \"nombre completo\", \"full name\", \"nombre\"],\n  tipo_documento: [\"tipo_identificacion\", \"tipo_documento\", \"tipo y número de documento de identidad\"],\n  numero_documento: [\"numero_identificacion\", \"numero_documento\", \"numero de documento\", \"tipo y número de documento de identidad\"],\n  fecha_nacimiento: [\"fecha_nacimiento\", \"fecha de nacimiento\", \"birth date\"],\n  genero: [\"sexo\", \"genero\", \"gender\"],\n  pais_residencia: [\"pais_residencia\", \"país de residencia\", \"country of residence\"],\n  numero_telefono: [\"telefono\", \"numero_telefono\", \"número de teléfono\", \"phone number\"],\n  correo_electronico: [\"correo\", \"correo_electronico\", \"correo electrónico\", \"email\", \"e-mail\"],\n  profesion: [\"profesion\", \"profesión\", \"profession\"],\n  nivel_educativo: [\"nivel_educativo\", \"nivel educativo\", \"education level\"],\n  ocupacion_actual: [\"ocupacion_actual\", \"ocupación actual\", \"current occupation\"],\n  años_experiencia: [\"años_experiencia_profesional\", \"años de experiencia profesional\", \"total years of professional experience\"],\n  años_ejecutivos: [\"años_cargo_ejecutivo\", \"años_en_puestos_ejecutivos\", \"años en puestos ejecutivos\", \"years in executive roles\"],\n  años_gerencia: [\"años_en_direccion_general\", \"años en dirección general\", \"years in general management\"],\n  años_como_docente: [\"años_como_docente\", \"años como docente\", \"years as teacher\"],\n  años_como_emprendedor: [\"años_como_emprendedor\", \"años como emprendedor\", \"years as entrepreneur\"],\n  sectores_o_industrias: [\"sectores\", \"sectores_o_industrias\", \"sectores o industrias\", \"sectors or industries\"],\n  paises_de_experiencia: [\"paises_experiencia\", \"países de experiencia\", \"countries of experience\", \"paises_de_experiencia\"],\n  habilidades_blandas: [\"habilidades_blandas\", \"habilidades blandas\", \"soft skills\"],\n  senales_antifragilidad: [\"senales_de_antifragilidad\", \"señales de antifragilidad\", \"antifragility signals\", \"senales_antifragilidad\"],\n  senior: [\"perfil_senior\", \"senior\", \"perfil sénior\", \"profile senior\"],\n  calificacion: [\"calificacion_senior\", \"calificacion\", \"calificación\", \"rating\"]\n};\n\n// Función para normalizar un objeto según fieldMap\nfunction normalizeFields(rawObj) {\n  const norm = {};\n  for (const [key, variants] of Object.entries(fieldMap)) {\n    for (const variant of variants) {\n      if (rawObj.hasOwnProperty(variant)) {\n        norm[key] = rawObj[variant];\n        break;\n      }\n    }\n    // Si no existe, queda undefined\n  }\n  return norm;\n}\n\nconst cv = normalizeFields(cvRaw);\nconst linkedin = normalizeFields(linkedinRaw);\n\nfunction pickBest(field1, field2) {\n  if (field1 == null) field1 = \"\";\n  if (field2 == null) field2 = \"\";\n  \n  if (field1 !== null && field1 !== undefined && field1 !== '') // return field1;\n  {\n      if (field1.length > field2.length) {\n        return field1;\n      } else {\n        return field2;\n      }\n  } else {\n    return field2;\n  }\n}\n\nfunction combineArrays(arr1, arr2) {\n  if (typeof arr1 === 'string' && arr1.trim() !== '') arr1 = [arr1];\n  else if (!Array.isArray(arr1)) arr1 = [];\n  if (typeof arr2 === 'string' && arr2.trim() !== '') arr2 = [arr2];\n  else if (!Array.isArray(arr2)) arr2 = [];\n\n  const combined = [...arr1, ...arr2];\n  const lowerUniq = [...new Set(combined.map(s => s.toString().toLowerCase()))];\n  return lowerUniq.map(s => s.charAt(0).toUpperCase() + s.slice(1));\n}\n\nfunction pickMaxOrText(a, b) {\n  const na = typeof a === 'number' ? a : 0;\n  const nb = typeof b === 'number' ? b : 0;\n  if (na || nb) return Math.max(na, nb);\n  return pickBest(a, b);\n}\n\nconst combined = {};\n\ncombined[\"nombre_completo\"] = pickBest(cv[\"nombre_completo\"], linkedin[\"nombre_completo\"]);\ncombined[\"tipo_documento\"] = pickBest(cv[\"tipo_documento\"], linkedin[\"tipo_documento\"]);\ncombined[\"numero_documento\"] = pickBest(cv[\"numero_documento\"], linkedin[\"numero_documento\"]);\ncombined[\"fecha_nacimiento\"] = pickBest(cv[\"fecha_nacimiento\"], linkedin[\"fecha_nacimiento\"]);\ncombined[\"genero\"] = pickBest(cv[\"genero\"], linkedin[\"genero\"]);\ncombined[\"pais_residencia\"] = pickBest(cv[\"pais_residencia\"], linkedin[\"pais_residencia\"]);\ncombined[\"numero_telefono\"] = pickBest(cv[\"numero_telefono\"], linkedin[\"numero_telefono\"]);\n\nconst emails = new Set();\nif (cv[\"correo_electronico\"]) {\n  if (Array.isArray(cv[\"correo_electronico\"])) cv[\"correo_electronico\"].forEach(e => emails.add(e));\n  else emails.add(cv[\"correo_electronico\"]);\n}\nif (linkedin[\"correo_electronico\"]) {\n  if (Array.isArray(linkedin[\"correo_electronico\"])) linkedin[\"correo_electronico\"].forEach(e => emails.add(e));\n  else emails.add(linkedin[\"correo_electronico\"]);\n}\ncombined[\"correo_electronico\"] = Array.from(emails);\n\ncombined[\"profesion\"] = combineArrays(cv[\"profesion\"], linkedin[\"profesion\"]);\ncombined[\"nivel_educativo\"] = combineArrays(cv[\"nivel_educativo\"], linkedin[\"nivel_educativo\"]);\ncombined[\"ocupacion_actual\"] = combineArrays(cv[\"ocupacion_actual\"], linkedin[\"ocupacion_actual\"]);\n\n// CORREGIDO: Usar los nombres de campos normalizados\ncombined[\"años_experiencia\"] = pickMaxOrText(cv[\"años_experiencia\"], linkedin[\"años_experiencia\"]);\ncombined[\"años_cargos_ejecutivos\"] = pickMaxOrText(cv[\"años_ejecutivos\"], linkedin[\"años_ejecutivos\"]);\ncombined[\"años_en_gerencia\"] = pickMaxOrText(cv[\"años_gerencia\"], linkedin[\"años_gerencia\"]);\ncombined[\"años_como_docente\"] = pickMaxOrText(cv[\"años_como_docente\"], linkedin[\"años_como_docente\"]);\ncombined[\"años_como_emprendedor\"] = pickMaxOrText(cv[\"años_como_emprendedor\"], linkedin[\"años_como_emprendedor\"]);\n\ncombined[\"sectores_o_industrias\"] = combineArrays(cv[\"sectores_o_industrias\"], linkedin[\"sectores_o_industrias\"]);\ncombined[\"paises_de_experiencia\"] = combineArrays(cv[\"paises_de_experiencia\"], linkedin[\"paises_de_experiencia\"]);\n\ncombined[\"habilidades_blandas\"] = combineArrays(cv[\"habilidades_blandas\"], linkedin[\"habilidades_blandas\"]);\ncombined[\"senales_antifragilidad\"] = combineArrays(cv[\"senales_antifragilidad\"], linkedin[\"senales_antifragilidad\"]);\n\ncombined[\"senior\"] = pickBest(cv[\"senior\"], linkedin[\"senior\"]);\ncombined[\"calificacion\"] = pickBest(cv[\"calificacion\"], linkedin[\"calificacion\"]);\n\n// Construir documentos Mongo\nconst userDoc = {\n  nombre: combined[\"nombre_completo\"] || '',\n  tipo_identificacion: combined[\"tipo_documento\"] || null,\n  num_identificacion: combined[\"numero_documento\"] || null,\n  fecha_nacimiento: combined[\"fecha_nacimiento\"] || null,\n  genero: combined[\"genero\"] || '',\n  pais_residencia: combined[\"pais_residencia\"] || '',\n  telefono: combined[\"numero_telefono\"] || '',\n  correo_electronico: combined[\"correo_electronico\"][0] || '',\n  correos_alternativos: combined[\"correo_electronico\"].slice(1) || [],\n  fecha_creacion: $now.toFormat('yyyy-MM-dd HH:mm'),\n  tipo_perfil: [\"experto\"]\n};\n\nconst profileDoc = {\n  profesion: combined[\"profesion\"].join(\"; \") || null,\n  nivel_educativo: combined[\"nivel_educativo\"].join(\"; \") || null,\n  ocupacion_actual: combined[\"ocupacion_actual\"].join(\"; \") || null,\n  años_experiencia: combined[\"años_experiencia\"] || '0',\n  años_gerencia: combined[\"años_en_gerencia\"] || '0',\n  años_ejecutivos: combined[\"años_cargos_ejecutivos\"] || '0',\n  años_docencia: combined[\"años_como_docente\"] || '0',\n  años_emprendedor: combined[\"años_como_emprendedor\"] || '0',\n  sectores: combined[\"sectores_o_industrias\"] || [],\n  paises_experiencia: combined[\"paises_de_experiencia\"] || [],\n  habilidades_blandas: combined[\"habilidades_blandas\"] || [],\n  senales_antifragilidad: combined[\"senales_antifragilidad\"] || [],\n  perfil_senior: combined[\"senior\"] ? \"Sí\" : \"No\",\n  calificacion_senior: combined[\"calificacion\"] || '0',\n  resumen_antifragil: null, // lo llenará luego el AI Agent\n  habilidades_identificadas: null, // lo llenará luego el AI Agent\n  dimension_principal: null // lo llenará luego el AI Agent\n};\n\nreturn [\n  {\n    json: {\n      user: userDoc,\n      profile: profileDoc\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        48,
+        -384
+      ],
+      "id": "29d7b9e5-d973-4cc1-9676-e7958e899823",
+      "name": "Merge",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "jsCode": "// Para todos los items - profiles con usuario_id\nconst profiles = [];\n// Obtener el usuario_id del nodo insert_expert\nconst expertid = $('Update_expert').first().json.id;\nconst userid = $('Update_expert').first().json.uid_id;\n\nfor (const item of $input.all()) {\n  if (item.json.profile) {\n    const profileData = item.json.profile;\n    \n    // Genera la lista de campos dinámicamente (incluyendo usuario_id)\n    const fieldsArray = Object.keys(profileData);\n    fieldsArray.push('expert_id');\n    // const fields = fieldsArray.join(',');\n    \n    profiles.push({ \n      json: {\n        expert_id: expertid,\n        user_id:userid,\n        ...profileData\n        // \"_dynamic_fields\": fields\n      }\n    });\n  }\n}\nreturn profiles;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        48,
+        -96
+      ],
+      "id": "8be365cb-3c32-441a-bcfe-d62e21735c16",
+      "name": "Profile"
+    },
+    {
+      "parameters": {
+        "content": "Summary of relevant information useful for classifying the candidate",
+        "height": 608,
+        "width": 940,
+        "color": 4
+      },
+      "id": "d18b6245-8c59-41bd-93a1-f5d0d0431fc2",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -16,
+        -480
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parsear string JSON\nconst rawOutput = items[0].json.output;\nconst parsed = JSON.parse(rawOutput);\n\n// Obtener el ID del perfil (desde el flujo o un nodo anterior)\nconst idPerfil = $('Insert_profile').first().json.id;\n\n// Construir el objeto JSON plano (sin updateFields)\nreturn [\n  {\n    json: {\n      id: idPerfil,\n      ...parsed  // Desestructurar los campos directamente\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        512,
+        288
+      ],
+      "id": "58aba4e5-c30f-4706-b454-eed8267855be",
+      "name": "res_antifragil"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "/recibirCVS",
+        "options": {
+          "binaryPropertyName": "CV_LinkedIn_PDF_",
+          "responseData": "JSON"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1600,
+        -224
+      ],
+      "id": "50e1478b-0e23-4a20-a4b2-f1f0c2354c90",
+      "name": "Webhook",
+      "webhookId": "c0c9f429-fccc-4c13-a061-3868d8e879ad"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {
+          "maxTokens": 2000,
+          "temperature": 0.1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -368,
+        -208
+      ],
+      "id": "9d0294be-28b2-46c9-b6be-120459975ac6",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "QHcEKyQfjZXrcwHF",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "experts",
+        "dataToSend": "autoMapInputData"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        640,
+        -160
+      ],
+      "id": "90877670-4015-4452-bdb2-a2e1d55cdc07",
+      "name": "Insert_expert",
+      "credentials": {
+        "supabaseApi": {
+          "id": "teNmZvpZr1p4pABN",
+          "name": "Supabase account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "tableId": "profiles",
+        "dataToSend": "autoMapInputData"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        384,
+        -96
+      ],
+      "id": "2ce9c377-a8d7-4e04-a759-f715307320c7",
+      "name": "Insert_profile",
+      "credentials": {
+        "supabaseApi": {
+          "id": "teNmZvpZr1p4pABN",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "profiles",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $json.id }}"
+            }
+          ]
+        },
+        "dataToSend": "autoMapInputData"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        736,
+        288
+      ],
+      "id": "5dcdb997-42e2-417a-8825-74220869469e",
+      "name": "upd_profile",
+      "credentials": {
+        "supabaseApi": {
+          "id": "teNmZvpZr1p4pABN",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener el ID del perfil (desde el flujo o un nodo anterior)\nconst idPerfil = $('upd_profile').first().json.expert_id;\n\nreturn [\n  {\n    json: {\n      id: idPerfil,\n      \"pasos.1.completado\": true,\n      \"pasos.1.fecha_completado\": new Date().toISOString(),\n      \"paso_actual\":2\n    }\n  }\n]"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        496,
+        496
+      ],
+      "id": "0b2bf8d2-deb8-431c-9a2d-fdf27e8fb572",
+      "name": "res_process"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE process_expert\nSET \n    pasos = jsonb_set(\n        jsonb_set(\n            jsonb_set(\n                pasos,\n                '{0,completado}',\n                '{{ $json[\"pasos.1.completado\"] ? \"true\" : \"false\" }}'::jsonb,\n                false\n            ),\n            '{0,fecha_completado}',\n            '\"{{ $json[\"pasos.1.fecha_completado\"] }}\"'::jsonb,\n            false\n        ),\n        '{0,datos}', \n        $${{ JSON.stringify($json.experiences) }}$$::jsonb,\n        false\n    ),\n    paso_actual = {{ $json[\"paso_actual\"] }}\nWHERE expert_id = '{{ $json[\"id\"] }}';",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        720,
+        736
+      ],
+      "id": "f8998b2c-5a25-4752-8067-e8b20ac52bfb",
+      "name": "update_process",
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Para todos los items - genera campos y datos\nconst users = [];\nfor (const item of $input.all()) {\n  if (item.json.user) {\n    const userData = item.json.user;\n    const autUID = $('Code').first().json.expertId;\n    \n    users.push({ \n      json: {\n        id : autUID,\n        ...userData\n        // _dynamic_fields: fields\n      }\n    });\n  }\n}\nreturn users;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        384,
+        -384
+      ],
+      "id": "5aa0231b-27a2-42ad-bb13-b42a2c9d41e3",
+      "name": "Expert"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo-16k",
+          "mode": "list",
+          "cachedResultName": "gpt-3.5-turbo-16k"
+        },
+        "options": {
+          "maxTokens": 2000,
+          "temperature": 0.1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -400,
+        320
+      ],
+      "id": "191276ce-763f-4c0b-8223-2f0f17f839ef",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "QHcEKyQfjZXrcwHF",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "Archivos CV",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "CV_LinkedIn_PDF_0",
+              "fieldType": "file",
+              "acceptFileTypes": ".pdf"
+            },
+            {
+              "fieldLabel": "CV_LinkedIn_PDF_1",
+              "fieldType": "file",
+              "acceptFileTypes": ".pdf"
+            },
+            {
+              "fieldLabel": "UID",
+              "placeholder": "1e1b5a52-5642-43f9-b26b-c136502564ee"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a6b47550-a4db-4813-bdc9-8fc523046516",
+      "name": "Cv_LinkedIn",
+      "type": "n8n-nodes-base.formTrigger",
+      "position": [
+        -1600,
+        0
+      ],
+      "webhookId": "744531be-a4a2-4af1-a067-3e6f47bab23a",
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "text": "={{ $('Prep_PDFs').item.json.cleanText }}",
+        "schemaType": "manual",
+        "inputSchema": "={\n  \"type\": \"object\",\n  \"properties\": {\n    \"source\": { \"type\": \"string\", \"description\": \"source cv or linkedin\" },\n     \"experiences\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"required\": [\"company\", \"role\", \"start_date\"],\n        \"properties\": {\n          \"company\": { \"type\": \"string\", \"description\": \"Nombre de la empresa u organización\" },\n          \"role\": { \"type\": \"string\", \"description\": \"Cargo principal\" },\n          \"location\": { \"type\": \"string\" },\n          \"start_date\": { \"type\": \"string\", \"description\": \"YYYY-MM o YYYY\" },\n          \"end_date\": { \"type\": \"string\", \"description\": \"YYYY-MM, YYYY o 'Present'\" },\n          \"employment_type\": { \"type\": \"string\", \"description\": \"Tiempo completo, Consultor, etc.\" },\n          \"achievements\": { \"type\": \"array\", \"items\": { \"type\": \"string\" } },\n          \"description\": { \"type\": \"string\" },\n          \"seniority\": { \"type\": \"string\", \"description\": \"Nivel (ej. Directora, Gerente, Miembro Junta)\" },\n          \"source_confidence\": { \"type\": \"number\", \"description\": \"0-1: confianza del LLM en esta entrada\" }\n        }\n      }\n    }\n  }\n}",
+        "options": {
+          "systemPromptTemplate": "=Extrae únicamente la experiencia laboral en español.\n- Normaliza fechas al formato YYYY-MM cuando sea posible; si no, YYYY.\n- Si el cargo o la empresa se repiten, separa por períodos distintos.\n- “Actualidad”, “Presente”, “Present” → usa \"Present\".\n- Llena achievements con bullets concretos (métricas, impacto).\n- Define source_confidence según claridad del texto (0–1).\n- No inventes: si no está, deja el campo vacío o no lo incluyas.\nDevuelve solo JSON que cumpla el schema."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.2,
+      "position": [
+        -512,
+        80
+      ],
+      "id": "b76f9445-f5d5-4400-946a-0184031421cc",
+      "name": "Information Extractor CV"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ---------- utilidades ----------\nfunction rmDiacritics(s=\"\"){ return s.normalize(\"NFD\").replace(/\\p{Diacritic}/gu,\"\"); }\nfunction normSpaces(s=\"\"){ return s.replace(/\\s+/g,\" \").trim(); }\nfunction asArray(v){ if(!v) return []; return Array.isArray(v) ? v.filter(Boolean) : [String(v)]; }\n\nfunction normDate(s) {\n  if (!s) return \"\";\n  const str = String(s).toLowerCase().trim();\n  if ([\"present\",\"actualidad\",\"presente\",\"actual\"].includes(str)) return \"Present\";\n  const m = str.match(/(19|20)\\d{2}([-/.](0[1-9]|1[0-2]))?/);\n  if (!m) return \"\";\n  return m[2] ? `${m[0].slice(0,7).replace(/[/.]/g,\"-\")}` : `${m[0].slice(0,4)}`;\n}\n\nfunction normCompanyGeneric(s=\"\"){\n  s = rmDiacritics(s.toLowerCase());\n  // quitar sufijos corporativos comunes sin listas por país\n  s = s.replace(/\\b(s\\.a\\.s?\\.?|sas|ltda\\.?|inc\\.?|llc|corp\\.?|holding|group|grupo|sa de cv|s\\.l\\.|sl|co\\.?ltd\\.?|s\\.a\\.|sa)\\b/gi, \" \");\n  s = s.replace(/[^\\p{L}\\p{N} ]/gu,\" \");\n  return normSpaces(s);\n}\nfunction normRole(s=\"\"){\n  s = rmDiacritics(s.toLowerCase());\n  s = s.replace(/[^\\p{L}\\p{N} ]/gu,\" \");\n  return normSpaces(s);\n}\nfunction tokens(s){\n  return new Set(normSpaces(s).split(\" \").filter(t=>t && t.length>1));\n}\nfunction jaccard(a,b){\n  const A = tokens(a), B = tokens(b);\n  if (A.size===0 || B.size===0) return 0;\n  let inter=0;\n  for (const t of A) if (B.has(t)) inter++;\n  return inter / (A.size + B.size - inter);\n}\nfunction ymToInt(ym){\n  if (!ym) return null;\n  if (ym===\"Present\") return 999912;\n  const [yStr,mStr] = ym.split(\"-\");\n  const y = parseInt(yStr,10);\n  const m = mStr ? parseInt(mStr,10) : 12;\n  if (isNaN(y)) return null;\n  return y*100 + (isNaN(m)?12:m);\n}\nfunction rangesOverlap(aStart,aEnd,bStart,bEnd){\n  const A1=ymToInt(aStart), A2=ymToInt(aEnd||\"Present\");\n  const B1=ymToInt(bStart), B2=ymToInt(bEnd||\"Present\");\n  if (A1==null || B1==null) return false;\n  return (Math.max(A1,B1) <= Math.min(A2,B2));\n}\n\n// ---------- recolectar ----------\nlet all = [];\nfor (const item of items){\n  const src = item.json.source || \"\"; // ahora viene del Set: \"cv\" o \"linkedin\"\n  const list = item.json.experiences || item.json.output?.experiences || [];\n  for (const e of list){\n    const x = { ...e };\n    x._source = src;\n    x.company = x.company?.trim() || \"\";\n    x.role = x.role?.trim() || \"\";\n    x.location = x.location?.trim() || \"\";\n    x.start_date = normDate(x.start_date);\n    x.end_date = normDate(x.end_date);\n    x.employment_type = x.employment_type || \"\";\n    x.seniority = x.seniority || \"\";\n    x.achievements = asArray(x.achievements);\n    x.description = x.description || \"\";\n\n    x._nc = normCompanyGeneric(x.company);\n    x._nr = normRole(x.role);\n    all.push(x);\n  }\n}\n\n// ---------- dedupe exacto por clave normalizada ----------\nconst byExact = new Map();\nconst exactKey = (e)=> [e._nc, e._nr, e.start_date||\"\", e.end_date||\"\"].join(\"|\");\n\nfor (const e of all){\n  const k = exactKey(e);\n  if (!byExact.has(k)) byExact.set(k, e);\n  else {\n    const existing = byExact.get(k);\n    // preferimos CV si existe\n    const cvFirst = existing._source===\"cv\" ? existing : (e._source===\"cv\" ? e : existing);\n\n    // merge prefiriendo CV\n    const primary = cvFirst;\n    const secondary = (primary===existing) ? e : existing;\n\n    const out = { ...primary };\n    // achievements: unión (CV prevalece pero sumamos del otro)\n    const setAch = new Set([ ...asArray(primary.achievements), ...asArray(secondary.achievements) ]);\n    out.achievements = [...setAch];\n\n    // completa campos vacíos con secondary\n    for (const k2 of [\"role\",\"company\",\"location\",\"employment_type\",\"description\",\"seniority\"]) {\n      if (!out[k2] && secondary[k2]) out[k2] = secondary[k2];\n    }\n    if (!out.start_date && secondary.start_date) out.start_date = secondary.start_date;\n    if (!out.end_date && secondary.end_date) out.end_date = secondary.end_date;\n\n    byExact.set(k, out);\n  }\n}\n\n// ---------- fuzzy merge (para nombres distintos: \"teamfoods...\" vs \"team foods\") ----------\nlet pool = Array.from(byExact.values());\nconst used = new Array(pool.length).fill(false);\n\n// umbrales generales\nconst COMPANY_TH = 0.78; // ligeramente permisivo por variaciones\nconst ROLE_TH = 0.72;\n\nfunction mergePreferCV(a,b){\n  // si uno es CV, ese es el “primary”\n  const primary = (a._source===\"cv\") ? a : (b._source===\"cv\" ? b : a);\n  const secondary = (primary===a) ? b : a;\n\n  const out = { ...primary };\n  const setAch = new Set([ ...asArray(primary.achievements), ...asArray(secondary.achievements) ]);\n  out.achievements = [...setAch];\n\n  for (const k of [\"role\",\"company\",\"location\",\"employment_type\",\"description\",\"seniority\"]) {\n    if (!out[k] && secondary[k]) out[k] = secondary[k];\n  }\n  if (!out.start_date && secondary.start_date) out.start_date = secondary.start_date;\n  if (!out.end_date && secondary.end_date) out.end_date = secondary.end_date;\n  return out;\n}\n\nconst fused = [];\nfor (let i=0;i<pool.length;i++){\n  if (used[i]) continue;\n  let base = pool[i];\n  for (let j=i+1;j<pool.length;j++){\n    if (used[j]) continue;\n    const cand = pool[j];\n    const cSim = jaccard(base._nc, cand._nc);\n    const rSim = jaccard(base._nr, cand._nr);\n    const datesOk =\n      rangesOverlap(base.start_date, base.end_date, cand.start_date, cand.end_date) ||\n      (base.start_date && cand.start_date && base.start_date===cand.start_date);\n\n    if (cSim >= COMPANY_TH && rSim >= ROLE_TH && datesOk){\n      base = mergePreferCV(base, cand);\n      used[j] = true;\n    }\n  }\n  used[i] = true;\n  fused.push(base);\n}\n\n// ---------- ordenar y limpiar ----------\nfunction sortKey(e){\n  const s = e.start_date===\"Present\" ? \"9999-99\" : (e.start_date || \"0000\");\n  const ed = e.end_date===\"Present\" ? \"9999-99\" : (e.end_date || \"0000\");\n  return `${s}|${ed}`;\n}\nconst out = fused\n  .sort((a,b)=> sortKey(b).localeCompare(sortKey(a)))\n  .map(({_nc,_nr,_source, ...rest}) => rest); // quitar internos\n\nreturn [{\n  json: {\n    experiences: out,\n    _diagnostics: {\n      total_experiences: out.length,\n      with_achievements: out.filter(e => e.achievements && e.achievements.length).length\n    }\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        160,
+        752
+      ],
+      "id": "a12b5a55-dc1c-4dcc-91d0-b1bfed60f6ae",
+      "name": "MergeExp"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Espera items tipo: [{ json: { text: \"...\", info: {...} } }, { json: { text: \"...\"} }]\n// Si ya tienes cada PDF por separado, adapta el acceso.\nfunction clean(s) {\n  if (!s) return \"\";\n  return s\n    .replace(/\\n{2,}/g, \"\\n\")                // colapsar saltos\n    .replace(/[ \\t]+/g, \" \")                 // espacios repetidos\n    .replace(/(\\n)[ \\t]+/g, \"$1\")            // espacios al inicio de línea\n    .replace(/[·•▪►]/g, \"-\")                 // bullets raros\n    .replace(/[A-Z]\\s(?=[A-Z]\\s)/g, (m)=>m.trim()) // títulos espaciados tipo \"D I R E C C I Ó N\"\n    .replace(/([A-Z])\\s(?=[A-Z])/g, \"$1\")    // pegar mayúsculas separadas\n    .replace(/(\\w)\\s{2,}(\\w)/g, \"$1 $2\")     // espacios dobles\n    .trim();\n}\n\nconst out = [];\nfor (const item of items) {\n  const raw = item.json.text || \"\";\n  const cleaned = clean(raw);\n\n  // heurística para marcar la fuente\n  const isLinkedin = /Resume generated from profile|LinkedIn/i.test(raw);\n  const source = isLinkedin ? \"linkedin\" : \"cv\";\n  out.push({\n    json: {\n      // source: isLinkedin ? \"linkedin\" : \"cv\",\n      cleanText: \"source:\" + source + \"\\n\\n\" + cleaned,\n    }\n  });\n}\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -976,
+        -48
+      ],
+      "id": "6e3ef2c3-a97b-4e7f-8537-f334bc01e5d5",
+      "name": "Prep_PDFs"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        512,
+        736
+      ],
+      "id": "460cfbfa-4ab3-4e59-a205-3e9de9c3ca29",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "experts",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $json.id }}"
+            }
+          ]
+        },
+        "dataToSend": "autoMapInputData"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        640,
+        -384
+      ],
+      "id": "9a3e825b-cc3f-40b6-84ea-376329d0ff51",
+      "name": "Update_expert",
+      "credentials": {
+        "supabaseApi": {
+          "id": "teNmZvpZr1p4pABN",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "qwen/qwen3-14b:free",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -592,
+        288
+      ],
+      "id": "f03dae73-7a57-45fe-960c-c550b0745087",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "t5aMcxnE3fI0aJBL",
+          "name": "OpenRouter account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "NGjyMI2AmwkoCk0L"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-07-01T19:26:38.028Z",
+      "updatedAt": "2025-07-01T19:26:38.028Z",
+      "role": "workflow:owner",
+      "workflowId": "lvPeEEghXdCcziYT",
+      "projectId": "Gno2MGQk3GvSkWE8",
+      "project": {
+        "createdAt": "2025-07-01T19:23:18.030Z",
+        "updatedAt": "2025-07-01T19:25:19.375Z",
+        "id": "Gno2MGQk3GvSkWE8",
+        "name": "andres mora <anlemoca.pm@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "projectRelations": [
+          {
+            "createdAt": "2025-07-01T19:23:18.030Z",
+            "updatedAt": "2025-07-01T19:23:18.030Z",
+            "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+            "projectId": "Gno2MGQk3GvSkWE8",
+            "user": {
+              "createdAt": "2025-07-01T19:23:15.406Z",
+              "updatedAt": "2025-11-04T16:05:23.106Z",
+              "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+              "email": "anlemoca.pm@gmail.com",
+              "firstName": "andres",
+              "lastName": "mora",
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2025-07-01T19:25:43.818Z",
+                "personalization_survey_n8n_version": "1.100.1",
+                "companyType": "personal",
+                "reportedSource": "friend"
+              },
+              "settings": {
+                "userActivated": true,
+                "easyAIWorkflowOnboarded": true,
+                "firstSuccessfulWorkflowId": "dr3hAKohy1Stv249",
+                "userActivatedAt": 1757456295739,
+                "npsSurvey": {
+                  "responded": true,
+                  "lastShownAt": 1753145911485
+                }
+              },
+              "disabled": false,
+              "mfaEnabled": false,
+              "lastActiveAt": "2025-11-04",
+              "isPending": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-10-28T16:37:31.563Z",
+  "versionId": "47eb3b5b-a3e3-4319-b899-b878842e2810"
+}
