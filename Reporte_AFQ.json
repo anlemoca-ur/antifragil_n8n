@@ -1,0 +1,374 @@
+{
+  "active": true,
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "find_ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "find_ID": {
+      "main": [
+        [
+          {
+            "node": "Create a expert copy of the informe AFQ template",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Update the expert letter AFQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a expert copy of the informe AFQ template": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "find_ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-06T00:40:06.207Z",
+  "id": "DAl9W8JBOAeo9u0S",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Reporte_AFQ",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Generate Perfil Ejecutivo",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Candidate_ID",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "38e28932-b3b4-4895-bc04-0ddf469c80e0",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "position": [
+        -2096,
+        400
+      ],
+      "webhookId": "517f4b16-3d09-4b35-8fc6-9f78c0c1703b",
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "content": "Create a expert specific version of the letter and create a doc version of it. Store this on the Google Drive",
+        "height": 432,
+        "width": 1264
+      },
+      "id": "4ab2915c-de6c-42ed-bb58-58aa828ec05b",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2176,
+        144
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Corrected SQL for accessing nested JSONB data\nSELECT \n    e.id as expert_id,\n    e.nombre,\n    pe.pasos->1->>'datos' as datos\n    \nFROM \n    experts e\nJOIN \n    process_expert pe ON pe.expert_id = e.id\nWHERE \n    e.id = '{{ $json.body.expert_id }}'::uuid;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1824,
+        224
+      ],
+      "id": "068a0f9a-0fc1-462c-b266-fae0758a74a9",
+      "name": "find_ID",
+      "credentials": {
+        "postgres": {
+          "id": "Uu2D21neXgVAhibq",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Toma el primer item del nodo \"find_ID\"\nconst item = $('find_ID').first().json;\n\n// \"datos\" es un string con JSON -> parsearlo\nlet afqData;\ntry {\n  afqData = JSON.parse(item.datos);\n} catch (e) {\n  throw new Error('El campo \"datos\" no contiene JSON válido: ' + e.message);\n}\n\nconsole.log('Los Datos:', afqData);\n\n// Función para formatear fecha (maneja YYYY-MM-DD sin hora)\nfunction formatearFecha(fechaISO) {\n  if (!fechaISO) return '';\n  let iso = fechaISO;\n  // Si solo viene la fecha, agrega una hora en UTC para evitar offsets raros\n  if (/^\\d{4}-\\d{2}-\\d{2}$/.test(fechaISO)) {\n    iso = fechaISO + 'T00:00:00Z';\n  }\n  const fecha = new Date(iso);\n  const opciones = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'America/Bogota' };\n  return fecha.toLocaleDateString('es-ES', opciones);\n}\n\n// Variables para Google Docs\nconst variables = {\n  // Básicos\n  nombre: afqData.nombre || '',\n  edad: afqData.edad || '',\n  fecha_evaluacion: formatearFecha(afqData.fecha_prueba),\n  sector: afqData.sector || '',\n  categoriaprof: afqData.categoriaprof || '',\n\n  // Puntajes y niveles\n  puntaje_general: afqData.puntaje_general ?? '',\n  nivel_general: afqData.nivel_general || '',\n\n  // Texto general\n  indice_antifragil: afqData.indice_antifragil || '',\n\n  // Adaptación Proactiva\n  adaptacion_puntaje: afqData.adaptacion_proactiva?.puntaje ?? '',\n  adaptacion_nivel: afqData.adaptacion_proactiva?.nivel || '',\n  adaptacion_contenido: afqData.adaptacion_proactiva?.contenido || '',\n\n  // Evolución Activa\n  evolucion_puntaje: afqData.evolucion_activa?.puntaje ?? '',\n  evolucion_nivel: afqData.evolucion_activa?.nivel || '',\n  evolucion_contenido: afqData.evolucion_activa?.contenido || '',\n\n  // Agilidad Emocional\n  agilidad_puntaje: afqData.agilidad_emocional?.puntaje ?? '',\n  agilidad_nivel: afqData.agilidad_emocional?.nivel || '',\n  agilidad_contenido: afqData.agilidad_emocional?.contenido || '',\n\n  // Destructividad Consciente\n  destructividad_puntaje: afqData.destructividad_consciente?.puntaje ?? '',\n  destructividad_nivel: afqData.destructividad_consciente?.nivel || '',\n  destructividad_contenido: afqData.destructividad_consciente?.contenido || '',\n\n  // Liderazgo Antifrágil\n  liderazgo_contenido: afqData.liderazgo_antifragil || '',\n};\n\n// En un Function/Code node de n8n, devuelve un array de items:\nreturn [{ json: { variables } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1408,
+        224
+      ],
+      "id": "0bae3e01-cfe7-447e-a405-b90d8e158d0b",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "value": "1zTzFbFQEjjKQzxRWt5CasVKBiPa9Na_Seq1BINfiix0",
+          "mode": "id"
+        },
+        "name": "=Informe AFQ - {{ $json.nombre }}",
+        "options": {
+          "copyRequiresWriterPermission": false,
+          "description": ""
+        }
+      },
+      "id": "16f0e162-4626-4cc3-9a31-c4db715eaa5f",
+      "name": "Create a expert copy of the informe AFQ template",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        -1632,
+        224
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "HhDiD9KyplQpOpXo",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $('Create a expert copy of the informe AFQ template').item.json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "replaceAll",
+              "text": "[nombre]",
+              "replaceText": "={{ $json.variables.nombre }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[fecha]",
+              "replaceText": "={{ $json.variables.fecha_evaluacion }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[sector]",
+              "replaceText": "={{ $json.variables.sector }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[categoriaprof]",
+              "replaceText": "={{ $json.variables.categoriaprof }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[indice_antifragil]",
+              "replaceText": "={{ $json.variables.indice_antifragil }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[adaptacion_contenido]",
+              "replaceText": "={{ $json.variables.adaptacion_contenido }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[evolucion_contenido]",
+              "replaceText": "={{ $json.variables.evolucion_contenido }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[agilidad_contenido]",
+              "replaceText": "={{ $json.variables.agilidad_contenido }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[destructividad_contenido]",
+              "replaceText": "={{ $json.variables.destructividad_contenido }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[liderazgo_contenido]",
+              "replaceText": "={{ $json.variables.liderazgo_contenido }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[puntaje_general]",
+              "replaceText": "={{ JSON.stringify($json.variables.puntaje_general) }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[nivel_general]",
+              "replaceText": "={{ $json.variables.nivel_general }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[adaptacion_puntaje]",
+              "replaceText": "={{ JSON.stringify($json.variables.adaptacion_puntaje) }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[adaptacion_nivel]",
+              "replaceText": "={{ $json.variables.adaptacion_nivel }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[evolucion_puntaje]",
+              "replaceText": "={{ JSON.stringify($json.variables.evolucion_puntaje) }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[evolucion_nivel]",
+              "replaceText": "={{ $json.variables.evolucion_nivel }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[agilidad_puntaje]",
+              "replaceText": "={{ JSON.stringify($json.variables.agilidad_puntaje) }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[agilidad_nivel]",
+              "replaceText": "={{ $json.variables.agilidad_nivel }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[destructividad_puntaje]",
+              "replaceText": "={{ JSON.stringify($json.variables.destructividad_puntaje) }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "[destructividad_nivel]",
+              "replaceText": "={{ $json.variables.destructividad_nivel }}"
+            }
+          ]
+        }
+      },
+      "id": "1fd07738-63c9-4737-b13b-9f1c0c3ab3ee",
+      "name": "Update the expert letter AFQ",
+      "type": "n8n-nodes-base.googleDocs",
+      "position": [
+        -1184,
+        224
+      ],
+      "typeVersion": 2,
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "paaBCUaj0T4M0l5P",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "/ReporteAFQ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -2096,
+        224
+      ],
+      "id": "e0dd8a8f-7882-425b-98e0-f7d2f691eb26",
+      "name": "Webhook",
+      "webhookId": "f82e36fb-13e9-4e38-9c84-056b6c43689a"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-06T00:40:06.207Z",
+      "updatedAt": "2025-08-06T00:40:06.207Z",
+      "role": "workflow:owner",
+      "workflowId": "DAl9W8JBOAeo9u0S",
+      "projectId": "Gno2MGQk3GvSkWE8",
+      "project": {
+        "createdAt": "2025-07-01T19:23:18.030Z",
+        "updatedAt": "2025-07-01T19:25:19.375Z",
+        "id": "Gno2MGQk3GvSkWE8",
+        "name": "andres mora <anlemoca.pm@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "projectRelations": [
+          {
+            "createdAt": "2025-07-01T19:23:18.030Z",
+            "updatedAt": "2025-07-01T19:23:18.030Z",
+            "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+            "projectId": "Gno2MGQk3GvSkWE8",
+            "user": {
+              "createdAt": "2025-07-01T19:23:15.406Z",
+              "updatedAt": "2025-11-04T16:05:23.106Z",
+              "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+              "email": "anlemoca.pm@gmail.com",
+              "firstName": "andres",
+              "lastName": "mora",
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2025-07-01T19:25:43.818Z",
+                "personalization_survey_n8n_version": "1.100.1",
+                "companyType": "personal",
+                "reportedSource": "friend"
+              },
+              "settings": {
+                "userActivated": true,
+                "easyAIWorkflowOnboarded": true,
+                "firstSuccessfulWorkflowId": "dr3hAKohy1Stv249",
+                "userActivatedAt": 1757456295739,
+                "npsSurvey": {
+                  "responded": true,
+                  "lastShownAt": 1753145911485
+                }
+              },
+              "disabled": false,
+              "mfaEnabled": false,
+              "lastActiveAt": "2025-11-04",
+              "isPending": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-09-23T00:17:42.812Z",
+  "versionId": "b764cdc1-b774-4b21-bfcb-4cc5144f406a"
+}
