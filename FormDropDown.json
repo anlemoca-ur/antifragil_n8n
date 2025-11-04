@@ -1,0 +1,309 @@
+{
+  "active": false,
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "If all correct",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Form": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If all correct": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Form1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-02T20:48:07.136Z",
+  "id": "PaIjZT0zP3o7L5Fz",
+  "isArchived": false,
+  "meta": null,
+  "name": "FormDropDown",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "title",
+        "formDescription": "provide me a file",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "data",
+              "fieldType": "file",
+              "multipleFiles": false,
+              "acceptFileTypes": ".csv",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e36a5534-9ba5-493f-8042-2835ddee62dc",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        -1456,
+        128
+      ],
+      "webhookId": "5799cf33-bcd4-431a-9f4f-1cd9cfa0715f"
+    },
+    {
+      "parameters": {
+        "options": {
+          "delimiter": ",",
+          "encoding": "utf-8",
+          "headerRow": true
+        }
+      },
+      "id": "b5f4690c-7f64-44b5-b170-d967ac4eeb60",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -1232,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "defineForm": "json",
+        "jsonOutput": "=[\n   {\n      \"fieldLabel\":\"Set the correct field for 'name'\",\n     \"fieldType\": \"dropdown\",\n     \"fieldOptions\": {\n        \"values\": {{ JSON.stringify(Object.keys($json).map(x => {return {option: x} } )) }}\n\t\t},\n      \"requiredField\":true\n   },\n{\n      \"fieldLabel\":\"Set the correct field for 'amount'\",\n     \"fieldType\": \"dropdown\",\n     \"fieldOptions\": {\n        \"values\": {{ JSON.stringify(Object.keys($json).map(x => {return {option: x} } )) }}\n\t\t},\n      \"requiredField\":true\n   },\n{\n      \"fieldLabel\":\"Set the correct field for 'price'\",\n     \"fieldType\": \"dropdown\",\n     \"fieldOptions\": {\n        \"values\": {{ JSON.stringify(Object.keys($json).map(x => {return {option: x} } )) }}\n\t\t},\n      \"requiredField\":true\n   }\n]",
+        "options": {
+          "formDescription": "=Current fields are:\n{{ Object.keys($json).join(',') }}\nThe first row is:\n{{ Object.values($json).join(',') }}\n"
+        }
+      },
+      "id": "49c4c20b-2488-49be-b757-ad2a1ad20e6d",
+      "name": "Form",
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 1,
+      "position": [
+        -752,
+        240
+      ],
+      "webhookId": "21be9002-5c8a-4eb7-8d80-ffd613438657",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5f6d0086-e0b1-4523-a8e6-586a5f02bcd9",
+              "leftValue": "={{ $json.amount }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "73b03050-82f8-4c96-a832-f329f5d4b3c9",
+              "leftValue": "={{ $json.price }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "167555b6-2c6f-451f-bf32-97c852b9a4e0",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "bb153495-e88a-47c4-be5c-0aa17b6b24e2",
+      "name": "If all correct",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1008,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "everything is fine.",
+        "options": {}
+      },
+      "id": "ff91e765-aecd-4c27-a2be-aec2cfcae606",
+      "name": "Form1",
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 1,
+      "position": [
+        16,
+        -64
+      ],
+      "webhookId": "21be9002-5c8a-4eb7-8d80-ffd613438657"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $('Extract from File').all().map(x => x.json)\nconst choices = $input.last().json\n\nlet out = []\n\ndata.forEach( r => {\n  const nameF = choices[\"Set the correct field for 'name'\"]\n  const amountF = choices[\"Set the correct field for 'amount'\"]\n  const priceF = choices[\"Set the correct field for 'price'\"]\n  out.push({\n    name: r[nameF],\n    amount: r[amountF],\n    price: r[priceF]\n  })\n})\n\nreturn out"
+      },
+      "id": "72654243-22a7-4037-9cb6-c28cce1d09af",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -576,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4ccb5f54-c958-4b94-95ae-a8405d7a0c44",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -336,
+        -64
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-02T20:48:07.136Z",
+      "updatedAt": "2025-09-02T20:48:07.136Z",
+      "role": "workflow:owner",
+      "workflowId": "PaIjZT0zP3o7L5Fz",
+      "projectId": "Gno2MGQk3GvSkWE8",
+      "project": {
+        "createdAt": "2025-07-01T19:23:18.030Z",
+        "updatedAt": "2025-07-01T19:25:19.375Z",
+        "id": "Gno2MGQk3GvSkWE8",
+        "name": "andres mora <anlemoca.pm@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "projectRelations": [
+          {
+            "createdAt": "2025-07-01T19:23:18.030Z",
+            "updatedAt": "2025-07-01T19:23:18.030Z",
+            "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+            "projectId": "Gno2MGQk3GvSkWE8",
+            "user": {
+              "createdAt": "2025-07-01T19:23:15.406Z",
+              "updatedAt": "2025-11-04T16:05:23.106Z",
+              "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
+              "email": "anlemoca.pm@gmail.com",
+              "firstName": "andres",
+              "lastName": "mora",
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2025-07-01T19:25:43.818Z",
+                "personalization_survey_n8n_version": "1.100.1",
+                "companyType": "personal",
+                "reportedSource": "friend"
+              },
+              "settings": {
+                "userActivated": true,
+                "easyAIWorkflowOnboarded": true,
+                "firstSuccessfulWorkflowId": "dr3hAKohy1Stv249",
+                "userActivatedAt": 1757456295739,
+                "npsSurvey": {
+                  "responded": true,
+                  "lastShownAt": 1753145911485
+                }
+              },
+              "disabled": false,
+              "mfaEnabled": false,
+              "lastActiveAt": "2025-11-04",
+              "isPending": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-02T20:50:27.953Z",
+  "versionId": "b5c074a6-f3e9-47c7-a326-cacec6e98065"
+}
