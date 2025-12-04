@@ -14,7 +14,13 @@
     },
     "Update the expert letter": {
       "main": [
-        []
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Create a copy of the appointment letter template": {
@@ -60,9 +66,21 @@
           }
         ]
       ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Microsoft OneDrive1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-01T17:29:30.894Z",
+  "description": null,
   "id": "Th2BZ1jjvSWpgjTM",
   "isArchived": false,
   "meta": {
@@ -305,6 +323,53 @@
       ],
       "id": "5f47ea76-807d-4c08-8dcb-231ee9835a5e",
       "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Create a copy of the appointment letter template').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -960,
+        224
+      ],
+      "id": "118d2889-6ba5-42e9-88a1-da2b38b28b43",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "HhDiD9KyplQpOpXo",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fileName": "={{ $('Create a copy of the appointment letter template').item.json.name }}",
+        "parentId": "Em-PoLs_anNBljsnt5dkcU0BFYO2vdRJYC9nJF9pBI8CLQ",
+        "fileContent": "data"
+      },
+      "id": "224de620-3801-4abe-aa98-dbd84139a5f7",
+      "name": "Microsoft OneDrive1",
+      "type": "n8n-nodes-base.microsoftOneDrive",
+      "position": [
+        -720,
+        224
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "microsoftOneDriveOAuth2Api": {
+          "id": "iawxqPYUI99ucGaC",
+          "name": "Microsoft Drive account"
+        }
+      },
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -313,14 +378,14 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-01T17:29:30.894Z",
       "updatedAt": "2025-08-01T17:29:30.894Z",
+      "createdAt": "2025-08-01T17:29:30.894Z",
       "role": "workflow:owner",
       "workflowId": "Th2BZ1jjvSWpgjTM",
       "projectId": "Gno2MGQk3GvSkWE8",
       "project": {
-        "createdAt": "2025-07-01T19:23:18.030Z",
         "updatedAt": "2025-07-01T19:25:19.375Z",
+        "createdAt": "2025-07-01T19:23:18.030Z",
         "id": "Gno2MGQk3GvSkWE8",
         "name": "andres mora <anlemoca.pm@gmail.com>",
         "type": "personal",
@@ -328,13 +393,13 @@
         "description": null,
         "projectRelations": [
           {
-            "createdAt": "2025-07-01T19:23:18.030Z",
             "updatedAt": "2025-07-01T19:23:18.030Z",
+            "createdAt": "2025-07-01T19:23:18.030Z",
             "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
             "projectId": "Gno2MGQk3GvSkWE8",
             "user": {
+              "updatedAt": "2025-12-04T15:07:23.783Z",
               "createdAt": "2025-07-01T19:23:15.406Z",
-              "updatedAt": "2025-11-04T16:05:23.106Z",
               "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
               "email": "anlemoca.pm@gmail.com",
               "firstName": "andres",
@@ -358,7 +423,7 @@
               },
               "disabled": false,
               "mfaEnabled": false,
-              "lastActiveAt": "2025-11-04",
+              "lastActiveAt": "2025-12-04",
               "isPending": false
             }
           }
@@ -369,6 +434,7 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-09-16T17:13:04.133Z",
-  "versionId": "3eadd246-ff97-4cae-9ca9-fddbe8df0cdf"
+  "updatedAt": "2025-11-27T19:46:59.924Z",
+  "versionCounter": 8,
+  "versionId": "1dde08c6-9e2e-4526-887b-a868215ed69e"
 }
