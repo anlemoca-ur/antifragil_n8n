@@ -58,6 +58,7 @@
     }
   },
   "createdAt": "2025-08-20T18:33:53.420Z",
+  "description": null,
   "id": "nRMxVqkMdzmWkg7k",
   "isArchived": false,
   "meta": {
@@ -303,14 +304,14 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-20T18:33:53.420Z",
       "updatedAt": "2025-08-20T18:33:53.420Z",
+      "createdAt": "2025-08-20T18:33:53.420Z",
       "role": "workflow:owner",
       "workflowId": "nRMxVqkMdzmWkg7k",
       "projectId": "Gno2MGQk3GvSkWE8",
       "project": {
-        "createdAt": "2025-07-01T19:23:18.030Z",
         "updatedAt": "2025-07-01T19:25:19.375Z",
+        "createdAt": "2025-07-01T19:23:18.030Z",
         "id": "Gno2MGQk3GvSkWE8",
         "name": "andres mora <anlemoca.pm@gmail.com>",
         "type": "personal",
@@ -318,13 +319,13 @@
         "description": null,
         "projectRelations": [
           {
-            "createdAt": "2025-07-01T19:23:18.030Z",
             "updatedAt": "2025-07-01T19:23:18.030Z",
+            "createdAt": "2025-07-01T19:23:18.030Z",
             "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
             "projectId": "Gno2MGQk3GvSkWE8",
             "user": {
+              "updatedAt": "2025-12-04T15:07:23.783Z",
               "createdAt": "2025-07-01T19:23:15.406Z",
-              "updatedAt": "2025-11-04T16:05:23.106Z",
               "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
               "email": "anlemoca.pm@gmail.com",
               "firstName": "andres",
@@ -348,7 +349,7 @@
               },
               "disabled": false,
               "mfaEnabled": false,
-              "lastActiveAt": "2025-11-04",
+              "lastActiveAt": "2025-12-04",
               "isPending": false
             }
           }
@@ -360,5 +361,6 @@
   "tags": [],
   "triggerCount": 2,
   "updatedAt": "2025-09-16T20:14:55.342Z",
+  "versionCounter": 2,
   "versionId": "cca78d0a-5753-40ba-b4b3-59a693ee655d"
 }
