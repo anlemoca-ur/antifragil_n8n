@@ -80,7 +80,13 @@
     },
     "Execute a SQL query": {
       "main": [
-        []
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Webhook": {
@@ -107,6 +113,7 @@
     }
   },
   "createdAt": "2025-08-24T16:21:45.913Z",
+  "description": null,
   "id": "dr3hAKohy1Stv249",
   "isArchived": false,
   "meta": {
@@ -305,6 +312,7 @@
       "parameters": {
         "httpMethod": "POST",
         "path": "/RecibirGEN",
+        "responseMode": "responseNode",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
@@ -329,6 +337,21 @@
       ],
       "id": "a05c919a-cb25-450a-a3d5-5ca68e69e750",
       "name": "CodeId"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "=[\n  {\n    \"success\": {{ $json.success }},\n    \"Completado\" : {{ $json.success }}\n  }\n]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -1456,
+        384
+      ],
+      "id": "97c52ece-ba14-4c37-8b4f-9a5bf98443bc",
+      "name": "Respond to Webhook"
     }
   ],
   "pinData": {},
@@ -337,14 +360,14 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-24T16:21:45.913Z",
       "updatedAt": "2025-08-24T16:21:45.913Z",
+      "createdAt": "2025-08-24T16:21:45.913Z",
       "role": "workflow:owner",
       "workflowId": "dr3hAKohy1Stv249",
       "projectId": "Gno2MGQk3GvSkWE8",
       "project": {
-        "createdAt": "2025-07-01T19:23:18.030Z",
         "updatedAt": "2025-07-01T19:25:19.375Z",
+        "createdAt": "2025-07-01T19:23:18.030Z",
         "id": "Gno2MGQk3GvSkWE8",
         "name": "andres mora <anlemoca.pm@gmail.com>",
         "type": "personal",
@@ -352,13 +375,13 @@
         "description": null,
         "projectRelations": [
           {
-            "createdAt": "2025-07-01T19:23:18.030Z",
             "updatedAt": "2025-07-01T19:23:18.030Z",
+            "createdAt": "2025-07-01T19:23:18.030Z",
             "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
             "projectId": "Gno2MGQk3GvSkWE8",
             "user": {
+              "updatedAt": "2025-12-04T15:07:23.783Z",
               "createdAt": "2025-07-01T19:23:15.406Z",
-              "updatedAt": "2025-11-04T16:05:23.106Z",
               "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
               "email": "anlemoca.pm@gmail.com",
               "firstName": "andres",
@@ -382,7 +405,7 @@
               },
               "disabled": false,
               "mfaEnabled": false,
-              "lastActiveAt": "2025-11-04",
+              "lastActiveAt": "2025-12-04",
               "isPending": false
             }
           }
@@ -393,6 +416,7 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-10-01T19:54:31.136Z",
-  "versionId": "f7f14185-7527-400b-9cc9-b69151bcaa6c"
+  "updatedAt": "2025-11-07T15:48:30.429Z",
+  "versionCounter": 2,
+  "versionId": "f49b1d13-8910-4fdb-83ca-a379e34bf129"
 }
