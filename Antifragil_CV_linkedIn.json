@@ -156,7 +156,13 @@
     },
     "update_process": {
       "main": [
-        []
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Expert": {
@@ -172,7 +178,13 @@
     },
     "OpenAI Chat Model1": {
       "ai_languageModel": [
-        []
+        [
+          {
+            "node": "Information Extractor CV",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
       ]
     },
     "Cv_LinkedIn": {
@@ -248,17 +260,12 @@
     },
     "OpenRouter Chat Model": {
       "ai_languageModel": [
-        [
-          {
-            "node": "Information Extractor CV",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
+        []
       ]
     }
   },
   "createdAt": "2025-07-01T19:26:38.028Z",
+  "description": null,
   "id": "lvPeEEghXdCcziYT",
   "isArchived": false,
   "meta": {
@@ -391,7 +398,7 @@
       "parameters": {
         "content": "Summary of relevant information useful for classifying the candidate",
         "height": 780,
-        "width": 936
+        "width": 1144
       },
       "id": "c41d16aa-eb12-4f08-9471-c48512e20395",
       "name": "Sticky Note8",
@@ -462,9 +469,9 @@
       "parameters": {
         "httpMethod": "POST",
         "path": "/recibirCVS",
+        "responseMode": "responseNode",
         "options": {
-          "binaryPropertyName": "CV_LinkedIn_PDF_",
-          "responseData": "JSON"
+          "binaryPropertyName": "CV_LinkedIn_PDF_"
         }
       },
       "type": "n8n-nodes-base.webhook",
@@ -791,6 +798,21 @@
           "name": "OpenRouter account"
         }
       }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "=[\n  {\n    \"success\": {{ $json.success }},\n    \"Completado\" : {{ $json.success }}\n  }\n]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        928,
+        736
+      ],
+      "id": "702868e2-b7f8-4946-bbc8-a4498e795061",
+      "name": "Respond to Webhook"
     }
   ],
   "pinData": {},
@@ -801,14 +823,14 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-01T19:26:38.028Z",
       "updatedAt": "2025-07-01T19:26:38.028Z",
+      "createdAt": "2025-07-01T19:26:38.028Z",
       "role": "workflow:owner",
       "workflowId": "lvPeEEghXdCcziYT",
       "projectId": "Gno2MGQk3GvSkWE8",
       "project": {
-        "createdAt": "2025-07-01T19:23:18.030Z",
         "updatedAt": "2025-07-01T19:25:19.375Z",
+        "createdAt": "2025-07-01T19:23:18.030Z",
         "id": "Gno2MGQk3GvSkWE8",
         "name": "andres mora <anlemoca.pm@gmail.com>",
         "type": "personal",
@@ -816,13 +838,13 @@
         "description": null,
         "projectRelations": [
           {
-            "createdAt": "2025-07-01T19:23:18.030Z",
             "updatedAt": "2025-07-01T19:23:18.030Z",
+            "createdAt": "2025-07-01T19:23:18.030Z",
             "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
             "projectId": "Gno2MGQk3GvSkWE8",
             "user": {
+              "updatedAt": "2025-12-04T15:07:23.783Z",
               "createdAt": "2025-07-01T19:23:15.406Z",
-              "updatedAt": "2025-11-04T16:05:23.106Z",
               "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
               "email": "anlemoca.pm@gmail.com",
               "firstName": "andres",
@@ -846,7 +868,7 @@
               },
               "disabled": false,
               "mfaEnabled": false,
-              "lastActiveAt": "2025-11-04",
+              "lastActiveAt": "2025-12-04",
               "isPending": false
             }
           }
@@ -857,6 +879,7 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-10-28T16:37:31.563Z",
-  "versionId": "47eb3b5b-a3e3-4319-b899-b878842e2810"
+  "updatedAt": "2025-11-07T18:11:00.808Z",
+  "versionCounter": 2,
+  "versionId": "ac99f47b-de7b-4c9f-b94f-76af60e9214d"
 }
