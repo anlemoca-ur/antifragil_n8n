@@ -135,11 +135,18 @@
     },
     "update_process_expert": {
       "main": [
-        []
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
   "createdAt": "2025-07-22T23:06:52.890Z",
+  "description": null,
   "id": "bF4zqWVTblERgeq4",
   "isArchived": false,
   "meta": {
@@ -263,7 +270,7 @@
       "parameters": {
         "content": "Summary of relevant information useful for classifying the candidate",
         "height": 620,
-        "width": 920,
+        "width": 1160,
         "color": 4
       },
       "id": "1b29840f-08b9-4060-9e32-da8ce150513f",
@@ -436,9 +443,9 @@
       "parameters": {
         "httpMethod": "POST",
         "path": "/recibirAFQ",
+        "responseMode": "responseNode",
         "options": {
-          "binaryPropertyName": "AFQ_PDF_",
-          "responseData": "JSON"
+          "binaryPropertyName": "AFQ_PDF_"
         }
       },
       "type": "n8n-nodes-base.webhook",
@@ -471,6 +478,21 @@
           "name": "Postgres account"
         }
       }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "=[\n  {\n    \"success\": {{ $json.success }},\n    \"Completado\" : {{ $json.success }}\n  }\n]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -1408,
+        896
+      ],
+      "id": "0eeff6e8-4e8d-4b54-aaaa-64a7ee8b60c8",
+      "name": "Respond to Webhook"
     }
   ],
   "pinData": {},
@@ -481,14 +503,14 @@
   },
   "shared": [
     {
-      "createdAt": "2025-07-22T23:06:52.890Z",
       "updatedAt": "2025-07-22T23:06:52.890Z",
+      "createdAt": "2025-07-22T23:06:52.890Z",
       "role": "workflow:owner",
       "workflowId": "bF4zqWVTblERgeq4",
       "projectId": "Gno2MGQk3GvSkWE8",
       "project": {
-        "createdAt": "2025-07-01T19:23:18.030Z",
         "updatedAt": "2025-07-01T19:25:19.375Z",
+        "createdAt": "2025-07-01T19:23:18.030Z",
         "id": "Gno2MGQk3GvSkWE8",
         "name": "andres mora <anlemoca.pm@gmail.com>",
         "type": "personal",
@@ -496,13 +518,13 @@
         "description": null,
         "projectRelations": [
           {
-            "createdAt": "2025-07-01T19:23:18.030Z",
             "updatedAt": "2025-07-01T19:23:18.030Z",
+            "createdAt": "2025-07-01T19:23:18.030Z",
             "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
             "projectId": "Gno2MGQk3GvSkWE8",
             "user": {
+              "updatedAt": "2025-12-04T15:07:23.783Z",
               "createdAt": "2025-07-01T19:23:15.406Z",
-              "updatedAt": "2025-11-04T16:05:23.106Z",
               "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
               "email": "anlemoca.pm@gmail.com",
               "firstName": "andres",
@@ -526,7 +548,7 @@
               },
               "disabled": false,
               "mfaEnabled": false,
-              "lastActiveAt": "2025-11-04",
+              "lastActiveAt": "2025-12-04",
               "isPending": false
             }
           }
@@ -544,6 +566,7 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-09-23T00:17:46.255Z",
-  "versionId": "3f8626b8-3793-4577-bc9f-9ece94006a8c"
+  "updatedAt": "2025-11-07T02:27:05.406Z",
+  "versionCounter": 2,
+  "versionId": "33711131-8733-434c-b28a-c813947d75af"
 }
