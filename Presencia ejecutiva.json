@@ -102,11 +102,18 @@
     },
     "update process_expert": {
       "main": [
-        []
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
   "createdAt": "2025-08-09T19:33:46.883Z",
+  "description": null,
   "id": "VexTLbtbIOLs9diN",
   "isArchived": false,
   "meta": {
@@ -174,7 +181,7 @@
       "parameters": {
         "content": "Summary of relevant information useful for classifying the candidate",
         "height": 620,
-        "width": 968,
+        "width": 1144,
         "color": 4
       },
       "id": "89e6a6cb-7f8d-4e43-a6e4-4b9fae9b84a3",
@@ -264,9 +271,9 @@
       "parameters": {
         "httpMethod": "POST",
         "path": "/recibirPE",
+        "responseMode": "responseNode",
         "options": {
-          "binaryPropertyName": "PresenciaEjecutiva",
-          "responseData": "JSON"
+          "binaryPropertyName": "PresenciaEjecutiva"
         }
       },
       "type": "n8n-nodes-base.webhook",
@@ -343,6 +350,21 @@
           "name": "Postgres account"
         }
       }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "=[\n  {\n    \"success\": {{ $json.success }},\n    \"Completado\" : {{ $json.success }}\n  }\n]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -1936,
+        912
+      ],
+      "id": "cd889725-6836-46d3-95fd-bc3cccbc6b4f",
+      "name": "Respond to Webhook"
     }
   ],
   "pinData": {},
@@ -353,14 +375,14 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-09T19:33:46.883Z",
       "updatedAt": "2025-08-09T19:33:46.883Z",
+      "createdAt": "2025-08-09T19:33:46.883Z",
       "role": "workflow:owner",
       "workflowId": "VexTLbtbIOLs9diN",
       "projectId": "Gno2MGQk3GvSkWE8",
       "project": {
-        "createdAt": "2025-07-01T19:23:18.030Z",
         "updatedAt": "2025-07-01T19:25:19.375Z",
+        "createdAt": "2025-07-01T19:23:18.030Z",
         "id": "Gno2MGQk3GvSkWE8",
         "name": "andres mora <anlemoca.pm@gmail.com>",
         "type": "personal",
@@ -368,13 +390,13 @@
         "description": null,
         "projectRelations": [
           {
-            "createdAt": "2025-07-01T19:23:18.030Z",
             "updatedAt": "2025-07-01T19:23:18.030Z",
+            "createdAt": "2025-07-01T19:23:18.030Z",
             "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
             "projectId": "Gno2MGQk3GvSkWE8",
             "user": {
+              "updatedAt": "2025-12-04T15:07:23.783Z",
               "createdAt": "2025-07-01T19:23:15.406Z",
-              "updatedAt": "2025-11-04T16:05:23.106Z",
               "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
               "email": "anlemoca.pm@gmail.com",
               "firstName": "andres",
@@ -398,7 +420,7 @@
               },
               "disabled": false,
               "mfaEnabled": false,
-              "lastActiveAt": "2025-11-04",
+              "lastActiveAt": "2025-12-04",
               "isPending": false
             }
           }
@@ -416,6 +438,7 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-09-08T18:55:24.835Z",
-  "versionId": "2d6e4fac-ddab-4935-b022-be2dc7348fab"
+  "updatedAt": "2025-11-07T15:39:29.946Z",
+  "versionCounter": 2,
+  "versionId": "c39e7102-71fe-4cf6-af89-8f78b75dc508"
 }
