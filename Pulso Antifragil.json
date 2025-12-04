@@ -91,11 +91,18 @@
     },
     "update process_expert": {
       "main": [
-        []
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
   "createdAt": "2025-08-19T21:55:41.304Z",
+  "description": null,
   "id": "feLktLrU9GZdK9Df",
   "isArchived": false,
   "meta": {
@@ -148,7 +155,7 @@
       "parameters": {
         "content": "Summary of relevant information useful for classifying the candidate",
         "height": 620,
-        "width": 1640,
+        "width": 1864,
         "color": 4
       },
       "id": "f2c35f0a-ccc5-4abf-a343-8f0df6c50c15",
@@ -272,9 +279,9 @@
       "parameters": {
         "httpMethod": "POST",
         "path": "/recibirPulso",
+        "responseMode": "responseNode",
         "options": {
-          "binaryPropertyName": "Pulso_data_",
-          "responseData": "JSON"
+          "binaryPropertyName": "Pulso_data_"
         }
       },
       "type": "n8n-nodes-base.webhook",
@@ -350,6 +357,21 @@
           "name": "Postgres account"
         }
       }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "=[\n  {\n    \"success\": {{ $json.success }},\n    \"Completado\" : {{ $json.success }}\n  }\n]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -1472,
+        912
+      ],
+      "id": "9ac11532-d5ef-4e60-8119-601d12709d52",
+      "name": "Respond to Webhook"
     }
   ],
   "pinData": {},
@@ -360,14 +382,14 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-19T21:55:41.304Z",
       "updatedAt": "2025-08-19T21:55:41.304Z",
+      "createdAt": "2025-08-19T21:55:41.304Z",
       "role": "workflow:owner",
       "workflowId": "feLktLrU9GZdK9Df",
       "projectId": "Gno2MGQk3GvSkWE8",
       "project": {
-        "createdAt": "2025-07-01T19:23:18.030Z",
         "updatedAt": "2025-07-01T19:25:19.375Z",
+        "createdAt": "2025-07-01T19:23:18.030Z",
         "id": "Gno2MGQk3GvSkWE8",
         "name": "andres mora <anlemoca.pm@gmail.com>",
         "type": "personal",
@@ -375,13 +397,13 @@
         "description": null,
         "projectRelations": [
           {
-            "createdAt": "2025-07-01T19:23:18.030Z",
             "updatedAt": "2025-07-01T19:23:18.030Z",
+            "createdAt": "2025-07-01T19:23:18.030Z",
             "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
             "projectId": "Gno2MGQk3GvSkWE8",
             "user": {
+              "updatedAt": "2025-12-04T15:07:23.783Z",
               "createdAt": "2025-07-01T19:23:15.406Z",
-              "updatedAt": "2025-11-04T16:05:23.106Z",
               "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
               "email": "anlemoca.pm@gmail.com",
               "firstName": "andres",
@@ -405,7 +427,7 @@
               },
               "disabled": false,
               "mfaEnabled": false,
-              "lastActiveAt": "2025-11-04",
+              "lastActiveAt": "2025-12-04",
               "isPending": false
             }
           }
@@ -423,6 +445,7 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-10-29T14:48:30.228Z",
-  "versionId": "b82e1267-f1a4-4a0c-8372-c0a326aa2185"
+  "updatedAt": "2025-11-07T02:20:05.173Z",
+  "versionCounter": 2,
+  "versionId": "3558ef82-694b-4658-abc0-6ca9340239ff"
 }
