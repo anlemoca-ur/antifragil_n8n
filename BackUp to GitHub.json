@@ -198,6 +198,7 @@
     }
   },
   "createdAt": "2025-10-31T19:23:12.996Z",
+  "description": null,
   "id": "m8kXG4h21wPGDlmo",
   "isArchived": false,
   "meta": {
@@ -378,9 +379,9 @@
         "operation": "edit",
         "owner": "={{$node[\"Globals\"].json[\"repo\"][\"owner\"]}}",
         "repository": "={{$node[\"Globals\"].json[\"repo\"][\"name\"]}}",
-        "filePath": "={{$node[\"Globals\"].json[\"repo\"][\"path\"]}}{{$node[\"N8N Workflow Detail\"].json[\"data\"][\"name\"]}}.json",
-        "fileContent": "={{$node[\"isDiffOrNew1\"].json[\"n8n_data_stringy\"]}}",
-        "commitMessage": "=[N8N Backup] {{$node[\"N8N Workflow Detail\"].json[\"data\"][\"name\"]}}.json ({{$json[\"github_status\"]}})"
+        "filePath": "={{$node[\"Globals\"].json[\"repo\"][\"path\"]}}{{ $('N8N Workflow Detail').first().json.name }}.json",
+        "fileContent": "={{$node[\"isDiffOrNew\"].json[\"n8n_data_stringy\"]}}",
+        "commitMessage": "=[N8N Backup] {{$node[\"N8N Workflow Detail\"].json.name}}.json ({{$json[\"github_status\"]}})"
       },
       "name": "GitHub Edit",
       "type": "n8n-nodes-base.github",
@@ -437,7 +438,7 @@
       "name": "Daily @ 20:00",
       "type": "n8n-nodes-base.cron",
       "position": [
-        -928,
+        -1024,
         208
       ],
       "typeVersion": 1,
@@ -497,6 +498,20 @@
       ],
       "id": "38e00ac8-5900-47fa-8949-d040824b8a41",
       "name": "isDiffOrNew"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ===========================================\n// CÓDIGO DE DEPURACIÓN TEMPORAL\n// ===========================================\n\nconsole.log(\"=== DEBUGGING ===\");\nconsole.log(\"Total items:\", items.length);\n\n// Ver cada item\nitems.forEach((item, index) => {\n  console.log(`\\n--- Item ${index} ---`);\n  console.log(\"Keys:\", Object.keys(item.json));\n  console.log(\"Full JSON:\", JSON.stringify(item.json, null, 2));\n});\n\n// Verificar estructura específica\nif (items[1]) {\n  console.log(\"\\n--- items[1] detail ---\");\n  console.log(\"items[1].json existe?\", !!items[1].json);\n  console.log(\"items[1].json.data existe?\", !!items[1].json?.data);\n  \n  if (items[1].json) {\n    console.log(\"Keys de items[1].json:\", Object.keys(items[1].json));\n  }\n}\n\n// Retornar items sin modificar para ver el output\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -208,
+        -336
+      ],
+      "id": "3e926677-8a69-451c-9fa0-f7a24a115509",
+      "name": "Code Depuracion",
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -505,14 +520,14 @@
   },
   "shared": [
     {
-      "createdAt": "2025-10-31T19:23:12.996Z",
       "updatedAt": "2025-10-31T19:23:12.996Z",
+      "createdAt": "2025-10-31T19:23:12.996Z",
       "role": "workflow:owner",
       "workflowId": "m8kXG4h21wPGDlmo",
       "projectId": "Gno2MGQk3GvSkWE8",
       "project": {
-        "createdAt": "2025-07-01T19:23:18.030Z",
         "updatedAt": "2025-07-01T19:25:19.375Z",
+        "createdAt": "2025-07-01T19:23:18.030Z",
         "id": "Gno2MGQk3GvSkWE8",
         "name": "andres mora <anlemoca.pm@gmail.com>",
         "type": "personal",
@@ -520,13 +535,13 @@
         "description": null,
         "projectRelations": [
           {
-            "createdAt": "2025-07-01T19:23:18.030Z",
             "updatedAt": "2025-07-01T19:23:18.030Z",
+            "createdAt": "2025-07-01T19:23:18.030Z",
             "userId": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
             "projectId": "Gno2MGQk3GvSkWE8",
             "user": {
+              "updatedAt": "2025-12-04T15:07:23.783Z",
               "createdAt": "2025-07-01T19:23:15.406Z",
-              "updatedAt": "2025-11-04T16:05:23.106Z",
               "id": "dc44b8ef-5e65-4923-ad54-87ccabab01de",
               "email": "anlemoca.pm@gmail.com",
               "firstName": "andres",
@@ -550,7 +565,7 @@
               },
               "disabled": false,
               "mfaEnabled": false,
-              "lastActiveAt": "2025-11-04",
+              "lastActiveAt": "2025-12-04",
               "isPending": false
             }
           }
@@ -561,6 +576,7 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-04T21:06:30.588Z",
-  "versionId": "1cb27379-d33e-4bf8-9942-fa32b6fa012a"
+  "updatedAt": "2025-12-04T21:35:13.204Z",
+  "versionCounter": 3,
+  "versionId": "00ca4e54-d991-49a1-a31a-db403f45b7ec"
 }
